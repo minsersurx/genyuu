@@ -1,0 +1,157 @@
+/* ================== 全局重置与基础设置 ================== */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+	/* 初始状态下，因为封面盖住了，我们先禁止底层滚动 */
+	overflow: hidden; 
+}
+
+/* 当封面滑走后，通过 JS 给 body 加上这个类，允许向下滚动查看时间轴 */
+body.unlocked {
+	overflow: auto;
+}
+
+/* ================== 第一层：固定封面 ================== */
+.cover {
+	position: fixed; 
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 10;
+	
+	/* 封面背景图片设置，带有一层半透明白色遮罩，防止文字看不清 */
+	background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+				url('../images/bg.jpg');
+	background-size: cover; 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	/* 向上滑动的过渡动画，0.8秒，速度曲线顺滑 */
+	transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); 
+}
+
+/* 当 JS 添加这个类时，封面会向上平移自己高度的 100%，也就是滑出屏幕 */
+.cover.slide-up {
+	transform: translateY(-100%);
+}
+
+.cover-content h1 {
+	font-size: 3.5rem;
+	color: #333;
+	margin-bottom: 15px;
+	letter-spacing: 2px;
+}
+
+.cover-content p {
+	font-size: 1.2rem;
+	color: #555;
+}
+
+/* ================== 弹跳下箭头 ================== */
+.scroll-arrow {
+	position: absolute;
+	bottom: 50px; /* 距离底部 50px */
+	width: 24px;
+	height: 24px;
+	/* 用边框画一个只有右边和下边的折线，然后旋转 45 度变成下箭头 */
+	border-bottom: 3px solid #5b9bd5; /* 配合整体色调换成了蓝色 */
+	border-right: 3px solid #5b9bd5;
+	transform: rotate(45deg);
+	cursor: pointer;
+	/* 应用弹跳动画，2秒完成一次，无限循环 */
+	animation: bounce 2s infinite;
+}
+
+/* 缓慢弹跳的关键帧动画 */
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+		transform: translateY(0) rotate(45deg);
+	}
+	40% {
+		transform: translateY(-15px) rotate(45deg); /* 往上弹高一点 */
+	}
+	60% {
+		transform: translateY(-7px) rotate(45deg); /* 掉下来再弹一点点 */
+	}
+}
+
+/* ================== 第二层：时间轴目录 ================== */
+.timeline-section {
+	min-height: 100vh;
+	padding: 80px 20px;
+	
+	/* 浅蓝色渐变背景 */
+	background: linear-gradient(180deg, #f4f9ff 0%, #d6eaff 100%);
+	
+	/* 时间轴在正常文档流中，被封面遮挡 */
+	position: relative;
+	z-index: 1; 
+}
+
+.timeline-section h2 {
+	text-align: center;
+	margin-bottom: 50px;
+	color: #333;
+	font-size: 2rem;
+}
+
+/* 时间轴那根竖线 */
+.timeline {
+	max-width: 600px;
+	margin: 0 auto;
+	border-left: 3px solid #6aa5e3; /* 配合背景换成了柔和的蓝色 */
+	padding-left: 30px;
+}
+
+/* 每一个回忆卡片的基础状态 */
+.timeline-item {
+	margin-bottom: 40px;
+	position: relative;
+	opacity: 0; 
+	transform: translateY(30px);
+	transition: all 0.8s ease;
+}
+
+.timeline-item.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* 时间轴竖线上的圆点装饰 */
+.timeline-item::before {
+	content: '';
+	position: absolute;
+	left: -38.5px; /* 微调以对齐竖线 */
+	top: 0;
+	width: 14px;
+	height: 14px;
+	background-color: #6aa5e3;
+	border-radius: 50%;
+	border: 3px solid #fff;
+}
+
+.timeline-date {
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #4a8cdb; /* 深一点的蓝色突出日期 */
+	margin-bottom: 8px;
+}
+
+.timeline-content {
+	background: #ffffff; /* 纯白背景在浅蓝底色上显得很干净 */
+	padding: 20px;
+	border-radius: 8px;
+	color: #555;
+	line-height: 1.6;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 加一点淡淡的阴影更有立体感 */
+}
