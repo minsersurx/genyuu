@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 · 时空裂缝 | Genyuu Empire</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+    <!-- 在线古风字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho&family=Gowun+Batang&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ---- 全局变量与基础 ---- */
+        :root {
+            --bg-main: #11091c;
+            --bg-sec: #1f1135;
+            --text: #e0e0e0;
+            --gold: #d4af37;
+            --radius-full: 50px;
+            --radius-lg: 14px;
+            --radius-sm: 8px;
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Noto Serif SC', '宋体', serif;
+        }
+
+        /* 根据不同语言切换标题字体 */
+        html[lang="zh-CN"] { --font-title: 'Ma Shan Zheng', serif; }
+        html[lang="zh-TW"] { --font-title: 'Noto Serif TC', serif; }
+        html[lang="ja"]    { --font-title: 'Shippori Mincho', serif; }
+        html[lang="ko"]    { --font-title: 'Gowun Batang', serif; }
+        html[lang="en"]    { --font-title: 'Cinzel', serif; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-sec) 100%);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 粒子画布 */
+        canvas#particleCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* 导航栏 */
+        header {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: transparent;
+        }
+        .logo a {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .logo i { font-size: 1.5rem; }
+
+        .lang-selector { position: relative; }
+        .lang-current {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.3s;
+        }
+        .lang-current:hover { background: var(--gold); color: var(--bg-main); }
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: rgba(20, 10, 35, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--gold);
+            border-radius: var(--radius-sm);
+            list-style: none;
+            min-width: 140px;
+            padding: 4px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: 0.2s ease;
+            z-index: 1000;
+        }
+        .lang-dropdown.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .lang-dropdown li {
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .lang-dropdown li:hover { background: rgba(212,175,55,0.2); color: var(--gold); }
+
+        /* 404 主体 */
+        .error-container {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .error-code {
+            font-family: var(--font-title);
+            font-size: 7rem;
+            line-height: 1;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212,175,55,0.4);
+            letter-spacing: 5px;
+        }
+        .error-subtitle {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin: 10px 0 20px;
+            letter-spacing: 2px;
+        }
+        .error-desc {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #ccc;
+            line-height: 1.7;
+        }
+        .btn-return {
+            display: inline-block;
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            background: rgba(0,0,0,0.4);
+            color: #f1c40f;
+            border: 2px solid #f1c40f;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            transition: 0.3s;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-return:hover {
+            background: #f1c40f;
+            color: #000;
+            box-shadow: 0 0 20px rgba(241,196,15,0.7);
+        }
+        .btn-return i { margin-left: 8px; }
+
+        .countdown {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .countdown span { color: var(--gold); font-weight: bold; }
+
+        .lang-text { transition: opacity 0.3s ease; }
+        .lang-text.fade-out { opacity: 0.1; }
+
+        /* 移动端适配 */
+        @media screen and (max-width: 768px) {
+            .error-code { font-size: 5rem; }
+            .error-subtitle { font-size: 1.4rem; }
+            header { padding: 12px 18px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+
+    <header>
+        <div class="logo">
+            <a href="/">
+                <i class="fa-brands fa-galactic-republic"></i>
+                <span class="lang-text" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-ko="현유제국" data-en="Genyuu Empire">Genyuu Empire</span>
+            </a>
+        </div>
+        <div class="lang-selector" id="lang-selector">
+            <button class="lang-current" id="lang-toggle-btn">🇺🇸</button>
+            <ul class="lang-dropdown" id="lang-dropdown">
+                <li data-lang="zh">🇨🇳 简体中文</li>
+                <li data-lang="zh-tw">🇹🇼 繁體中文</li>
+                <li data-lang="ja">🇯🇵 日本語</li>
+                <li data-lang="ko">🇰🇷 한국어</li>
+                <li data-lang="en">🇺🇸 English</li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-subtitle">
+            <span class="lang-text" data-zh="时空裂缝" data-zh-tw="時空裂縫" data-ja="時空の裂け目" data-ko="시공의 균열" data-en="Temporal Rift">Temporal Rift</span>
+        </div>
+        <p class="error-desc">
+            <span class="lang-text" 
+                data-zh="该疆域尚未被太祖幽冥收录，或者它已在神朝余孽的诅咒中湮灭。请迅速撤离此虚无之地。" 
+                data-zh-tw="此疆域尚未被太祖幽冥收錄，或已遭神朝餘孽詛咒而湮滅。請速速撤離這片虛無之地。" 
+                data-ja="この領域は太祖幽冥の記録に未だ存在せず、あるいは神朝の残党の呪いにより消滅した。速やかにこの虚無から脱出せよ。" 
+                data-ko="이 영역은 아직 태조 유명의 기록에 포함되지 않았거나, 신조 잔당의 저주로 소멸되었습니다. 신속히 이 허무의 장소에서 철수하십시오." 
+                data-en="This territory has not been recorded by Emperor You Ming, or it has been annihilated by the remnants of the Shen Dynasty. Evacuate this void immediately.">
+                This territory has not been recorded by Emperor You Ming, or it has been annihilated. Evacuate this void immediately.
+            </span>
+        </p>
+        <a href="/" class="btn-return">
+            <span class="lang-text" data-zh="返回帝国中枢" data-zh-tw="返回帝國中樞" data-ja="帝国中枢に戻る" data-ko="제국 중추로 돌아가기" data-en="Return to the Capital">Return to the Capital</span>
+            <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+        <p class="countdown">
+            <span class="lang-text" data-zh="跃迁倒计时：" data-zh-tw="躍遷倒數：" data-ja="自動跳躍まで：" data-ko="자동 도약 카운트다운: " data-en="Auto-jump in: ">Auto-jump in: </span>
+            <span id="timer">10</span> s
+        </p>
+    </div>
+
+    <script>
+        (function() {
+            // ---------- 语言配置 ----------
+            const flagMap = {
+                zh: '🇨🇳', 'zh-tw': '🇹🇼', ja: '🇯🇵', ko: '🇰🇷', en: '🇺🇸'
+            };
+            const langCodeMap = {
+                zh: 'zh-CN', 'zh-tw': 'zh-TW', ja: 'ja', ko: 'ko', en: 'en'
+            };
+            // 尝试读取 localStorage 中的语言偏好，否则默认英语
+            const storedLang = localStorage.getItem('genyuu-lang');
+            let currentLang = (storedLang && flagMap[storedLang]) ? storedLang : 'en';
+
+            // 获取元素
+            const langToggleBtn = document.getElementById('lang-toggle-btn');
+            const langDropdown = document.getElementById('lang-dropdown');
+            const timerEl = document.getElementById('timer');
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // ---------- 应用语言 ----------
+            function applyLanguage(lang) {
+                currentLang = lang;
+                const elements = document.querySelectorAll('.lang-text');
+                elements.forEach(el => el.classList.add('fade-out'));
+                setTimeout(() => {
+                    const attrMap = { zh: 'data-zh', 'zh-tw': 'data-zh-tw', ja: 'data-ja', ko: 'data-ko', en: 'data-en' };
+                    const attr = attrMap[lang];
+                    elements.forEach(el => {
+                        if (el.hasAttribute(attr)) {
+                            el.textContent = el.getAttribute(attr);
+                        }
+                    });
+                    elements.forEach(el => el.classList.remove('fade-out'));
+                    langToggleBtn.innerHTML = flagMap[lang];
+                    document.documentElement.lang = langCodeMap[lang];
+                    document.title = 
+                        (lang === 'zh') ? '404 · 时空裂缝 | 玄幽帝国' :
+                        (lang === 'zh-tw') ? '404 · 時空裂縫 | 玄幽帝國' :
+                        (lang === 'ja') ? '404 · 時空の裂け目 | 玄幽帝国' :
+                        (lang === 'ko') ? '404 · 시공의 균열 | 현유제국' :
+                        '404 · Temporal Rift | Genyuu Empire';
+                    localStorage.setItem('genyuu-lang', lang);
+                    langDropdown.classList.remove('show');
+                }, 300);
+            }
+
+            // 初始应用
+            applyLanguage(currentLang);
+
+            // ---------- 语言选择交互 ----------
+            langToggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langDropdown.classList.toggle('show');
+            });
+            document.addEventListener('click', () => langDropdown.classList.remove('show'));
+            langDropdown.querySelectorAll('li').forEach(li => {
+                li.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    applyLanguage(li.dataset.lang);
+                });
+            });
+
+            // ---------- 倒计时跳转 ----------
+            let seconds = 10;
+            function updateTimer() {
+                timerEl.textContent = seconds;
+                if (seconds <= 0) {
+                    window.location.replace('/');
+                } else {
+                    seconds--;
+                    setTimeout(updateTimer, 1000);
+                }
+            }
+            updateTimer();
+
+            // ---------- 粒子背景 ----------
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            const particles = [];
+            const MAX_PARTICLES = 45;
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.8;
+                    this.speedX = (Math.random() - 0.5) * 0.25;
+                    this.speedY = (Math.random() - 0.5) * 0.15 - 0.15;
+                    this.opacity = Math.random() * 0.4 + 0.1;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                        this.reset();
+                        this.y = canvas.height;
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                    ctx.shadowColor = '#f1c40f';
+                    ctx.shadowBlur = 3;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+            for (let i = 0; i < MAX_PARTICLES; i++) {
+                particles.push(new Particle());
+            }
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"92e95719c0134a7caf3528052134cdfc","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
