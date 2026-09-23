@@ -1,82 +1,199 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" translate="no">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>我们的回忆册</title>
-	<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">玄幽帝国 | Genyuu Empire</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    
+    <!-- 禁止浏览器自动翻译 -->
+    <meta name="google" content="notranslate">
+    <meta name="googlebot" content="notranslate">
+    <meta name="robots" content="notranslate">
+    
+    <meta name="description" content="Gods and Demons in Harmony, Eternal Genyuu. 神魔同辉，玄幽永存。">
+    <!-- hreflang 多语言声明 -->
+    <link rel="alternate" hreflang="en" href="https://www.genyuu.com/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://www.genyuu.com/?lang=zh" />
+    <link rel="alternate" hreflang="zh-TW" href="https://www.genyuu.com/?lang=zh-tw" />
+    <link rel="alternate" hreflang="ja" href="https://www.genyuu.com/?lang=ja" />
+    <link rel="alternate" hreflang="ko" href="https://www.genyuu.com/?lang=ko" />
+    <link rel="alternate" hreflang="x-default" href="https://www.genyuu.com/" />
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="Genyuu Empire | 玄幽帝国">
+    <meta property="og:description" content="Gods and Demons in Harmony, Eternal Genyuu.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.genyuu.com">
 </head>
 <body>
-
-	<section class="cover" id="cover">
-		<div class="cover-content">
-			<h1>我们的回忆册</h1>
-			<p>相遇 · 相知 · 相伴</p>
-		</div>
-		<div class="scroll-arrow" id="scrollArrow"></div>
-	</section>
-
-	<section class="timeline-section" id="timeline">
-		<h2>回忆目录</h2>
-		<div class="timeline">
-			<div class="timeline-item">
-				<div class="timeline-date">2023年5月20日</div>
-				<div class="timeline-content">
-					<strong>初次相遇</strong><br>
-					微风正好，在那个转角的咖啡店，我第一次见到了你。那天你穿了白色的衬衫，阳光洒在你的侧脸，那一刻时间仿佛静止了。
-				</div>
-			</div>
-			
-			<div class="timeline-item">
-				<div class="timeline-date">2023年6月18日</div>
-				<div class="timeline-content">
-					<strong>第一次正式约会</strong><br>
-					我们一起去看了那部评价很高的电影。虽然电影剧情我已经记不清了，但我记得你递给我的那颗薄荷糖，好甜。
-				</div>
-			</div>
-
-			<div class="timeline-item">
-				<div class="timeline-date">2023年8月15日</div>
-				<div class="timeline-content">
-					<strong>星空下的约定</strong><br>
-					在那场演唱会的尾声，在人群的欢呼声中，我鼓起勇气牵住了你的手。你没有松开，那是我们故事正式开始的日子。
-				</div>
-			</div>
-
-			<div class="timeline-item">
-				<div class="timeline-date">2023年10月3日</div>
-				<div class="timeline-content">
-					<strong>海边的日落</strong><br>
-					我们一起去了海边。在漫长的海岸线上，我们聊了好多关于未来的梦想。那时候我就在想，如果余生都是你就好了。
-				</div>
-			</div>
-
-			<div class="timeline-item">
-				<div class="timeline-date">2024年1月1日</div>
-				<div class="timeline-content">
-					<strong>第一个跨年夜</strong><br>
-					零点的钟声敲响，烟火在夜空中绽放。我们在寒风中拥抱，许下了新年的第一个愿望：岁岁常欢愉，万事皆胜意。
-				</div>
-			</div>
-
-			<div class="timeline-item">
-				<div class="timeline-date">2024年3月14日</div>
-				<div class="timeline-content">
-					<strong>平淡的幸福</strong><br>
-					你亲手下厨做了一顿晚餐，虽然盐放得稍微多了一点，但那是我吃过最温暖的一顿饭。
-				</div>
-			</div>
-
-			<div class="timeline-item">
-				<div class="timeline-date">今天</div>
-				<div class="timeline-content">
-					<strong>未完待续...</strong><br>
-					回忆册的这一页先停在这里，因为我们还有更长、更美好的未来要一起去书写。
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<script src="js/script.js"></script>
+    <!-- 首次访问语言选择模态 -->
+    <div id="lang-modal" class="lang-modal">
+        <div class="lang-modal-content glass-card">
+            <h2 class="lang-text" translate="no" data-zh="选择语言" data-zh-tw="選擇語言" data-ja="言語を選択" data-ko="언어 선택" data-en="Select Language">Select Language</h2>
+            <ul class="lang-options">
+                <li data-lang="en">🇺🇸 English</li>
+                <li data-lang="zh">🇨🇳 简体中文</li>
+                <li data-lang="zh-tw">🇭🇰 繁體中文</li>
+                <li data-lang="ja">🇯🇵 日本語</li>
+                <li data-lang="ko">🇰🇷 한국어</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 预加载遮罩 -->
+    <div id="preloader">
+        <div class="preloader-bg"></div>
+        <img id="preloader-logo" src="logo.svg" alt="玄幽帝国" class="preloader-logo">
+        <p class="preloader-text lang-text" translate="no" data-zh="灵力汇聚中..." data-zh-tw="靈力匯聚中..." data-ja="霊力集束中..." data-ko="영력 집결 중..." data-en="Gathering spiritual power...">Gathering spiritual power...</p>
+    </div>
+    <canvas id="particleCanvas"></canvas>
+    <header id="navbar">
+        <div class="logo" id="logo-icon">
+            <!-- 修复：添加logo占位符，这是预加载动画正常工作的关键 -->
+            <div class="logo-icon-placeholder"></div>
+            <span class="lang-text" translate="no" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-ko="현유제국" data-en="Genyuu Empire">Genyuu Empire</span>
+        </div>
+        <div class="nav-controls">
+            <div class="lang-selector" id="lang-selector">
+                <button class="lang-current" id="lang-toggle-btn">🇺🇸</button>
+                <ul class="lang-dropdown" id="lang-dropdown">
+                    <li data-lang="zh">🇨🇳 简体中文</li>
+                    <li data-lang="zh-tw">🇭🇰 繁體中文</li>
+                    <li data-lang="ja">🇯🇵 日本語</li>
+                    <li data-lang="ko">🇰🇷 한국어</li>
+                    <li data-lang="en">🇺🇸 English</li>
+                </ul>
+            </div>
+            <div class="menu-icon-wrapper" id="mobile-menu-icon">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+        <nav id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#" id="nav-home"><i class="fa-solid fa-chess-rook"></i><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-ko="제국 홈" data-en="Home">Home</span></a></li>
+                <li><a href="#intro"><i class="fa-solid fa-book-journal-whills"></i><span class="lang-text" translate="no" data-zh="帝国实录" data-zh-tw="帝國實錄" data-ja="帝国実録" data-ko="제국 실록" data-en="Records">Records</span></a></li>
+                <li><a href="#pillars"><i class="fa-solid fa-globe"></i><span class="lang-text" translate="no" data-zh="帝国枢要" data-zh-tw="帝國樞要" data-ja="帝国の要" data-ko="제국 중추" data-en="Pillars">Pillars</span></a></li>
+                <li><a href="#codex"><i class="fa-solid fa-scale-balanced"></i><span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-ko="천통 신정" data-en="Laws">Laws</span></a></li>
+                <li><a href="#characters"><i class="fa-solid fa-user-group"></i><span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-ko="제국 인물지" data-en="Personages">Personages</span></a></li>
+                <li><a href="#history"><i class="fa-solid fa-hourglass-half"></i><span class="lang-text" translate="no" data-zh="帝国编年史" data-zh-tw="帝國編年史" data-ja="帝国年代記" data-ko="제국 연대기" data-en="History">History</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- 封面区域 -->
+    <section id="hero" class="hero-cover">
+        <div class="cover-texture"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="lang-text" translate="no" data-zh="神魔同辉，玄幽永存" data-zh-tw="神魔同輝，玄幽永存" data-ja="神魔共に輝き、玄幽永遠なれ" data-ko="신마가 함께 빛나고, 현유는 영원하리" data-en="Gods and Demons in Harmony, Eternal Genyuu">Gods and Demons in Harmony, Eternal Genyuu</span>
+            </h1>
+            <p class="hero-subtitle">
+                <span class="lang-text" translate="no" data-zh="推翻神朝暴政，践行平等之誓。欢迎来到太祖幽冥开创的伟大帝国。" data-zh-tw="推翻神朝暴政，履行平等誓約。歡迎蒞臨太祖幽冥開創的偉大帝國。" data-ja="神朝の暴政を覆し、平等の誓いを果たす。太祖幽冥が築きし偉大なる帝国へようこそ。" data-ko="신조의 폭정을 무너뜨리고 평등의 서약을 실천하노라. 태조 유명이 세운 위대한 제국에 오신 것을 환영합니다." data-en="Overthrowing the Shen Dynasty's tyranny, fulfilling the vow of equality. Welcome to the great empire founded by You Ming.">Overthrowing the Shen Dynasty's tyranny, fulfilling the vow of equality. Welcome to the great empire founded by You Ming.</span>
+            </p>
+            <button id="explore-btn" class="primary-btn">
+                <span class="lang-text" translate="no" data-zh="探索玄都" data-zh-tw="探索玄都" data-ja="玄都を探索" data-ko="현도를 탐험하다" data-en="Explore Xuandu">Explore Xuandu</span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+        </div>
+        <div class="scroll-arrow" id="scrollArrow"></div>
+    </section>
+    <main id="main-content" class="under-content">
+        
+        <section id="intro" class="section-block reveal">
+            <h2 class="section-title"><i class="fa-solid fa-meteor"></i> <span class="lang-text" translate="no" data-zh="帝国开国实录" data-zh-tw="帝國開國實錄" data-ja="帝国開国実録" data-ko="제국 개국 실록" data-en="Founding Records">Founding Records</span></h2>
+            <div class="content-box glass-card">
+                <span class="lang-text" translate="no" data-zh="神朝末世，帝王昏聩，贵族腐朽。幽冥为神魔混血，幼年父母双亡，蒙神朝三朝宰相冬久收养，授以经世济民之道。成年后幽冥官至禁军总长，助皇子神天篡位，却遭其背弃推行屠魔令，恩师冬久被赐毒酒身亡。幽冥心死遁入西域魔影窟，磨砺一年融合神魔之力，炼成影焰涅槃出关。联玄冥等旧部缔灰烬之盟，断龙岭策反神冥大破神朝主力，旋即挥师攻克神都，擒杀神天。后与黑白无常理念决裂，幽冥登基立国，号玄幽，改元天统，定都玄都，以玄冥为摄政王。天统五年扫平魔灰、神影余孽，一统天下，开创神魔平等之盛世。" data-zh-tw="神朝末世，帝王昏聵，貴族腐朽。幽冥為神魔混血，幼年父母雙亡，蒙神朝三朝宰相冬久收養，授以經世濟民之道。成年後幽冥官至禁軍總長，助皇子神天篡位，卻遭其背棄推行屠魔令，恩師冬久被賜毒酒身亡。幽冥心死遁入西域魔影窟，磨礪一年融合神魔之力，煉成影焰涅槃出關。聯玄冥等舊部締灰燼之盟，斷龍嶺策反神冥大破神朝主力，旋即揮師攻克神都，擒殺神天。後與黑白無常理念決裂，幽冥登基立國，號玄幽，改元天統，定都玄都，以玄冥為攝政王。天統五年掃平魔灰、神影餘孽，一統天下，開創神魔平等之盛世。" data-ja="神朝末期、帝王は暗愚で貴族は退廃していた。幽冥は神と魔の混血で、幼くして父母を亡くし、神朝三朝宰相冬久に育てられ、経世済民の道を授かった。成人後、幽冥は禁軍総督に昇り、皇子神天の簒位を助けたが、裏切られて屠魔令が敷かれ、恩師冬久は毒酒を賜り殺された。幽冥は絶望して西域魔影窟に隠れ、1年の鍛錬で神と魔の力を融合させ、影炎を身につけて出陣した。玄冥ら旧部と組んで灰燼の盟を結び、断龍嶺で神冥を寝返らせ神朝主力を壊滅させ、すぐさま神都を攻め落とし、神天を捕らえて処刑した。その後、黒白無常と理念の対立で決裂し、幽冥は即位して国を建て、国号を玄幽とし、年号を天統とし、玄都に都を定め、玄冥を摂政王とした。天統5年に魔灰・神影の残党を掃討し、天下を統一し、神と魔が平等な盛世を築いた。" data-ko="신조 말기, 황제는 어리석고 귀족은 타락했다. 유명은 신마 혼혈로 어려서 부모를 여읻고 신조 삼조 재상 동구에게 거두어져 경세제민의 도를 배웠다. 성인 후 유명은 금군 총장까지 올라 황자 신천의 참위를 도왔으나, 배신당해 도마령이 시행되고 스승 동구는 독주를 하사받아 살해당했다. 유명은 절망하여 서역 마영굴에 숨겨 1년간 수련하여 신마의 힘을 융합시키고 영염을 얻어 출관했다. 현명 등 구부와 연합하여 재회의 맹약을 맺고 단룡령에서 신명을 회유하여 신조 주력을 대파하고 곧바로 신도를 공격하여 신천을 사로잡아 처형했다. 이후 흑백무상과 이념 대립으로 결렬되고 유명은 즉위하여 국가를 세우고 국호를 현유라 하고 연호를 천통이라 하며 현도를 수도로 정하고 현명을 섭정왕으로 삼았다. 천통 5년에 마회, 신영 잔당을 소탕하고 천하를 통일하여 신마 평등한 성세를 이루었다." data-en="In the late Shen Dynasty, the emperor was fatuous and the nobility corrupt. You Ming, a half-god half-demon, orphaned young, was adopted by Dong Jiu, the three-dynasty Prime Minister of the Shen Dynasty, who taught him statecraft. As an adult, You Ming became Commander of the Imperial Guards, aiding Prince Shen Tian's usurpation—only to be betrayed, as Shen Tian issued the Demon Slaughter Decree and had Dong Jiu poisoned to death. Despondent, You Ming fled to the Demon Shadow Cave, spent a year merging divine and demonic powers to forge Shadow Flame, and emerged reborn. Allied with Xuan Ming and other old comrades via the Ashen Oath, he turned Shen Ming against the Shen Dynasty and crushed its main force at Dragon Break Ridge, then marched on the capital and executed Shen Tian. After splitting with Heibai Wuchang over ideology, You Ming ascended the throne, founded Genyuu, changed the era to Tian Tong, made Xuandu his capital, and appointed Xuan Ming as Regent. In Tian Tong Year 5, he eliminated the remaining Mohui and Shenying forces, unified the realm, and created a golden age of equality between Gods and Demons.">In the late Shen Dynasty, the emperor was fatuous and the nobility corrupt. You Ming, a half-god half-demon, orphaned young, was adopted by Dong Jiu, the three-dynasty Prime Minister of the Shen Dynasty, who taught him statecraft. As an adult, You Ming became Commander of the Imperial Guards, aiding Prince Shen Tian's usurpation—only to be betrayed, as Shen Tian issued the Demon Slaughter Decree and had Dong Jiu poisoned to death. Despondent, You Ming fled to the Demon Shadow Cave, spent a year merging divine and demonic powers to forge Shadow Flame, and emerged reborn. Allied with Xuan Ming and other old comrades via the Ashen Oath, he turned Shen Ming against the Shen Dynasty and crushed its main force at Dragon Break Ridge, then marched on the capital and executed Shen Tian. After splitting with Heibai Wuchang over ideology, You Ming ascended the throne, founded Genyuu, changed the era to Tian Tong, made Xuandu his capital, and appointed Xuan Ming as Regent. In Tian Tong Year 5, he eliminated the remaining Mohui and Shenying forces, unified the realm, and created a golden age of equality between Gods and Demons.</span>
+            </div>
+        </section>
+        <!-- 帝国枢要（横向滑动） -->
+        <section id="pillars" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-globe"></i> <span class="lang-text" translate="no" data-zh="帝国枢要" data-zh-tw="帝國樞要" data-ja="帝国の要" data-ko="제국 중추" data-en="Imperial Pillars">Imperial Pillars</span></h2>
+            <div class="features-section">
+                <div class="feature-card reveal">
+                    <i class="fa-solid fa-shield-halved card-icon"></i>
+                    <h3><span class="lang-text" translate="no" data-zh="玄幽卫" data-zh-tw="玄幽衛" data-ja="玄幽衛" data-ko="현유위" data-en="Genyuu Guard">Genyuu Guard</span></h3>
+                    <p><span class="lang-text" translate="no" data-zh="太祖亲掌的帝国利刃，天统律法的监察执行者，捍卫神魔平等之根基。" data-zh-tw="太祖親掌的帝國利刃，天統律法的監察執行者，捍衛神魔平等之根基。" data-ja="太祖が直轄する帝国の刃、天統律法の監察執行者で、神と魔の平等の礎を守る。" data-ko="태조가 직접 통수하는 제국의 칼날, 천통 법률의 감시 집행자로 신마 평등의 기초를 수호한다." data-en="The emperor's direct blade, inspector and enforcer of the Tian Tong Laws, guarding the foundation of equality between Gods and Demons.">The emperor's direct blade, inspector and enforcer of the Tian Tong Laws, guarding the foundation of equality between Gods and Demons.</span></p>
+                </div>
+                <div class="feature-card reveal">
+                    <i class="fa-brands fa-d-and-d card-icon"></i>
+                    <h3><span class="lang-text" translate="no" data-zh="魔影窟" data-zh-tw="魔影窟" data-ja="魔影窟" data-ko="마영굴" data-en="Demon Shadow Cave">Demon Shadow Cave</span></h3>
+                    <p><span class="lang-text" translate="no" data-zh="西域绝地，太祖融合神魔之力、炼成影焰的涅槃圣地，帝国精神图腾。" data-zh-tw="西域絕地，太祖融合神魔之力、煉成影焰的涅槃聖地，帝國精神圖騰。" data-ja="西域の絶地、太祖が神と魔の力を融合させ影炎を錬成した涅槃の聖地で、帝国の精神的象徴。" data-ko="서역의 절지, 태조가 신마의 힘을 융합하고 영염을 연성한 열화 성지로 제국 정신의 상징이다." data-en="A forbidden land in the Western Regions, the sacred nirvana where the Emperor merged divine and demonic powers to forge Shadow Flame—the empire's spiritual totem.">A forbidden land in the Western Regions, the sacred nirvana where the Emperor merged divine and demonic powers to forge Shadow Flame—the empire's spiritual totem.</span></p>
+                </div>
+                <div class="feature-card reveal">
+                    <i class="fa-solid fa-map-location-dot card-icon"></i>
+                    <h3><span class="lang-text" translate="no" data-zh="四海疆域" data-zh-tw="四海領域" data-ja="四海の領土" data-ko="사해 강역" data-en="Vast Territories">Vast Territories</span></h3>
+                    <p><span class="lang-text" translate="no" data-zh="天统五年一统六合，东极沧海，西跨葱岭，北抵冰原，南尽热林，幅员远超神朝全盛。" data-zh-tw="天統五年一統六合，東極滄海，西跨蔥嶺，北抵冰原，南盡熱林，幅員遠超神朝全盛。" data-ja="天統5年に天下を統一し、東は大海、西は葱嶺、北は氷原、南は熱林に至り、版図は神朝の全盛期をはるかに超える。" data-ko="천통 5년 천하를 통일하여 동은 큰 바다, 서는 파미르, 북은 빙원, 남은 열대림에 이르러 영역은 신조 전성기를 훨씬 넘는다." data-en="Unified the realm in Tian Tong Year 5, stretching from the eastern sea to the western Pamir, northern ice plains to southern jungles—far larger than the Shen Dynasty at its peak.">Unified the realm in Tian Tong Year 5, stretching from the eastern sea to the western Pamir, northern ice plains to southern jungles—far larger than the Shen Dynasty at its peak.</span></p>
+                </div>
+            </div>
+        </section>
+        <!-- 天统新政 -->
+        <section id="codex" class="section-block reveal">
+            <h2 class="section-title"><i class="fa-solid fa-scale-balanced"></i> <span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-ko="천통 신정" data-en="Tian Tong Laws">Tian Tong Laws</span></h2>
+            <div class="content-box glass-card text-left" id="codex-list">
+                <p class="codex-item" data-article="1"><i class="fa-solid fa-caret-right"></i> <span class="lang-text" translate="no" data-zh="第一条：废阶级。永除神魔贵贱之别，天下子民皆为灵者，律法面前一律平等。" data-zh-tw="第一條：廢階級。永除神魔貴賤之別，天下子民皆為靈者，律法面前一律平等。" data-ja="第一条：階級を廃す。神と魔の貴賤の別を永遠になくし、天下の民は全て霊者とし、法の前に一律に平等である。" data-ko="제1조: 계급을 폐지한다. 신마 귀천의 차별을 영원히 없애고 천하의 백성은 모두 영자로서 법 앞에 평등하다." data-en="Article I: Abolish class. Erase the divide between Gods and Demons forever; all people are Spirits, equal before the law.">Article I: Abolish class. Erase the divide between Gods and Demons forever; all people are Spirits, equal before the law.</span></p>
+                <p class="codex-item" data-article="2"><i class="fa-solid fa-caret-right"></i> <span class="lang-text" translate="no" data-zh="第二条：薄税赋。行十一税定额制，永禁一切加征，轻徭薄赋与民休养。" data-zh-tw="第二條：薄稅賦。行十一稅定額制，永禁一切加征，輕徭薄賦與民休養。" data-ja="第二条：税を軽くする。十一税の定額制を敷き、一切の増徴を永遠に禁じ、労役と税を軽くして民を休ませる。" data-ko="제2조: 세금을 가볍게 한다. 십일세 정액제를 시행하고 모든 증징을 영원히 금지하며 부역과 세금을 가볍게 하여 백성을 쉬게 한다." data-en="Article II: Low taxes. Implement the 10% fixed tax, ban all surcharges forever; lighten corvée and taxes to let the people recover.">Article II: Low taxes. Implement the 10% fixed tax, ban all surcharges forever; lighten corvée and taxes to let the people recover.</span></p>
+                <p class="codex-item" data-article="3"><i class="fa-solid fa-caret-right"></i> <span class="lang-text" translate="no" data-zh="第三条：举贤能。设灵政院与学府，选官取士唯才是举，不问出身种族。" data-zh-tw="第三條：舉賢能。設靈政院與學府，選官取士唯才是舉，不問出身種族。" data-ja="第三条：賢能を挙げる。霊政院と学舎を設け、官吏を抜擢するには才能のみを問い、出自や種族を問わない。" data-ko="제3조: 현명하고 능력 있는 자를 등용한다. 영정원과 학부를 설치하고 관리를 발탁할 때 오직 재능만을 보며 출신과 종족을 묻지 않는다." data-en="Article III: Meritocracy. Establish the Spirit Political Academy and schools; appoint officials by talent alone, regardless of origin or race.">Article III: Meritocracy. Establish the Spirit Political Academy and schools; appoint officials by talent alone, regardless of origin or race.</span></p>
+                <div id="oath-message" class="oath-msg"></div>
+            </div>
+        </section>
+        <!-- 帝国人物志 -->
+        <section id="characters" class="section-block reveal">
+            <h2 class="section-title"><i class="fa-solid fa-user-group"></i> <span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-ko="제국 인물지" data-en="Personages">Personages</span></h2>
+            <div class="characters-grid">
+                <div class="character-card">
+                    <div class="char-avatar"><i class="fa-solid fa-crown"></i></div>
+                    <h4><span class="lang-text" translate="no" data-zh="太祖幽冥" data-zh-tw="太祖幽冥" data-ja="太祖幽冥" data-ko="태조 유명" data-en="Emperor You Ming">Emperor You Ming</span></h4>
+                    <p><span class="lang-text" translate="no" data-zh="玄幽开国大帝，神魔混血，炼成影焰，颁天统律法，一统天下，开创神魔平等之世。" data-zh-tw="玄幽開國大帝，神魔混血，煉成影焰，頒天統律法，一統天下，開創神魔平等之世。" data-ja="玄幽の開国大帝、神と魔の混血、影炎を錬成し、天統律法を布き、天下を統一し、神と魔が平等な世を築いた。" data-ko="현유 시조 대제, 신마 혼혈, 영염을 연성하고 천통 법률을 반포하며 천하를 통일하고 신마 평등한 세상을 열었다." data-en="Founding Emperor of Genyuu, half-God half-Demon, forged Shadow Flame, issued the Tian Tong Laws, unified the realm, and created an era of equality between Gods and Demons.">Founding Emperor of Genyuu, half-God half-Demon, forged Shadow Flame, issued the Tian Tong Laws, unified the realm, and created an era of equality between Gods and Demons.</span></p>
+                </div>
+                <div class="character-card">
+                    <div class="char-avatar"><i class="fa-solid fa-moon"></i></div>
+                    <h4><span class="lang-text" translate="no" data-zh="玄冥" data-zh-tw="玄冥" data-ja="玄冥" data-ko="현명" data-en="Xuan Ming">Xuan Ming</span></h4>
+                    <p><span class="lang-text" translate="no" data-zh="帝国摄政王，总领军政要务，辅佐太祖平定天下，奠定帝国基业。" data-zh-tw="帝國攝政王，總領軍政要務，輔佐太祖平定天下，奠定帝國基業。" data-ja="帝国の摂政王、軍政を総覧し、太祖を補佐して天下を平定し、帝国の基礎を築いた。" data-ko="제국 섭정왕, 군정을 총괄하고 태조를 보좌하여 천하를 평정하고 제국의 기초를 다졌다." data-en="Regent of the Empire, oversees all military and political affairs, assisted the Emperor in unifying the realm and laying the foundation of the empire.">Regent of the Empire, oversees all military and political affairs, assisted the Emperor in unifying the realm and laying the foundation of the empire.</span></p>
+                </div>
+                <div class="character-card">
+                    <div class="char-avatar"><i class="fa-solid fa-book"></i></div>
+                    <h4><span class="lang-text" translate="no" data-zh="冬久" data-zh-tw="冬久" data-ja="冬久" data-ko="동구" data-en="Dong Jiu">Dong Jiu</span></h4>
+                    <p><span class="lang-text" translate="no" data-zh="神朝三朝宰相，太祖恩师，一生秉持天下为公理念。因冒死进谏反对屠魔令，被神天赐毒酒身亡。其精神成为玄幽帝国治国之基石。" data-zh-tw="神朝三朝宰相，太祖恩師，一生秉持天下為公理念。因冒死進諫反對屠魔令，被神天赐毒酒身亡。其精神成為玄幽帝國治國之基石。" data-ja="神朝三朝の宰相、太祖の恩師で、一生天下のために尽くした。屠魔令に反対して死をもって諫めたが、神天に毒酒を賜り殺された。その精神は玄幽帝国の治国の礎となった。" data-ko="신조 삼조의 재상, 태조의 스승으로 일생 천하공공의 이념을 견지했다. 도마령에 반대하여 죽어가며 간언했으나 신천에게 독주를 하사받아 살해당했다. 그 정신은 현유 제국 통치의 기초가 되었다." data-en="Three-dynasty Prime Minister of the Shen Dynasty, the Emperor's teacher, who upheld the ideal of public service all his life. He was poisoned to death by Shen Tian for remonstrating against the Demon Slaughter Decree. His spirit became the foundation of Genyuu's governance.">Three-dynasty Prime Minister of the Shen Dynasty, the Emperor's teacher, who upheld the ideal of public service all his life. He was poisoned to death by Shen Tian for remonstrating against the Demon Slaughter Decree. His spirit became the foundation of Genyuu's governance.</span></p>
+                </div>
+                <div class="character-card">
+                    <div class="char-avatar"><i class="fa-solid fa-shield"></i></div>
+                    <h4><span class="lang-text" translate="no" data-zh="凌夜" data-zh-tw="凌夜" data-ja="凌夜" data-ko="령야" data-en="Ling Ye">Ling Ye</span></h4>
+                    <p><span class="lang-text" translate="no" data-zh="玄幽卫首任统领，出身太祖亲卫，自魔影窟时期便追随左右。铁面无私，执法如山，亲手查办多起违反天统律法的大案，是帝国律法最坚定的守护者与执行者。" data-zh-tw="玄幽衛首任統領，出身太祖親衛，自魔影窟時期便追隨左右。鐵面無私，執法如山，親手查辦多起違反天統律法的大案，是帝國律法最堅定的守護者與執行者。" data-ja="玄幽衛の初代統領で、太祖の親衛出身で魔影窟の時代から従ってきた。私情を許さず法を厳しく守り、天統律法に違反する多くの大事件を自ら捜査し、帝国の法の最も堅固な守護者である。" data-ko="현유위 초대 통령으로 태조 친위 출신이며 마영굴 시절부터 좌우를 따랐다. 사사로움을 허용하지 않고 법을 엄격히 집행하며 천통 법률을 위반한 여러 대사건을 직접 수사하여 제국 법률의 가장 확고한 수호자이자 집행자이다." data-en="First commander of the Genyuu Guard, born from the Emperor's personal guard, who has followed him since the Demon Shadow Cave era. Impartial and unyielding, he personally investigated many major cases violating the Tian Tong Laws, and is the most resolute guardian and enforcer of the empire's laws.">First commander of the Genyuu Guard, born from the Emperor's personal guard, who has followed him since the Demon Shadow Cave era. Impartial and unyielding, he personally investigated many major cases violating the Tian Tong Laws, and is the most resolute guardian and enforcer of the empire's laws.</span></p>
+                </div>
+                <div class="character-card">
+                    <div class="char-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h4><span class="lang-text" translate="no" data-zh="墨尘" data-zh-tw="墨塵" data-ja="墨塵" data-ko="묵진" data-en="Mo Chen">Mo Chen</span></h4>
+                    <p><span class="lang-text" translate="no" data-zh="灵政院首任院长，帝国文教与选官制度的奠基人。主持建立从地方到中央的各级学府，制定唯才是举的科举取士制度，打破了数百年的血统世袭壁垒，为帝国输送了大批贤能之士。" data-zh-tw="靈政院首任院長，帝國文教與選官制度的奠基人。主持建立從地方到中央的各級學府，制定唯才是舉的科舉取士制度，打破了數百年的血統世襲壁壘，為帝國輸送了大批賢能之士。" data-ja="霊政院の初代院長で、帝国の文教と官吏登用制度の基礎を築いた。地方から中央までの各級学舎の設立を主導し、才能本位の科挙制度を制定し、数百年にわたる血統世襲の壁を打ち破り、帝国に多くの賢能を送り込んだ。" data-ko="영정원 초대 원장으로 제국 문교와 관료 등용 제도의 기초를 다졌다. 지방부터 중앙까지 각급 학부 설립을 주도하고 재능 본위의 과거 제도를 제정하여 수백년간의 혈통 세습 장벽을 깨고 제국에 수많은 현명하고 능력 있는 인재를 공급했다." data-en="First Dean of the Spirit Political Academy, the founder of the empire's education and official appointment system. He led the establishment of schools at all levels from local to central, formulated the merit-based imperial examination system, broke the centuries-old hereditary barrier, and delivered a large number of talents to the empire.">First Dean of the Spirit Political Academy, the founder of the empire's education and official appointment system. He led the establishment of schools at all levels from local to central, formulated the merit-based imperial examination system, broke the centuries-old hereditary barrier, and delivered a large number of talents to the empire.</span></p>
+                </div>
+            </div>
+        </section>
+        <!-- 帝国编年史 -->
+        <section id="history" class="section-block reveal">
+            <h2 class="section-title"><i class="fa-solid fa-timeline"></i> <span class="lang-text" translate="no" data-zh="帝国编年史" data-zh-tw="帝國編年史" data-ja="帝国年代記" data-ko="제국 연대기" data-en="Empire History">Empire History</span></h2>
+            <div class="content-box glass-card text-left history-list">
+                <p><strong><span class="lang-text" translate="no" data-zh="神朝末世：" data-zh-tw="神朝末世：" data-ja="神朝末期：" data-ko="신조 말기：" data-en="Late Shen Dynasty: ">Late Shen Dynasty: </span></strong><span class="lang-text" translate="no" data-zh="幽冥降生，神魔混血，幼年父母双亡，被神朝三朝宰相冬久收养，授以治国之道。" data-zh-tw="幽冥降生，神魔混血，幼年父母雙亡，被神朝三朝宰相冬久收養，授以治國之道。" data-ja="幽冥が生まれ、神と魔の混血で、幼くして父母を亡くし、神朝三朝宰相冬久に育てられ、治国の道を授かる。" data-ko="유명이 태어나 신마 혼혈이고 어려서 부모를 여읻고 신조 삼조 재상 동구에게 거두어져 통치의 도를 배운다." data-en="You Ming is born, half-God half-Demon; orphaned young, adopted by Dong Jiu, three-dynasty Prime Minister of the Shen Dynasty, who teaches him statecraft.">You Ming is born, half-God half-Demon; orphaned young, adopted by Dong Jiu, three-dynasty Prime Minister of the Shen Dynasty, who teaches him statecraft.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="神朝末年：" data-zh-tw="神朝末年：" data-ja="神朝末年：" data-ko="신조 말년：" data-en="End of Shen Dynasty: ">End of Shen Dynasty: </span></strong><span class="lang-text" translate="no" data-zh="幽冥任禁军总长，助神天篡位；神天颁屠魔令，冬久被赐毒酒身亡，幽冥遁入魔影窟。" data-zh-tw="幽冥任禁軍總長，助神天篡位；神天頒屠魔令，冬久被賜毒酒身亡，幽冥遁入魔影窟。" data-ja="幽冥は禁軍総督に就任し、神天の簒位を助ける。神天は屠魔令を布き、冬久は毒酒を賜り殺され、幽冥は魔影窟に逃れる。" data-ko="유명은 금군 총장이 되어 신천의 참위를 도우나 신천이 도마령을 반포하고 동구는 독주를 하사받아 살해당해 유명은 마영굴로 도망친다." data-en="You Ming becomes Imperial Guard Commander, aids Shen Tian's usurpation; Shen Tian issues the Demon Slaughter Decree, Dong Jiu is poisoned to death, You Ming flees to the Demon Shadow Cave.">You Ming becomes Imperial Guard Commander, aids Shen Tian's usurpation; Shen Tian issues the Demon Slaughter Decree, Dong Jiu is poisoned to death, You Ming flees to the Demon Shadow Cave.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="涅槃出关：" data-zh-tw="涅槃出關：" data-ja="涅槃出陣：" data-ko="열화 출관：" data-en="Nirvana & Emergence: ">Nirvana & Emergence: </span></strong><span class="lang-text" translate="no" data-zh="幽冥于魔影窟炼成影焰，出关联玄冥等旧部缔灰烬之盟，起兵讨伐神朝。" data-zh-tw="幽冥於魔影窟煉成影焰，出關聯玄冥等舊部締灰燼之盟，起兵討伐神朝。" data-ja="幽冥は魔影窟で影炎を錬成し、出陣して玄冥ら旧部と組んで灰燼の盟を結び、神朝を討つ兵を挙げる。" data-ko="유명은 마영굴에서 영염을 연성하고 출관하여 현명 등 구부와 연합하여 재회의 맹약을 맺고 신조를 토벌하기 위해 군사를 일으킨다." data-en="You Ming forges Shadow Flame in the Demon Shadow Cave, emerges to ally with Xuan Ming and other old comrades via the Ashen Oath, and raises an army against the Shen Dynasty.">You Ming forges Shadow Flame in the Demon Shadow Cave, emerges to ally with Xuan Ming and other old comrades via the Ashen Oath, and raises an army against the Shen Dynasty.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="断龙岭之战：" data-zh-tw="斷龍嶺之戰：" data-ja="断龍嶺の戦い：" data-ko="단룡령 전투：" data-en="Battle of Dragon Break Ridge: ">Battle of Dragon Break Ridge: </span></strong><span class="lang-text" translate="no" data-zh="玄幽军策反神朝大将神冥，大破神朝主力精锐，神朝军事力量彻底崩溃；神冥率残部投靠黑白无常。" data-zh-tw="玄幽軍策反神朝大將神冥，大破神朝主力精鋭，神朝軍事力量徹底崩潰；神冥率殘部投靠黑白無常。" data-ja="玄幽軍は神朝の大将神冥を寝返らせ、神朝の主力精鋭を壊滅させ、神朝の軍事力は完全に崩壊した。神冥は残部を率いて黒白無常に投降した。" data-ko="현유군이 신조 대장 신명을 회유하여 신조 주력 정예를 대파하고 신조의 군사력은 완전히 붕괴되었다. 신명은 잔당을 이끌고 흑백무상에게 항복했다." data-en="The Genyuu Army turned Shen Ming against the Shen Dynasty, crushed its main elite force, completely destroying its military power; Shen Ming surrendered to Heibai Wuchang with his remaining troops.">The Genyuu Army turned Shen Ming against the Shen Dynasty, crushed its main elite force, completely destroying its military power; Shen Ming surrendered to Heibai Wuchang with his remaining troops.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="攻克神都：" data-zh-tw="攻克神都：" data-ja="神都攻略：" data-ko="신도 공략：" data-en="Capture of the Divine Capital: ">Capture of the Divine Capital: </span></strong><span class="lang-text" translate="no" data-zh="玄幽军乘胜挥师东进，攻克神朝都城，擒杀神天，神朝灭亡。" data-zh-tw="玄幽軍乘勝揮師東進，攻克神朝都城，擒杀神天，神朝滅亡。" data-ja="玄幽軍は勝利に乗じて東に進軍し、神朝の都を攻め落とし、神天を捕らえて処刑し、神朝は滅亡した。" data-ko="현유군이 승세를 타고 동으로 진군하여 신조의 수도를 공격하고 신천을 사로잡아 처형하여 신조는 멸망했다." data-en="The Genyuu Army marches east in victory, captures the Shen Dynasty's capital, executes Shen Tian, and the Shen Dynasty falls.">The Genyuu Army marches east in victory, captures the Shen Dynasty's capital, executes Shen Tian, and the Shen Dynasty falls.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="天统元年：" data-zh-tw="天統元年：" data-ja="天統元年：" data-ko="천통 원년：" data-en="Tian Tong Year 1: ">Tian Tong Year 1: </span></strong><span class="lang-text" translate="no" data-zh="幽冥称帝，国号玄幽，定都玄都，颁天统律法，以玄冥为摄政王；黑白无常北走，建立魔灰帝国，天下两分。" data-zh-tw="幽冥稱帝，國號玄幽，定都玄都，頒天統律法，以玄冥為攝政王；黑白無常北走，建立魔灰帝國，天下兩分。" data-ja="幽冥は即位し、国号を玄幽とし、玄都に都を定め、天統律法を布き、玄冥を摂政王とした。黒白無常は北に逃れ、魔灰帝国を建て、天下は二分される。" data-ko="유명이 즉위하고 국호를 현유라 하며 현도를 수도로 정하고 천통 법률을 반포하며 현명을 섭정왕으로 삼았다. 흑백무상은 북쪽으로 도망쳐 마회 제국을 세워 천하는 양분된다." data-en="You Ming ascends the throne, names the empire Genyuu, capital Xuandu, issues the Tian Tong Laws, appoints Xuan Ming as Regent; Heibai Wuchang flees north to found the Mohui Empire, splitting the realm in two.">You Ming ascends the throne, names the empire Genyuu, capital Xuandu, issues the Tian Tong Laws, appoints Xuan Ming as Regent; Heibai Wuchang flees north to found the Mohui Empire, splitting the realm in two.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="天统三年：" data-zh-tw="天統三年：" data-ja="天統三年：" data-ko="천통 3년：" data-en="Tian Tong Year 3: ">Tian Tong Year 3: </span></strong><span class="lang-text" translate="no" data-zh="魔灰帝国内乱，大将神冥发动兵变，弑杀黑白无常，篡立神影帝国。" data-zh-tw="魔灰帝國內亂，大將神冥發動兵變，弒殺黑白無常，篡立神影帝國。" data-ja="魔灰帝国で内乱が起こり、大将神冥は兵変を起こして黒白無常を殺し、神影帝国を簒立した。" data-ko="마회 제국에서 내란이 일어나 대장 신명이 병변을 일으켜 흑백무상을 죽이고 신영 제국을 참위시켰다." data-en="Civil war breaks out in the Mohui Empire; General Shen Ming stages a coup, assassinates Heibai Wuchang, and usurps the throne to found the Shenying Empire.">Civil war breaks out in the Mohui Empire; General Shen Ming stages a coup, assassinates Heibai Wuchang, and usurps the throne to found the Shenying Empire.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="天统五年：" data-zh-tw="天統五年：" data-ja="天統五年：" data-ko="천통 5년：" data-en="Tian Tong Year 5: ">Tian Tong Year 5: </span></strong><span class="lang-text" translate="no" data-zh="太祖御驾亲征，葬影原决战大破神影军，神冥败亡，天下一统，天统盛世开启。" data-zh-tw="太祖御駕親征，葬影原決戰大破神影軍，神冥敗亡，天下一統，天統盛世開啟。" data-ja="太祖は自ら軍を率いて征し、葬影原の決戦で神影軍を壊滅させ、神冥は敗死し、天下は統一され、天統の盛世が始まる。" data-ko="태조가 친히 군대를 이끌고 정벌하여 장영원 결전에서 신영군을 대파하고 신명은 패사하여 천하가 통일되고 천통 성세가 시작된다." data-en="The Emperor personally leads the army, crushes the Shenying Army in the decisive battle at Shadow Burial Plain, Shen Ming dies in defeat, the realm is unified, and the Tian Tong Golden Age begins.">The Emperor personally leads the army, crushes the Shenying Army in the decisive battle at Shadow Burial Plain, Shen Ming dies in defeat, the realm is unified, and the Tian Tong Golden Age begins.</span></p>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2026 <i class="fa-solid fa-code"></i> <span class="lang-text" translate="no" data-zh="玄幽帝国 (天统纪年) 版权所有" data-zh-tw="玄幽帝國 (天統紀年) 版權所有" data-ja="玄幽帝国 (天統紀年) 著作権所有" data-ko="현유제국 (천통 기년) 판권 소유" data-en="Genyuu Empire (Tian Tong Era). All Rights Reserved.">Genyuu Empire (Tian Tong Era). All Rights Reserved.</span></p>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"92e95719c0134a7caf3528052134cdfc","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
