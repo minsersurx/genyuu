@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">帝国秘史 | Genyuu Empire</title>
+
+    <meta name="google" content="notranslate">
+    <meta name="googlebot" content="notranslate">
+    <meta name="robots" content="notranslate">
+
+    <meta name="description" content="玄幽帝国秘史：灰烬之盟的缔结、魔灰与神影两国的兴亡、太祖与黑白无常决裂的隐情。">
+    <meta property="og:title" content="帝国秘史 | Genyuu Empire">
+    <meta property="og:description" content="玄幽帝国秘史：灰烬之盟的缔结、魔灰与神影两国的兴亡、太祖与黑白无常决裂的隐情。">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="unlocked">
+    <canvas id="particleCanvas"></canvas>
+    <header id="navbar">
+        <div class="logo" id="logo-icon">
+            <div class="logo-icon-placeholder"><img src="logo.svg" alt="玄幽帝国"></div>
+            <span class="lang-text" translate="no" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-en="Genyuu Empire">Genyuu Empire</span>
+        </div>
+        <div class="nav-controls">
+            <div class="lang-selector" id="lang-selector">
+                <button class="lang-current" id="lang-toggle-btn">🇨🇳</button>
+                <ul class="lang-dropdown" id="lang-dropdown">
+                    <li data-lang="zh">🇨🇳 简体中文</li>
+                    <li data-lang="zh-tw">🇭🇰 繁體中文</li>
+                    <li data-lang="ja">🇯🇵 日本語</li>
+                    <li data-lang="en">🇺🇸 English</li>
+                </ul>
+            </div>
+            <div class="menu-icon-wrapper" id="mobile-menu-icon">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+        <nav id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-chess-rook"></i><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-en="Home">Home</span></a></li>
+                <li><a href="index.html#history"><i class="fa-solid fa-hourglass-half"></i><span class="lang-text" translate="no" data-zh="正史编年" data-zh-tw="正史編年" data-ja="正史年代記" data-en="Chronology">Chronology</span></a></li>
+                <li><a href="factions.html"><i class="fa-solid fa-landmark"></i><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Institutions">Institutions</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <div class="subpage-hero">
+            <h1><span class="lang-text" translate="no" data-zh="帝国秘史" data-zh-tw="帝國秘史" data-ja="帝国秘史" data-en="Secret Chronicle">Secret Chronicle</span></h1>
+            <p><span class="lang-text" translate="no" data-zh="正史之外，尚有隐情。这些记述未列入天统实录，仅存于宫廷秘档。" data-zh-tw="正史之外，尚有隱情。這些記述未列入天統實錄，僅存於宮廷秘檔。" data-ja="正史の外にも隠された事情がある。これらの記述は天統実録には未収録で、宮廷の秘密文書にのみ残る。" data-en="Beyond the official record lie hidden truths — accounts never entered into the Tian Tong archives, preserved only in the palace's sealed files.">Beyond the official record lie hidden truths — accounts never entered into the Tian Tong archives, preserved only in the palace's sealed files.</span></p>
+        </div>
+
+        <section class="section-block reveal">
+            <h2 class="section-title"><i class="fa-solid fa-handshake"></i> <span class="lang-text" translate="no" data-zh="灰烬之盟" data-zh-tw="灰燼之盟" data-ja="灰燼の盟" data-en="The Ashen Oath">The Ashen Oath</span></h2>
+            <div class="content-box glass-card text-left history-list">
+                <p><span class="lang-text" translate="no" data-zh="幽冥出关后，秘密联络玄冥、黑白无常等旧部于荒庙歃血为盟，约定共讨神朝、事成后分治天下。此盟约从未见于正史，仅玄冥晚年手札略有提及。" data-zh-tw="幽冥出關後，秘密聯絡玄冥、黑白無常等舊部於荒廟歃血為盟，約定共討神朝、事成後分治天下。此盟約從未見於正史，僅玄冥晚年手札略有提及。" data-ja="幽冥は出陣後、秘かに玄冥や黒白無常ら旧部と荒廟で血の盟約を結び、神朝討伐と成功後の天下分治を誓った。この盟約は正史には見えず、玄冥晩年の手記にわずかに触れられるのみである。" data-en="After emerging from seclusion, You Ming secretly gathered Xuan Ming, Heibai Wuchang and other old comrades at a ruined shrine to swear a blood oath: overthrow the Shen Dynasty together, then divide the realm between them. The pact appears nowhere in the official record — only a fragment survives in Xuan Ming's late-life notes.">After emerging from seclusion, You Ming secretly gathered Xuan Ming, Heibai Wuchang and other old comrades at a ruined shrine to swear a blood oath: overthrow the Shen Dynasty together, then divide the realm between them. The pact appears nowhere in the official record — only a fragment survives in Xuan Ming's late-life notes.</span></p>
+            </div>
+        </section>
+
+        <section class="section-block reveal">
+            <h2 class="section-title"><i class="fa-solid fa-mask"></i> <span class="lang-text" translate="no" data-zh="决裂之谜" data-zh-tw="決裂之謎" data-ja="決裂の謎" data-en="The Rift">The Rift</span></h2>
+            <div class="content-box glass-card text-left history-list">
+                <p><span class="lang-text" translate="no" data-zh="攻克神都之后，黑白无常主张沿用神朝旧制以安抚旧贵族，幽冥则坚持废除阶级、神魔平等。两人在庆功宴上当众争执，不欢而散，自此分道扬镳，北走的黑白无常另立魔灰帝国。" data-zh-tw="攻克神都之後，黑白無常主張沿用神朝舊制以安撫舊貴族，幽冥則堅持廢除階級、神魔平等。兩人在慶功宴上當眾爭執，不歡而散，自此分道揚鑣，北走的黑白無常另立魔灰帝國。" data-ja="神都攻略の後、黒白無常は神朝の旧制度を踏襲して旧貴族を懐柔すべきだと主張したが、幽冥は階級の廃止と神魔平等を譲らなかった。二人は祝勝の宴で公然と衝突し、決裂した。北へ去った黒白無常は魔灰帝国を別に建てた。" data-en="After the capital fell, Heibai Wuchang argued for preserving the old Shen Dynasty hierarchy to placate the nobility, while You Ming insisted on abolishing class altogether. The two clashed openly at the victory banquet and parted ways for good — Heibai Wuchang fled north to found the rival Mohui Empire.">After the capital fell, Heibai Wuchang argued for preserving the old Shen Dynasty hierarchy to placate the nobility, while You Ming insisted on abolishing class altogether. The two clashed openly at the victory banquet and parted ways for good — Heibai Wuchang fled north to found the rival Mohui Empire.</span></p>
+            </div>
+        </section>
+
+        <section class="section-block reveal">
+            <h2 class="section-title"><i class="fa-solid fa-fire"></i> <span class="lang-text" translate="no" data-zh="魔灰、神影两国余烬" data-zh-tw="魔灰、神影兩國餘燼" data-ja="魔灰・神影両国の残り火" data-en="Embers of Mohui and Shenying">Embers of Mohui and Shenying</span></h2>
+            <div class="content-box glass-card text-left history-list">
+                <p><span class="lang-text" translate="no" data-zh="魔灰、神影两国灭亡后，散落各地的旧部并未被赶尽杀绝——天统律法明令宽赦平民，仅追责首恶。部分归化的旧臣后来在灵政院科举中脱颖而出，成为帝国新一代官员，这也是天统盛世能长治久安的隐藏原因之一。" data-zh-tw="魔灰、神影兩國滅亡後，散落各地的舊部並未被趕盡殺絕——天統律法明令寬赦平民，僅追責首惡。部分歸化的舊臣後來在靈政院科舉中脫穎而出，成為帝國新一代官員，這也是天統盛世能長治久安的隱藏原因之一。" data-ja="魔灰・神影両国が滅びた後、各地に散った旧臣は根絶やしにされなかった——天統律法は平民を赦し首謀者のみを罰すると明記していた。帰順した旧臣の一部は後に霊政院の科挙で頭角を現し、帝国の新世代の官吏となった。これも天統の盛世が長く安定した隠れた理由の一つである。" data-en="After Mohui and Shenying fell, their scattered followers were not hunted down wholesale — the Tian Tong Laws explicitly pardoned commoners and held only the ringleaders accountable. Some who submitted later rose through the Spirit Political Academy's examinations to become the empire's next generation of officials, one hidden reason the Tian Tong Golden Age endured.">After Mohui and Shenying fell, their scattered followers were not hunted down wholesale — the Tian Tong Laws explicitly pardoned commoners and held only the ringleaders accountable. Some who submitted later rose through the Spirit Political Academy's examinations to become the empire's next generation of officials, one hidden reason the Tian Tong Golden Age endured.</span></p>
+            </div>
+        </section>
+
+        <div style="text-align:center; padding: 10px 20px 40px;">
+            <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left-long"></i> <span class="lang-text" translate="no" data-zh="返回帝国中枢" data-zh-tw="返回帝國中樞" data-ja="帝国中枢に戻る" data-en="Return to the Capital">Return to the Capital</span></a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 <i class="fa-solid fa-code"></i> <span class="lang-text" translate="no" data-zh="玄幽帝国 (天统纪年) 版权所有" data-zh-tw="玄幽帝國 (天統紀年) 版權所有" data-ja="玄幽帝国 (天統紀年) 著作権所有" data-en="Genyuu Empire (Tian Tong Era). All Rights Reserved.">Genyuu Empire (Tian Tong Era). All Rights Reserved.</span></p>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

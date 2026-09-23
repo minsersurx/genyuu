@@ -12,235 +12,287 @@ document.addEventListener('DOMContentLoaded', () => {
     const codexItems = document.querySelectorAll('.codex-item');
     const oathMsg = document.getElementById('oath-message');
     const canvas = document.getElementById('particleCanvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
     const langToggleBtn = document.getElementById('lang-toggle-btn');
     const langDropdown = document.getElementById('lang-dropdown');
     const langModal = document.getElementById('lang-modal');
-    const pageTitle = document.getElementById('page-title');
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const metaOgDesc = document.querySelector('meta[property="og:description"]');
 
-    // 已修改：繁体中文emoji改为🇭🇰
     const flagMap = {
-        zh: '🇨🇳', 'zh-tw': '🇭🇰', ja: '🇯🇵', ko: '🇰🇷', en: '🇺🇸'
+        zh: '🇨🇳', 'zh-tw': '🇭🇰', ja: '🇯🇵', en: '🇺🇸'
     };
     const titleMap = {
         zh: '玄幽帝国 | Genyuu Empire',
         'zh-tw': '玄幽帝國 | Genyuu Empire',
         ja: '玄幽帝国 | Genyuu Empire',
-        ko: '현유제국 | Genyuu Empire',
         en: 'Genyuu Empire'
     };
     const langCodeMap = {
-        zh: 'zh-CN', 'zh-tw': 'zh-TW', ja: 'ja', ko: 'ko', en: 'en'
+        zh: 'zh-CN', 'zh-tw': 'zh-TW', ja: 'ja', en: 'en'
     };
-    let currentLang = 'en';
+    // 用于外部搜索引擎预览的多语言描述，会随语言切换自动更新
+    const descMap = {
+        zh: '玄幽帝国官方秘录：太祖幽冥炼影焰、颁天统律法、一统天下的开国史诗，神魔同辉，玄幽永存。',
+        'zh-tw': '玄幽帝國官方秘錄：太祖幽冥煉影焰、頒天統律法、一統天下的開國史詩，神魔同輝，玄幽永存。',
+        ja: '玄幽帝国の公式記録：太祖幽冥が影炎を練り、天統律法を布いて天下を統一した建国叙事詩。神魔共に輝き、玄幽永遠なれ。',
+        en: 'Genyuu Empire | 玄幽帝国 — the official chronicle of Emperor You Ming: forging Shadow Flame, issuing the Tian Tong Laws, and unifying the realm. Gods and Demons in Harmony, Eternal Genyuu.'
+    };
+    let currentLang = 'zh';
 
-    // -------- 预加载与Logo飞入动画（已添加空值保护，彻底解决卡死问题） --------
+    // -------- 预加载与Logo飞入动画（空值保护，避免子页面无该元素时报错） --------
     function startLogoTransition() {
-        // 空值检查：如果关键元素不存在，直接隐藏预加载器，防止页面卡死
-        if (!logoPlaceholder || !preloaderLogo || !preloader) {
+        if (!preloader) return;
+        if (!logoPlaceholder || !preloaderLogo) {
             preloader.style.display = 'none';
             return;
         }
-
-        // 停止旋转动画
         preloaderLogo.style.animation = 'none';
-        // 强制重绘
-        preloaderLogo.offsetHeight;
-        
-        // 获取当前Logo在屏幕上的位置
+        preloaderLogo.offsetHeight; // 强制重绘
+
         const logoRect = preloaderLogo.getBoundingClientRect();
-        // 获取目标位置（导航栏logo占位符的位置）
         const targetRect = logoPlaceholder.getBoundingClientRect();
-        
-        // 计算需要移动的距离
-        const dx = targetRect.left + targetRect.width/2 - (logoRect.left + logoRect.width/2);
-        const dy = targetRect.top + targetRect.height/2 - (logoRect.top + logoRect.height/2);
-        
-        // 设置过渡，移动并缩放（如果需要缩小）
+        const dx = targetRect.left + targetRect.width / 2 - (logoRect.left + logoRect.width / 2);
+        const dy = targetRect.top + targetRect.height / 2 - (logoRect.top + logoRect.height / 2);
+
         preloaderLogo.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
-        // 目标位置 + 尺寸适配（导航栏Logo图标大小为30px，预加载Logo为60px，需要缩小一半）
         const scale = targetRect.width / logoRect.width;
         preloaderLogo.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
-        
-        // 同时淡出背景和文字
         preloader.classList.add('fade-out-bg');
-        
-        // 监听过渡结束
+
         preloaderLogo.addEventListener('transitionend', function handler(e) {
             if (e.propertyName === 'transform') {
                 preloaderLogo.removeEventListener('transitionend', handler);
-                // 将Logo图片插入导航栏占位符
                 const logoImg = document.createElement('img');
                 logoImg.src = 'logo.svg';
                 logoImg.alt = '玄幽帝国';
                 logoImg.className = 'logo-img';
                 logoPlaceholder.appendChild(logoImg);
-                // 移除预加载遮罩
                 preloader.style.display = 'none';
-                // 语言选择模态根据情况显示（后面逻辑也会处理）
             }
         });
     }
-    // 页面完全加载后启动过渡
-    window.addEventListener('load', () => {
-        // 延迟600ms让用户看清旋转动画，然后开始过渡
-        setTimeout(startLogoTransition, 600);
-    });
+    if (preloader) {
+        window.addEventListener('load', () => setTimeout(startLogoTransition, 600));
+    }
 
-    // -------- 粒子动画 --------
-    let particles = [];
-    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resizeCanvas); resizeCanvas();
-    class Particle {
-        constructor() { this.reset(); }
-        reset() {
-            this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 0.8; this.speedX = (Math.random() - 0.5) * 0.25;
-            this.speedY = (Math.random() - 0.5) * 0.15 - 0.15; this.opacity = Math.random() * 0.4 + 0.1;
+    // -------- 粒子动画（低端/移动设备与"减少动态效果"偏好下自动降级，更流畅） --------
+    if (canvas && ctx) {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let particles = [];
+        function targetParticleCount() {
+            if (prefersReducedMotion) return 0;
+            return window.innerWidth < 768 ? 16 : 30;
         }
-        update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) { this.reset(); this.y = canvas.height; } }
-        draw() {
-            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-            ctx.shadowColor = '#f1c40f'; ctx.shadowBlur = 3; ctx.fill(); ctx.shadowBlur = 0;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resizeCanvas, 150);
+        });
+        resizeCanvas();
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.8; this.speedX = (Math.random() - 0.5) * 0.25;
+                this.speedY = (Math.random() - 0.5) * 0.15 - 0.15; this.opacity = Math.random() * 0.4 + 0.1;
+            }
+            update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) { this.reset(); this.y = canvas.height; } }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.shadowColor = '#f1c40f'; ctx.shadowBlur = 3; ctx.fill(); ctx.shadowBlur = 0;
+            }
+        }
+        for (let i = 0; i < targetParticleCount(); i++) particles.push(new Particle());
+        if (particles.length) {
+            (function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                requestAnimationFrame(animate);
+            })();
         }
     }
-    for (let i = 0; i < 30; i++) particles.push(new Particle());
-    (function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); })();
 
-    // 从 URL 参数获取语言
+    // -------- 语言：URL 参数 / 本地存储 / 浏览器语言自动识别 --------
     function getLangFromURL() {
         const params = new URLSearchParams(window.location.search);
         const lang = params.get('lang');
         return lang && flagMap[lang] ? lang : null;
     }
-    // 更新浏览器 URL 参数
     function updateURL(lang) {
         const url = new URL(window.location);
         url.searchParams.set('lang', lang);
         window.history.replaceState({}, '', url.toString());
     }
-    // 语言切换核心
+    // 根据浏览器/系统语言自动判断最贴近的展示语言，找不到匹配时回退为中文
+    function detectBrowserLang() {
+        const candidates = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'zh'];
+        for (const raw of candidates) {
+            const code = raw.toLowerCase();
+            if (code.startsWith('zh')) {
+                if (code.includes('tw') || code.includes('hk') || code.includes('hant')) return 'zh-tw';
+                return 'zh';
+            }
+            if (code.startsWith('ja')) return 'ja';
+            if (code.startsWith('en')) return 'en';
+        }
+        return 'zh';
+    }
     function switchLanguage(lang, updateUrl = true) {
         const elements = document.querySelectorAll('.lang-text');
         elements.forEach(el => el.classList.add('fade-out'));
         setTimeout(() => {
             currentLang = lang;
-            const attrMap = { zh: 'data-zh', 'zh-tw': 'data-zh-tw', ja: 'data-ja', ko: 'data-ko', en: 'data-en' };
+            const attrMap = { zh: 'data-zh', 'zh-tw': 'data-zh-tw', ja: 'data-ja', en: 'data-en' };
             const attr = attrMap[lang];
             elements.forEach(el => { if (el.hasAttribute(attr)) el.textContent = el.getAttribute(attr); });
             elements.forEach(el => el.classList.remove('fade-out'));
-            langToggleBtn.textContent = flagMap[lang];
+            if (langToggleBtn) langToggleBtn.textContent = flagMap[lang];
             document.title = titleMap[lang];
             document.documentElement.lang = langCodeMap[lang];
+            if (metaDesc) metaDesc.setAttribute('content', descMap[lang] || descMap.en);
+            if (metaOgDesc) metaOgDesc.setAttribute('content', descMap[lang] || descMap.en);
             updateOathMessage();
-            langDropdown.classList.remove('show');
+            if (langDropdown) langDropdown.classList.remove('show');
             localStorage.setItem('genyuu-lang', lang);
             if (updateUrl) updateURL(lang);
         }, 300);
     }
-    // 页面初始化语言
+    // 页面初始化语言：URL 指定 > 本地记忆 > 浏览器自动识别（不再弹出强制选择弹窗）
     const urlLang = getLangFromURL();
     const storedLang = localStorage.getItem('genyuu-lang');
-    if (urlLang) {
-        switchLanguage(urlLang, false);
-        langModal.style.display = 'none';
-    } else if (storedLang && flagMap[storedLang]) {
-        switchLanguage(storedLang, true);
-        langModal.style.display = 'none';
-    } else {
-        langModal.style.display = 'flex';
+    const initialLang = urlLang || (storedLang && flagMap[storedLang] ? storedLang : detectBrowserLang());
+    switchLanguage(initialLang, false);
+    if (langModal) langModal.style.display = 'none';
+
+    // 语言选择模态（如页面仍保留手动选择入口则可用，默认已隐藏）
+    if (langModal) {
+        langModal.querySelectorAll('.lang-options li').forEach(li => {
+            li.addEventListener('click', () => {
+                switchLanguage(li.dataset.lang, true);
+                langModal.style.display = 'none';
+            });
+        });
     }
-    // 语言选择模态
-    langModal.querySelectorAll('.lang-options li').forEach(li => {
-        li.addEventListener('click', () => {
-            const lang = li.dataset.lang;
-            switchLanguage(lang, true);
-            langModal.style.display = 'none';
-        });
-    });
     // 语言下拉菜单
-    langToggleBtn.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('show'); });
-    document.addEventListener('click', () => langDropdown.classList.remove('show'));
-    langDropdown.querySelectorAll('li').forEach(li => {
-        li.addEventListener('click', (e) => {
-            e.stopPropagation();
-            switchLanguage(li.dataset.lang, true);
+    if (langToggleBtn && langDropdown) {
+        langToggleBtn.addEventListener('click', (e) => { e.stopPropagation(); langDropdown.classList.toggle('show'); });
+        document.addEventListener('click', () => langDropdown.classList.remove('show'));
+        langDropdown.querySelectorAll('li').forEach(li => {
+            li.addEventListener('click', (e) => {
+                e.stopPropagation();
+                switchLanguage(li.dataset.lang, true);
+            });
         });
-    });
-    // 长按Logo涟漪
-    let pressTimer;
-    function startPress(e) { e.preventDefault(); pressTimer = setTimeout(() => { const ripple = document.createElement('div'); ripple.className = 'ripple-effect'; document.body.appendChild(ripple); ripple.addEventListener('animationend', () => ripple.remove()); playChime(); }, 800); }
-    function cancelPress() { clearTimeout(pressTimer); }
-    logoIcon.addEventListener('mousedown', startPress); logoIcon.addEventListener('touchstart', startPress, {passive: false});
-    logoIcon.addEventListener('mouseup', cancelPress); logoIcon.addEventListener('mouseleave', cancelPress);
-    logoIcon.addEventListener('touchend', cancelPress); logoIcon.addEventListener('touchcancel', cancelPress);
+    }
+
+    // -------- 长按Logo涟漪彩蛋（仅在存在该元素的页面生效） --------
+    if (logoIcon) {
+        let pressTimer;
+        function startPress(e) { e.preventDefault(); pressTimer = setTimeout(() => { const ripple = document.createElement('div'); ripple.className = 'ripple-effect'; document.body.appendChild(ripple); ripple.addEventListener('animationend', () => ripple.remove()); playChime(); }, 800); }
+        function cancelPress() { clearTimeout(pressTimer); }
+        logoIcon.addEventListener('mousedown', startPress); logoIcon.addEventListener('touchstart', startPress, { passive: false });
+        logoIcon.addEventListener('mouseup', cancelPress); logoIcon.addEventListener('mouseleave', cancelPress);
+        logoIcon.addEventListener('touchend', cancelPress); logoIcon.addEventListener('touchcancel', cancelPress);
+    }
     function playChime() {
         try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = ctx.createOscillator(); const gain = ctx.createGain();
-            osc.connect(gain); gain.connect(ctx.destination);
-            osc.frequency.setValueAtTime(380, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(280, ctx.currentTime + 1.2);
-            gain.gain.setValueAtTime(0.3, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
-            osc.start(); osc.stop(ctx.currentTime + 1.5);
-        } catch(e){}
+            const actx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = actx.createOscillator(); const gain = actx.createGain();
+            osc.connect(gain); gain.connect(actx.destination);
+            osc.frequency.setValueAtTime(380, actx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(280, actx.currentTime + 1.2);
+            gain.gain.setValueAtTime(0.3, actx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, actx.currentTime + 1.5);
+            osc.start(); osc.stop(actx.currentTime + 1.5);
+        } catch (e) { /* 静默失败，不影响主流程 */ }
     }
-    // 移动菜单
-    menuIconWrapper.addEventListener('click', () => navMenu.classList.toggle('active'));
-    document.addEventListener('click', (e) => { if (!navMenu.contains(e.target) && !menuIconWrapper.contains(e.target)) navMenu.classList.remove('active'); });
-    // 封面滑动控制
-    let isCoverVisible = true, isAnimating = false;
-    function hideCover(cb) {
-        if (!isCoverVisible || isAnimating) { if (cb) cb(); return; }
-        isAnimating = true; window.scrollTo(0, 0);
-        heroCover.classList.add('slide-up');
-        setTimeout(() => { document.body.classList.add('unlocked'); isCoverVisible = false; isAnimating = false; if (cb) cb(); }, 900);
+
+    // -------- 移动端菜单 --------
+    if (menuIconWrapper && navMenu) {
+        menuIconWrapper.addEventListener('click', () => navMenu.classList.toggle('active'));
+        document.addEventListener('click', (e) => { if (!navMenu.contains(e.target) && !menuIconWrapper.contains(e.target)) navMenu.classList.remove('active'); });
     }
-    function showCover() {
-        if (isCoverVisible || isAnimating) return;
-        isAnimating = true; document.body.classList.remove('unlocked'); window.scrollTo(0, 0);
-        heroCover.classList.remove('slide-up');
-        setTimeout(() => { isCoverVisible = true; isAnimating = false; }, 900);
-    }
-    scrollArrow.addEventListener('click', () => hideCover());
-    exploreBtn.addEventListener('click', () => hideCover());
-    function scrollToSection(el) { const h = 60; const pos = el.getBoundingClientRect().top + window.scrollY - h; window.scrollTo({ top: pos, behavior: 'smooth' }); }
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); navMenu.classList.remove('active');
-            if (link.id === 'nav-home') showCover();
-            else { const id = link.getAttribute('href').substring(1); const sec = document.getElementById(id); if (sec) hideCover(() => scrollToSection(sec)); }
+
+    // -------- 封面滑动控制（仅首页存在 hero 时启用） --------
+    if (heroCover) {
+        let isCoverVisible = true, isAnimating = false;
+        function hideCover(cb) {
+            if (!isCoverVisible || isAnimating) { if (cb) cb(); return; }
+            isAnimating = true; window.scrollTo(0, 0);
+            heroCover.classList.add('slide-up');
+            setTimeout(() => { document.body.classList.add('unlocked'); isCoverVisible = false; isAnimating = false; if (cb) cb(); }, 900);
+        }
+        function showCover() {
+            if (isCoverVisible || isAnimating) return;
+            isAnimating = true; document.body.classList.remove('unlocked'); window.scrollTo(0, 0);
+            heroCover.classList.remove('slide-up');
+            setTimeout(() => { isCoverVisible = true; isAnimating = false; }, 900);
+        }
+        if (scrollArrow) scrollArrow.addEventListener('click', () => hideCover());
+        if (exploreBtn) exploreBtn.addEventListener('click', () => hideCover());
+        function scrollToSection(el) { const h = 60; const pos = el.getBoundingClientRect().top + window.scrollY - h; window.scrollTo({ top: pos, behavior: 'smooth' }); }
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href') || '';
+                if (!href.startsWith('#')) return; // 允许跳转到其他子页面的链接正常工作
+                e.preventDefault(); if (navMenu) navMenu.classList.remove('active');
+                if (link.id === 'nav-home') showCover();
+                else { const id = href.substring(1); const sec = document.getElementById(id); if (sec) hideCover(() => scrollToSection(sec)); }
+            });
         });
-    });
-    window.addEventListener('wheel', (e) => { if (isCoverVisible || isAnimating) e.preventDefault(); if (isCoverVisible && e.deltaY > 0) hideCover(); else if (!isCoverVisible && e.deltaY < 0 && window.scrollY <= 0) showCover(); }, {passive: false});
-    let startY;
-    window.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, {passive: false});
-    window.addEventListener('touchmove', (e) => {
-        if (isCoverVisible || isAnimating) e.preventDefault();
-        const d = startY - e.touches[0].clientY;
-        if (isCoverVisible && d > 50) hideCover(); else if (!isCoverVisible && d < -50 && window.scrollY <= 0) showCover();
-    }, {passive: false});
-    // 滚动揭示
+        window.addEventListener('wheel', (e) => { if (isCoverVisible || isAnimating) e.preventDefault(); if (isCoverVisible && e.deltaY > 0) hideCover(); else if (!isCoverVisible && e.deltaY < 0 && window.scrollY <= 0) showCover(); }, { passive: false });
+        let startY;
+        window.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+        window.addEventListener('touchmove', (e) => {
+            if (isCoverVisible || isAnimating) e.preventDefault();
+            const d = startY - e.touches[0].clientY;
+            if (isCoverVisible && d > 50) hideCover(); else if (!isCoverVisible && d < -50 && window.scrollY <= 0) showCover();
+        }, { passive: false });
+    } else {
+        // 子页面没有封面遮罩，导航链接直接平滑滚动或正常跳转
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href') || '';
+            if (href.startsWith('#')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (navMenu) navMenu.classList.remove('active');
+                    const sec = document.getElementById(href.substring(1));
+                    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        });
+    }
+
+    // -------- 滚动揭示 --------
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, {threshold: 0.12});
-    reveals.forEach(el => observer.observe(el));
-    // 法典互动
-    let activated = new Set();
-    codexItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const art = item.dataset.article;
-            if (!activated.has(art)) { activated.add(art); item.classList.add('activated'); }
-            if (activated.size === 3) { oathMsg.classList.add('show'); updateOathMessage(); }
+    if (reveals.length) {
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.12 });
+        reveals.forEach(el => observer.observe(el));
+    }
+
+    // -------- 法典互动（仅首页存在时启用） --------
+    if (codexItems.length && oathMsg) {
+        let activated = new Set();
+        codexItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const art = item.dataset.article;
+                if (!activated.has(art)) { activated.add(art); item.classList.add('activated'); }
+                if (activated.size === 3) { oathMsg.classList.add('show'); updateOathMessage(); }
+            });
         });
-    });
+    }
     function updateOathMessage() {
+        if (!oathMsg) return;
         const messages = {
             zh: '⚖️ 誓约成立 · 神魔平等 ⚖️',
             'zh-tw': '⚖️ 誓約成立 · 神魔平等 ⚖️',
             ja: '⚖️ 誓約成立 · 神魔平等 ⚖️',
-            ko: '⚖️ 서약 성립 · 신마평등 ⚖️',
             en: '⚖️ Vow Established · Equality for All ⚖️'
         };
         oathMsg.textContent = messages[currentLang] || messages.en;

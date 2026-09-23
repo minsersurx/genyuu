@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">帝国机构 | Genyuu Empire</title>
+
+    <meta name="google" content="notranslate">
+    <meta name="googlebot" content="notranslate">
+    <meta name="robots" content="notranslate">
+
+    <meta name="description" content="玄幽帝国机构总览：玄幽卫、灵政院、魔影窟、边境军镇——支撑天统盛世的四大支柱。">
+    <meta property="og:title" content="帝国机构 | Genyuu Empire">
+    <meta property="og:description" content="玄幽帝国机构总览：玄幽卫、灵政院、魔影窟、边境军镇——支撑天统盛世的四大支柱。">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="unlocked">
+    <canvas id="particleCanvas"></canvas>
+    <header id="navbar">
+        <div class="logo" id="logo-icon">
+            <div class="logo-icon-placeholder"><img src="logo.svg" alt="玄幽帝国"></div>
+            <span class="lang-text" translate="no" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-en="Genyuu Empire">Genyuu Empire</span>
+        </div>
+        <div class="nav-controls">
+            <div class="lang-selector" id="lang-selector">
+                <button class="lang-current" id="lang-toggle-btn">🇨🇳</button>
+                <ul class="lang-dropdown" id="lang-dropdown">
+                    <li data-lang="zh">🇨🇳 简体中文</li>
+                    <li data-lang="zh-tw">🇭🇰 繁體中文</li>
+                    <li data-lang="ja">🇯🇵 日本語</li>
+                    <li data-lang="en">🇺🇸 English</li>
+                </ul>
+            </div>
+            <div class="menu-icon-wrapper" id="mobile-menu-icon">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+        <nav id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-chess-rook"></i><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-en="Home">Home</span></a></li>
+                <li><a href="chronicle.html"><i class="fa-solid fa-scroll"></i><span class="lang-text" translate="no" data-zh="帝国秘史" data-zh-tw="帝國秘史" data-ja="帝国秘史" data-en="Secret Chronicle">Secret Chronicle</span></a></li>
+                <li><a href="index.html#pillars"><i class="fa-solid fa-globe"></i><span class="lang-text" translate="no" data-zh="帝国枢要" data-zh-tw="帝國樞要" data-ja="帝国の要" data-en="Pillars">Pillars</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <div class="subpage-hero">
+            <h1><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Imperial Institutions">Imperial Institutions</span></h1>
+            <p><span class="lang-text" translate="no" data-zh="支撑天统盛世运转的核心机构，各司其职，共同维系神魔平等的律法根基。" data-zh-tw="支撐天統盛世運轉的核心機構，各司其職，共同維繫神魔平等的律法根基。" data-ja="天統の盛世を支える中核機構。それぞれの職責を果たし、神魔平等の法の礎を共に守る。" data-en="The core institutions that keep the Tian Tong Golden Age running, each with its own charge, together upholding the rule of equality between Gods and Demons.">The core institutions that keep the Tian Tong Golden Age running, each with its own charge, together upholding the rule of equality between Gods and Demons.</span></p>
+        </div>
+
+        <section class="section-block reveal">
+            <div class="faction-grid">
+                <div class="faction-card">
+                    <h3><i class="fa-solid fa-shield-halved"></i> <span class="lang-text" translate="no" data-zh="玄幽卫" data-zh-tw="玄幽衛" data-ja="玄幽衛" data-en="Genyuu Guard">Genyuu Guard</span></h3>
+                    <p><span class="lang-text" translate="no" data-zh="太祖亲掌的帝国利刃，首任统领凌夜，专司监察天统律法的执行，缉查违律大案，直接对皇帝负责，不受地方节制。" data-zh-tw="太祖親掌的帝國利刃，首任統領凌夜，專司監察天統律法的執行，緝查違律大案，直接對皇帝負責，不受地方節制。" data-ja="太祖が直轄する帝国の刃。初代統領は凌夜で、天統律法の執行監察と違法事件の捜査を専任し、皇帝に直属して地方の統制を受けない。" data-en="The emperor's direct blade, first led by Ling Ye. It enforces the Tian Tong Laws and investigates major violations, answering only to the throne and outside local jurisdiction.">The emperor's direct blade, first led by Ling Ye. It enforces the Tian Tong Laws and investigates major violations, answering only to the throne and outside local jurisdiction.</span></p>
+                </div>
+                <div class="faction-card">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> <span class="lang-text" translate="no" data-zh="灵政院" data-zh-tw="靈政院" data-ja="霊政院" data-en="Spirit Political Academy">Spirit Political Academy</span></h3>
+                    <p><span class="lang-text" translate="no" data-zh="首任院长墨尘，主持科举取士，打破血统世袭壁垒，唯才是举，为帝国各级学府与官僚体系输送人才。" data-zh-tw="首任院長墨塵，主持科舉取士，打破血統世襲壁壘，唯才是舉，為帝國各級學府與官僚體系輸送人才。" data-ja="初代院長は墨塵。科挙による人材登用を主導し、血統世襲の壁を打ち破って才能のみを基準とし、帝国の学府と官僚制度に人材を送り込む。" data-en="Founded and led by Mo Chen, it runs the merit-based imperial examinations, breaking hereditary barriers and supplying talent to schools and the bureaucracy across the empire.">Founded and led by Mo Chen, it runs the merit-based imperial examinations, breaking hereditary barriers and supplying talent to schools and the bureaucracy across the empire.</span></p>
+                </div>
+                <div class="faction-card">
+                    <h3><i class="fa-brands fa-d-and-d"></i> <span class="lang-text" translate="no" data-zh="魔影窟秘境" data-zh-tw="魔影窟秘境" data-ja="魔影窟秘境" data-en="Demon Shadow Cave Sanctum">Demon Shadow Cave Sanctum</span></h3>
+                    <p><span class="lang-text" translate="no" data-zh="西域绝地，太祖涅槃出关之地，如今由玄幽卫特别看守，仅皇室与摄政王可入内朝拜，是帝国精神图腾的所在。" data-zh-tw="西域絕地，太祖涅槃出關之地，如今由玄幽衛特別看守，僅皇室與攝政王可入內朝拜，是帝國精神圖騰的所在。" data-ja="西域の絶地、太祖が涅槃を経て出陣した地。現在は玄幽衛が特別に警護し、皇室と摂政王のみが立ち入って参拝できる、帝国の精神的象徴の地である。" data-en="The forbidden Western sanctum where the Emperor emerged reborn, now specially guarded by the Genyuu Guard; only the imperial family and the Regent may enter to pay respects.">The forbidden Western sanctum where the Emperor emerged reborn, now specially guarded by the Genyuu Guard; only the imperial family and the Regent may enter to pay respects.</span></p>
+                </div>
+                <div class="faction-card">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> <span class="lang-text" translate="no" data-zh="边境军镇" data-zh-tw="邊境軍鎮" data-ja="辺境軍鎮" data-en="Border Garrisons">Border Garrisons</span></h3>
+                    <p><span class="lang-text" translate="no" data-zh="分驻四海疆域边陲，由玄冥摄政王统辖，负责防御外患、镇守新纳入版图的原魔灰、神影旧地，维持地方安定。" data-zh-tw="分駐四海疆域邊陲，由玄冥攝政王統轄，負責防禦外患、鎮守新納入版圖的原魔灰、神影舊地，維持地方安定。" data-ja="四海の辺境に分駐し、摂政王玄冥が統括する。外敵の防衛と、新たに版図に組み込まれた旧魔灰・神影の地の治安維持を担う。" data-en="Stationed along the empire's frontiers under Regent Xuan Ming's command, defending against outside threats and keeping order in the newly absorbed former Mohui and Shenying territories.">Stationed along the empire's frontiers under Regent Xuan Ming's command, defending against outside threats and keeping order in the newly absorbed former Mohui and Shenying territories.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align:center; padding: 10px 20px 40px;">
+            <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left-long"></i> <span class="lang-text" translate="no" data-zh="返回帝国中枢" data-zh-tw="返回帝國中樞" data-ja="帝国中枢に戻る" data-en="Return to the Capital">Return to the Capital</span></a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 <i class="fa-solid fa-code"></i> <span class="lang-text" translate="no" data-zh="玄幽帝国 (天统纪年) 版权所有" data-zh-tw="玄幽帝國 (天統紀年) 版權所有" data-ja="玄幽帝国 (天統紀年) 著作権所有" data-en="Genyuu Empire (Tian Tong Era). All Rights Reserved.">Genyuu Empire (Tian Tong Era). All Rights Reserved.</span></p>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

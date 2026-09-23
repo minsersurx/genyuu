@@ -1,11 +1,13 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 · 时空裂缝 | Genyuu Empire</title>
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <meta name="description" content="玄幽帝国：该疆域尚未被记录，或已在神朝余孽的诅咒中湮灭。">
+    <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)">
 
     <!-- 在线古风字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,7 +203,7 @@
         <div class="logo">
             <a href="/">
                 <i class="fa-brands fa-galactic-republic"></i>
-                <span class="lang-text" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-ko="현유제국" data-en="Genyuu Empire">Genyuu Empire</span>
+                <span class="lang-text" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-en="Genyuu Empire">Genyuu Empire</span>
             </a>
         </div>
         <div class="lang-selector" id="lang-selector">
@@ -210,7 +212,6 @@
                 <li data-lang="zh">🇨🇳 简体中文</li>
                 <li data-lang="zh-tw">🇹🇼 繁體中文</li>
                 <li data-lang="ja">🇯🇵 日本語</li>
-                <li data-lang="ko">🇰🇷 한국어</li>
                 <li data-lang="en">🇺🇸 English</li>
             </ul>
         </div>
@@ -219,24 +220,23 @@
     <div class="error-container">
         <div class="error-code">404</div>
         <div class="error-subtitle">
-            <span class="lang-text" data-zh="时空裂缝" data-zh-tw="時空裂縫" data-ja="時空の裂け目" data-ko="시공의 균열" data-en="Temporal Rift">Temporal Rift</span>
+            <span class="lang-text" data-zh="时空裂缝" data-zh-tw="時空裂縫" data-ja="時空の裂け目" data-en="Temporal Rift">Temporal Rift</span>
         </div>
         <p class="error-desc">
             <span class="lang-text" 
                 data-zh="该疆域尚未被太祖幽冥收录，或者它已在神朝余孽的诅咒中湮灭。请迅速撤离此虚无之地。" 
                 data-zh-tw="此疆域尚未被太祖幽冥收錄，或已遭神朝餘孽詛咒而湮滅。請速速撤離這片虛無之地。" 
                 data-ja="この領域は太祖幽冥の記録に未だ存在せず、あるいは神朝の残党の呪いにより消滅した。速やかにこの虚無から脱出せよ。" 
-                data-ko="이 영역은 아직 태조 유명의 기록에 포함되지 않았거나, 신조 잔당의 저주로 소멸되었습니다. 신속히 이 허무의 장소에서 철수하십시오." 
                 data-en="This territory has not been recorded by Emperor You Ming, or it has been annihilated by the remnants of the Shen Dynasty. Evacuate this void immediately.">
                 This territory has not been recorded by Emperor You Ming, or it has been annihilated. Evacuate this void immediately.
             </span>
         </p>
         <a href="/" class="btn-return">
-            <span class="lang-text" data-zh="返回帝国中枢" data-zh-tw="返回帝國中樞" data-ja="帝国中枢に戻る" data-ko="제국 중추로 돌아가기" data-en="Return to the Capital">Return to the Capital</span>
+            <span class="lang-text" data-zh="返回帝国中枢" data-zh-tw="返回帝國中樞" data-ja="帝国中枢に戻る" data-en="Return to the Capital">Return to the Capital</span>
             <i class="fa-solid fa-arrow-right-long"></i>
         </a>
         <p class="countdown">
-            <span class="lang-text" data-zh="跃迁倒计时：" data-zh-tw="躍遷倒數：" data-ja="自動跳躍まで：" data-ko="자동 도약 카운트다운: " data-en="Auto-jump in: ">Auto-jump in: </span>
+            <span class="lang-text" data-zh="跃迁倒计时：" data-zh-tw="躍遷倒數：" data-ja="自動跳躍まで：" data-en="Auto-jump in: ">Auto-jump in: </span>
             <span id="timer">10</span> s
         </p>
     </div>
@@ -245,14 +245,25 @@
         (function() {
             // ---------- 语言配置 ----------
             const flagMap = {
-                zh: '🇨🇳', 'zh-tw': '🇹🇼', ja: '🇯🇵', ko: '🇰🇷', en: '🇺🇸'
+                zh: '🇨🇳', 'zh-tw': '🇭🇰', ja: '🇯🇵', en: '🇺🇸'
             };
             const langCodeMap = {
-                zh: 'zh-CN', 'zh-tw': 'zh-TW', ja: 'ja', ko: 'ko', en: 'en'
+                zh: 'zh-CN', 'zh-tw': 'zh-TW', ja: 'ja', en: 'en'
             };
-            // 尝试读取 localStorage 中的语言偏好，否则默认英语
+            // 浏览器语言自动识别，找不到匹配时回退为中文
+            function detectBrowserLang() {
+                const candidates = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'zh'];
+                for (const raw of candidates) {
+                    const code = raw.toLowerCase();
+                    if (code.startsWith('zh')) return (code.includes('tw') || code.includes('hk') || code.includes('hant')) ? 'zh-tw' : 'zh';
+                    if (code.startsWith('ja')) return 'ja';
+                    if (code.startsWith('en')) return 'en';
+                }
+                return 'zh';
+            }
+            // 优先使用本地记忆的语言偏好，否则按浏览器语言自动识别
             const storedLang = localStorage.getItem('genyuu-lang');
-            let currentLang = (storedLang && flagMap[storedLang]) ? storedLang : 'en';
+            let currentLang = (storedLang && flagMap[storedLang]) ? storedLang : detectBrowserLang();
 
             // 获取元素
             const langToggleBtn = document.getElementById('lang-toggle-btn');
@@ -267,7 +278,7 @@
                 const elements = document.querySelectorAll('.lang-text');
                 elements.forEach(el => el.classList.add('fade-out'));
                 setTimeout(() => {
-                    const attrMap = { zh: 'data-zh', 'zh-tw': 'data-zh-tw', ja: 'data-ja', ko: 'data-ko', en: 'data-en' };
+                    const attrMap = { zh: 'data-zh', 'zh-tw': 'data-zh-tw', ja: 'data-ja', en: 'data-en' };
                     const attr = attrMap[lang];
                     elements.forEach(el => {
                         if (el.hasAttribute(attr)) {

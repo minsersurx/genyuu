@@ -16,12 +16,18 @@
 html[lang="zh-CN"] { --font-title: 'Ma Shan Zheng', 'Noto Serif SC', serif; }
 html[lang="zh-TW"] { --font-title: 'Noto Serif SC', '宋体', serif; }
 html[lang="ja"]    { --font-title: 'Noto Serif SC', serif; }
-html[lang="ko"]    { --font-title: 'Noto Serif SC', serif; }
 html[lang="en"]    { --font-title: 'Cinzel', serif; }
 
+html { scroll-behavior: smooth; }
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 a { outline: none; text-decoration: none; color: inherit; }
 button { font-family: inherit; }
+
+/* 尊重用户"减少动态效果"的系统偏好，关闭非必要动画，页面更顺滑 */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
 
 body {
     font-family: var(--font-body);
@@ -96,7 +102,8 @@ body.unlocked { overflow-x: hidden; overflow-y: auto; }
 .lang-modal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(5, 2, 12, 0.9); display: flex; align-items: center; justify-content: center;
-    z-index: 20000; backdrop-filter: blur(6px);
+    z-index: 20000; -webkit-backdrop-filter: blur(6px);
+ backdrop-filter: blur(6px);
 }
 .lang-modal-content { padding: 30px 40px; text-align: center; max-width: 360px; }
 .lang-modal-content h2 { color: var(--accent-gold); margin-bottom: 20px; font-size: 1.4rem; }
@@ -111,7 +118,8 @@ body.unlocked { overflow-x: hidden; overflow-y: auto; }
 /* 导航栏 */
 header {
     position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 24px; background: var(--nav-bg); backdrop-filter: blur(10px);
+    padding: 8px 24px; background: var(--nav-bg); -webkit-backdrop-filter: blur(10px);
+ backdrop-filter: blur(10px);
     z-index: 9999; box-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 .logo {
@@ -140,7 +148,8 @@ header {
 .lang-current:hover { background: var(--accent-gold); color: var(--bg-color-main); }
 .lang-dropdown {
     position: absolute; top: 100%; right: 0; margin-top: 4px;
-    background: rgba(20, 10, 35, 0.95); backdrop-filter: blur(8px);
+    background: rgba(20, 10, 35, 0.95); -webkit-backdrop-filter: blur(8px);
+ backdrop-filter: blur(8px);
     border: 1px solid var(--accent-gold); border-radius: var(--radius-sm);
     list-style: none; min-width: 150px; padding: 4px 0;
     opacity: 0; visibility: hidden; transform: translateY(-10px);
@@ -227,7 +236,8 @@ nav { display: block; }
 @keyframes flowLight { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 
 .glass-card {
-    background: var(--glass-bg); backdrop-filter: blur(8px);
+    background: var(--glass-bg); -webkit-backdrop-filter: blur(8px);
+ backdrop-filter: blur(8px);
     border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
     padding: 25px 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     font-size: 0.9rem; line-height: 1.7; color: #d0d0d0;
@@ -270,7 +280,8 @@ nav { display: block; }
 .features-section::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 3px; }
 
 .feature-card {
-    background: var(--glass-bg); backdrop-filter: blur(5px);
+    background: var(--glass-bg); -webkit-backdrop-filter: blur(5px);
+ backdrop-filter: blur(5px);
     border: 1px solid var(--glass-border); border-top: 2px solid var(--accent-gold);
     border-radius: var(--radius-lg);
     flex: 0 0 280px; max-width: 300px;
@@ -297,7 +308,8 @@ nav { display: block; }
     max-width: 850px; margin: 0 auto;
 }
 .character-card {
-    background: var(--glass-bg); backdrop-filter: blur(5px);
+    background: var(--glass-bg); -webkit-backdrop-filter: blur(5px);
+ backdrop-filter: blur(5px);
     border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
     padding: 20px; text-align: center; transition: 0.3s;
 }
@@ -324,13 +336,43 @@ footer { text-align: center; padding: 25px; margin-top: 40px; background: rgba(0
 }
 @keyframes ripple { 0% { width: 0; height: 0; opacity: 1; } 100% { width: 250vmax; height: 250vmax; opacity: 0; } }
 
+/* ========= 子页面通用（帝国秘史 / 帝国机构） ========= */
+.subpage-hero {
+    padding-top: 90px; text-align: center; max-width: 800px; margin: 0 auto 10px; padding-left: 20px; padding-right: 20px;
+}
+.subpage-hero h1 {
+    font-family: var(--font-title); color: var(--accent-gold); font-size: 2.2rem; letter-spacing: 2px; margin-bottom: 10px;
+}
+.subpage-hero p { color: #ccc; font-size: 0.95rem; }
+.back-home {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+    color: var(--accent-gold); font-size: 0.85rem; border: 1px solid var(--accent-gold);
+    padding: 6px 16px; border-radius: var(--radius-full); transition: 0.3s;
+}
+.back-home:hover { background: var(--accent-gold); color: var(--bg-color-main); }
+
+/* 帝国机构：网格卡片（区别于首页横向滑动的枢要卡） */
+.faction-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; max-width: 950px; margin: 0 auto;
+}
+.faction-card {
+    background: var(--glass-bg); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border); border-top: 2px solid var(--accent-gold);
+    border-radius: var(--radius-lg); padding: 22px 18px; text-align: left; transition: transform 0.3s, box-shadow 0.3s;
+}
+.faction-card:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,0.5); }
+.faction-card h3 { color: var(--accent-gold); font-size: 1.05rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.faction-card p { font-size: 0.85rem; color: #ccc; }
+
 /* 移动端 */
 @media screen and (max-width: 768px) {
     .hero-title { font-size: 2.4rem; }
     .menu-icon-wrapper { display: block; }
     nav {
         position: absolute; top: 100%; right: 10px;
-        width: 160px; background: var(--nav-bg); backdrop-filter: blur(10px);
+        width: 160px; background: var(--nav-bg); -webkit-backdrop-filter: blur(10px);
+ backdrop-filter: blur(10px);
         border-radius: var(--radius-lg); box-shadow: 0 8px 25px rgba(0,0,0,0.8);
         opacity: 0; transform: scaleY(0); transform-origin: top right;
         transition: 0.3s; overflow: hidden;
