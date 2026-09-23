@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">帝国编年史 | Genyuu Empire</title>
+
+    <meta name="google" content="notranslate">
+    <meta name="googlebot" content="notranslate">
+    <meta name="robots" content="notranslate">
+
+    <meta name="description" content="玄幽帝国完整编年史：从神朝末世到天统五年一统天下的八段关键史实。">
+    <meta property="og:title" content="帝国编年史 | Genyuu Empire">
+    <meta property="og:description" content="玄幽帝国完整编年史：从神朝末世到天统五年一统天下的八段关键史实。">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="unlocked">
+    <canvas id="particleCanvas"></canvas>
+    <header id="navbar" class="scrolled">
+        <a href="index.html" class="logo" id="logo-icon">
+            <div class="logo-icon-placeholder"><img src="logo.svg" alt="玄幽帝国"></div>
+            <span class="lang-text" translate="no" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-en="Genyuu Empire">Genyuu Empire</span>
+        </a>
+        <div class="nav-controls">
+            <div class="lang-selector" id="lang-selector">
+                <button class="lang-current" id="lang-toggle-btn">🇨🇳</button>
+                <ul class="lang-dropdown" id="lang-dropdown">
+                    <li data-lang="zh">🇨🇳 简体中文</li>
+                    <li data-lang="zh-tw">🇭🇰 繁體中文</li>
+                    <li data-lang="ja">🇯🇵 日本語</li>
+                    <li data-lang="en">🇺🇸 English</li>
+                </ul>
+            </div>
+            <div class="menu-icon-wrapper" id="mobile-menu-icon">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+        <nav id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-chess-rook"></i><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-en="Home">Home</span></a></li>
+                <li><a href="records.html"><i class="fa-solid fa-book-journal-whills"></i><span class="lang-text" translate="no" data-zh="帝国实录" data-zh-tw="帝國實錄" data-ja="帝国実録" data-en="Records">Records</span></a></li>
+                <li><a href="factions.html"><i class="fa-solid fa-landmark"></i><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Institutions">Institutions</span></a></li>
+                <li><a href="laws.html"><i class="fa-solid fa-scale-balanced"></i><span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-en="Laws">Laws</span></a></li>
+                <li><a href="characters.html"><i class="fa-solid fa-user-group"></i><span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-en="Personages">Personages</span></a></li>
+                <li><a href="history.html"><i class="fa-solid fa-hourglass-half"></i><span class="lang-text" translate="no" data-zh="帝国编年史" data-zh-tw="帝國編年史" data-ja="帝国年代記" data-en="History">History</span></a></li>
+                <li><a href="chronicle.html"><i class="fa-solid fa-scroll"></i><span class="lang-text" translate="no" data-zh="帝国秘史" data-zh-tw="帝國秘史" data-ja="帝国秘史" data-en="Secret Chronicle">Secret Chronicle</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <div class="subpage-hero">
+            <h1><span class="lang-text" translate="no" data-zh="帝国编年史" data-zh-tw="帝國編年史" data-ja="帝国年代記" data-en="Empire History">Empire History</span></h1>
+        </div>
+        <section class="section-block reveal">
+            <div class="content-box glass-card text-left history-list">
+                <p><strong><span class="lang-text" translate="no" data-zh="神朝末世：" data-zh-tw="神朝末世：" data-ja="神朝末期：" data-en="Late Shen Dynasty: ">Late Shen Dynasty: </span></strong><span class="lang-text" translate="no" data-zh="幽冥降生，神魔混血，幼年父母双亡，被神朝三朝宰相冬久收养，授以治国之道。" data-zh-tw="幽冥降生，神魔混血，幼年父母雙亡，被神朝三朝宰相冬久收養，授以治國之道。" data-ja="幽冥が生まれ、神と魔の混血で、幼くして父母を亡くし、神朝三朝宰相冬久に育てられ、治国の道を授かる。" data-en="You Ming is born, half-God half-Demon; orphaned young, adopted by Dong Jiu, three-dynasty Prime Minister of the Shen Dynasty, who teaches him statecraft.">You Ming is born, half-God half-Demon; orphaned young, adopted by Dong Jiu, three-dynasty Prime Minister of the Shen Dynasty, who teaches him statecraft.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="神朝末年：" data-zh-tw="神朝末年：" data-ja="神朝末年：" data-en="End of Shen Dynasty: ">End of Shen Dynasty: </span></strong><span class="lang-text" translate="no" data-zh="幽冥任禁军总长，助神天篡位；神天颁屠魔令，冬久被赐毒酒身亡，幽冥遁入魔影窟。" data-zh-tw="幽冥任禁軍總長，助神天篡位；神天頒屠魔令，冬久被賜毒酒身亡，幽冥遁入魔影窟。" data-ja="幽冥は禁軍総督に就任し、神天の簒位を助ける。神天は屠魔令を布き、冬久は毒酒を賜り殺され、幽冥は魔影窟に逃れる。" data-en="You Ming becomes Imperial Guard Commander, aids Shen Tian's usurpation; Shen Tian issues the Demon Slaughter Decree, Dong Jiu is poisoned to death, You Ming flees to the Demon Shadow Cave.">You Ming becomes Imperial Guard Commander, aids Shen Tian's usurpation; Shen Tian issues the Demon Slaughter Decree, Dong Jiu is poisoned to death, You Ming flees to the Demon Shadow Cave.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="涅槃出关：" data-zh-tw="涅槃出關：" data-ja="涅槃出陣：" data-en="Nirvana & Emergence: ">Nirvana & Emergence: </span></strong><span class="lang-text" translate="no" data-zh="幽冥于魔影窟炼成影焰，出关联玄冥等旧部缔灰烬之盟，起兵讨伐神朝。" data-zh-tw="幽冥於魔影窟煉成影焰，出關聯玄冥等舊部締灰燼之盟，起兵討伐神朝。" data-ja="幽冥は魔影窟で影炎を錬成し、出陣して玄冥ら旧部と組んで灰燼の盟を結び、神朝を討つ兵を挙げる。" data-en="You Ming forges Shadow Flame in the Demon Shadow Cave, emerges to ally with Xuan Ming and other old comrades via the Ashen Oath, and raises an army against the Shen Dynasty.">You Ming forges Shadow Flame in the Demon Shadow Cave, emerges to ally with Xuan Ming and other old comrades via the Ashen Oath, and raises an army against the Shen Dynasty.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="断龙岭之战：" data-zh-tw="斷龍嶺之戰：" data-ja="断龍嶺の戦い：" data-en="Battle of Dragon Break Ridge: ">Battle of Dragon Break Ridge: </span></strong><span class="lang-text" translate="no" data-zh="玄幽军策反神朝大将神冥，大破神朝主力精锐，神朝军事力量彻底崩溃；神冥率残部投靠黑白无常。" data-zh-tw="玄幽軍策反神朝大將神冥，大破神朝主力精鋭，神朝軍事力量徹底崩潰；神冥率殘部投靠黑白無常。" data-ja="玄幽軍は神朝の大将神冥を寝返らせ、神朝の主力精鋭を壊滅させ、神朝の軍事力は完全に崩壊した。神冥は残部を率いて黒白無常に投降した。" data-en="The Genyuu Army turned Shen Ming against the Shen Dynasty, crushed its main elite force, completely destroying its military power; Shen Ming surrendered to Heibai Wuchang with his remaining troops.">The Genyuu Army turned Shen Ming against the Shen Dynasty, crushed its main elite force, completely destroying its military power; Shen Ming surrendered to Heibai Wuchang with his remaining troops.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="攻克神都：" data-zh-tw="攻克神都：" data-ja="神都攻略：" data-en="Capture of the Divine Capital: ">Capture of the Divine Capital: </span></strong><span class="lang-text" translate="no" data-zh="玄幽军乘胜挥师东进，攻克神朝都城，擒杀神天，神朝灭亡。" data-zh-tw="玄幽軍乘勝揮師東進，攻克神朝都城，擒殺神天，神朝滅亡。" data-ja="玄幽軍は勝利に乗じて東に進軍し、神朝の都を攻め落とし、神天を捕らえて処刑し、神朝は滅亡した。" data-en="The Genyuu Army marches east in victory, captures the Shen Dynasty's capital, executes Shen Tian, and the Shen Dynasty falls.">The Genyuu Army marches east in victory, captures the Shen Dynasty's capital, executes Shen Tian, and the Shen Dynasty falls.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="天统元年：" data-zh-tw="天統元年：" data-ja="天統元年：" data-en="Tian Tong Year 1: ">Tian Tong Year 1: </span></strong><span class="lang-text" translate="no" data-zh="幽冥称帝，国号玄幽，定都玄都，颁天统律法，以玄冥为摄政王；黑白无常北走，建立魔灰帝国，天下两分。" data-zh-tw="幽冥稱帝，國號玄幽，定都玄都，頒天統律法，以玄冥為攝政王；黑白無常北走，建立魔灰帝國，天下兩分。" data-ja="幽冥は即位し、国号を玄幽とし、玄都に都を定め、天統律法を布き、玄冥を摂政王とした。黒白無常は北に逃れ、魔灰帝国を建て、天下は二分される。" data-en="You Ming ascends the throne, names the empire Genyuu, capital Xuandu, issues the Tian Tong Laws, appoints Xuan Ming as Regent; Heibai Wuchang flees north to found the Mohui Empire, splitting the realm in two.">You Ming ascends the throne, names the empire Genyuu, capital Xuandu, issues the Tian Tong Laws, appoints Xuan Ming as Regent; Heibai Wuchang flees north to found the Mohui Empire, splitting the realm in two.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="天统三年：" data-zh-tw="天統三年：" data-ja="天統三年：" data-en="Tian Tong Year 3: ">Tian Tong Year 3: </span></strong><span class="lang-text" translate="no" data-zh="魔灰帝国内乱，大将神冥发动兵变，弑杀黑白无常，篡立神影帝国。" data-zh-tw="魔灰帝國內亂，大將神冥發動兵變，弒殺黑白無常，篡立神影帝國。" data-ja="魔灰帝国で内乱が起こり、大将神冥は兵変を起こして黒白無常を殺し、神影帝国を簒立した。" data-en="Civil war breaks out in the Mohui Empire; General Shen Ming stages a coup, assassinates Heibai Wuchang, and usurps the throne to found the Shenying Empire.">Civil war breaks out in the Mohui Empire; General Shen Ming stages a coup, assassinates Heibai Wuchang, and usurps the throne to found the Shenying Empire.</span></p>
+                <p><strong><span class="lang-text" translate="no" data-zh="天统五年：" data-zh-tw="天統五年：" data-ja="天統五年：" data-en="Tian Tong Year 5: ">Tian Tong Year 5: </span></strong><span class="lang-text" translate="no" data-zh="太祖御驾亲征，葬影原决战大破神影军，神冥败亡，天下一统，天统盛世开启。" data-zh-tw="太祖御駕親征，葬影原決戰大破神影軍，神冥敗亡，天下一統，天統盛世開啟。" data-ja="太祖は自ら軍を率いて征し、葬影原の決戦で神影軍を壊滅させ、神冥は敗死し、天下は統一され、天統の盛世が始まる。" data-en="The Emperor personally leads the army, crushes the Shenying Army in the decisive battle at Shadow Burial Plain, Shen Ming dies in defeat, the realm is unified, and the Tian Tong Golden Age begins.">The Emperor personally leads the army, crushes the Shenying Army in the decisive battle at Shadow Burial Plain, Shen Ming dies in defeat, the realm is unified, and the Tian Tong Golden Age begins.</span></p>
+            </div>
+        </section>
+
+        <div style="text-align:center; padding: 10px 20px 40px;">
+            <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left-long"></i> <span class="lang-text" translate="no" data-zh="返回帝国中枢" data-zh-tw="返回帝國中樞" data-ja="帝国中枢に戻る" data-en="Return to the Capital">Return to the Capital</span></a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 <i class="fa-solid fa-code"></i> <span class="lang-text" translate="no" data-zh="玄幽帝国 (天统纪年) 版权所有" data-zh-tw="玄幽帝國 (天統紀年) 版權所有" data-ja="玄幽帝国 (天統紀年) 著作権所有" data-en="Genyuu Empire (Tian Tong Era). All Rights Reserved.">Genyuu Empire (Tian Tong Era). All Rights Reserved.</span></p>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

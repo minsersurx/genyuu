@@ -115,16 +115,20 @@ body.unlocked { overflow-x: hidden; overflow-y: auto; }
 }
 .lang-options li:hover { background: rgba(212,175,55,0.2); border-color: var(--accent-gold); color: var(--accent-gold); }
 
-/* 导航栏 */
+/* 导航栏：默认在封面上呈现半透明渐隐效果，避免与背景生硬割裂；
+   滚动进入正文或子页面（body.unlocked）后切换为实底导航条，保证可读性 */
 header {
     position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 24px; background: var(--nav-bg); -webkit-backdrop-filter: blur(10px);
- backdrop-filter: blur(10px);
-    z-index: 9999; box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    padding: 14px 24px 26px; background: linear-gradient(to bottom, rgba(10, 5, 18, 0.55) 0%, rgba(10, 5, 18, 0.25) 60%, transparent 100%);
+    z-index: 9999; transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+header.scrolled {
+    padding: 8px 24px; background: var(--nav-bg); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 .logo {
     font-size: 1.3rem; font-weight: bold; color: var(--accent-gold); letter-spacing: 1px;
-    cursor: pointer; display: flex; align-items: center; gap: 8px;
+    cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none;
 }
 .logo-icon-placeholder {
     width: 30px;    /* 与logo图片在导航栏中的尺寸一致 */
@@ -191,6 +195,10 @@ nav { display: block; }
 .hero-title {
     font-family: var(--font-title); font-size: 3rem; margin-bottom: 15px;
     color: var(--accent-gold); text-shadow: 0 4px 15px rgba(0,0,0,0.8); letter-spacing: 2px;
+}
+.hero-eyebrow {
+    color: rgba(212,175,55,0.75); font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 10px;
 }
 .hero-subtitle { font-size: 0.95rem; color: #ddd; text-shadow: 0 2px 5px rgba(0,0,0,0.8); margin-bottom: 25px; }
 
@@ -335,6 +343,16 @@ footer { text-align: center; padding: 25px; margin-top: 40px; background: rgba(0
     animation: ripple 1.5s ease-out forwards; pointer-events: none; z-index: 2000;
 }
 @keyframes ripple { 0% { width: 0; height: 0; opacity: 1; } 100% { width: 250vmax; height: 250vmax; opacity: 0; } }
+
+/* 首页精简版分区块之后的"了解更多"跳转链接 */
+.section-more {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+    color: var(--accent-gold); font-size: 0.85rem; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(212,175,55,0.35); padding-bottom: 2px; transition: 0.3s;
+}
+.section-more:hover { gap: 10px; border-bottom-color: var(--accent-gold); }
+.section-more i { font-size: 0.75rem; transition: transform 0.3s; }
+.section-more:hover i { transform: translateX(4px); }
 
 /* ========= 子页面通用（帝国秘史 / 帝国机构） ========= */
 .subpage-hero {

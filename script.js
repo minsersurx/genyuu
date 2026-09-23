@@ -219,32 +219,29 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (e) => { if (!navMenu.contains(e.target) && !menuIconWrapper.contains(e.target)) navMenu.classList.remove('active'); });
     }
 
-    // -------- 封面滑动控制（仅首页存在 hero 时启用） --------
+    // -------- 顶部导航栏：封面态半透明，进入正文/子页面后切换为实底，减少突兀感 --------
+    const navbarEl = document.getElementById('navbar');
     if (heroCover) {
         let isCoverVisible = true, isAnimating = false;
         function hideCover(cb) {
             if (!isCoverVisible || isAnimating) { if (cb) cb(); return; }
             isAnimating = true; window.scrollTo(0, 0);
             heroCover.classList.add('slide-up');
+            if (navbarEl) navbarEl.classList.add('scrolled');
             setTimeout(() => { document.body.classList.add('unlocked'); isCoverVisible = false; isAnimating = false; if (cb) cb(); }, 900);
         }
         function showCover() {
             if (isCoverVisible || isAnimating) return;
             isAnimating = true; document.body.classList.remove('unlocked'); window.scrollTo(0, 0);
             heroCover.classList.remove('slide-up');
+            if (navbarEl) navbarEl.classList.remove('scrolled');
             setTimeout(() => { isCoverVisible = true; isAnimating = false; }, 900);
         }
         if (scrollArrow) scrollArrow.addEventListener('click', () => hideCover());
         if (exploreBtn) exploreBtn.addEventListener('click', () => hideCover());
-        function scrollToSection(el) { const h = 60; const pos = el.getBoundingClientRect().top + window.scrollY - h; window.scrollTo({ top: pos, behavior: 'smooth' }); }
+        // 导航栏内的链接都是真实超链接，此处仅负责收起移动端菜单，跳转交给浏览器
         navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href') || '';
-                if (!href.startsWith('#')) return; // 允许跳转到其他子页面的链接正常工作
-                e.preventDefault(); if (navMenu) navMenu.classList.remove('active');
-                if (link.id === 'nav-home') showCover();
-                else { const id = href.substring(1); const sec = document.getElementById(id); if (sec) hideCover(() => scrollToSection(sec)); }
-            });
+            link.addEventListener('click', () => { if (navMenu) navMenu.classList.remove('active'); });
         });
         window.addEventListener('wheel', (e) => { if (isCoverVisible || isAnimating) e.preventDefault(); if (isCoverVisible && e.deltaY > 0) hideCover(); else if (!isCoverVisible && e.deltaY < 0 && window.scrollY <= 0) showCover(); }, { passive: false });
         let startY;
@@ -255,17 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isCoverVisible && d > 50) hideCover(); else if (!isCoverVisible && d < -50 && window.scrollY <= 0) showCover();
         }, { passive: false });
     } else {
-        // 子页面没有封面遮罩，导航链接直接平滑滚动或正常跳转
+        // 子页面头部本就是实底导航（见 HTML 中的 .scrolled 类），链接均为真实超链接，
+        // 这里只需要在点击后收起移动端菜单
         navLinks.forEach(link => {
-            const href = link.getAttribute('href') || '';
-            if (href.startsWith('#')) {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (navMenu) navMenu.classList.remove('active');
-                    const sec = document.getElementById(href.substring(1));
-                    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-            }
+            link.addEventListener('click', () => { if (navMenu) navMenu.classList.remove('active'); });
         });
     }
 
