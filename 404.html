@@ -12,21 +12,21 @@
     <!-- 在线古风字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho&family=Gowun+Batang&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* ---- 全局变量与基础 ---- */
         :root {
-            --bg-main: #11091c;
-            --bg-sec: #1f1135;
-            --text: #e0e0e0;
-            --gold: #d4af37;
+            --bg-main: #0b0710;
+            --bg-sec: #180f24;
+            --text: #e9e1d0;
+            --gold: #b98f3d;
             --radius-full: 50px;
             --radius-lg: 14px;
             --radius-sm: 8px;
-            --font-title: 'Cinzel', serif;
+            --font-title: 'Cormorant Garamond', serif;
             --font-body: 'Noto Serif SC', '宋体', serif;
         }
 
@@ -34,8 +34,7 @@
         html[lang="zh-CN"] { --font-title: 'Ma Shan Zheng', serif; }
         html[lang="zh-TW"] { --font-title: 'Noto Serif TC', serif; }
         html[lang="ja"]    { --font-title: 'Shippori Mincho', serif; }
-        html[lang="ko"]    { --font-title: 'Gowun Batang', serif; }
-        html[lang="en"]    { --font-title: 'Cinzel', serif; }
+        html[lang="en"]    { --font-title: 'Cormorant Garamond', serif; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -163,8 +162,8 @@
             font-weight: bold;
             letter-spacing: 1px;
             background: rgba(0,0,0,0.4);
-            color: #f1c40f;
-            border: 2px solid #f1c40f;
+            color: #b98f3d;
+            border: 2px solid #b98f3d;
             border-radius: var(--radius-full);
             text-decoration: none;
             transition: 0.3s;
@@ -173,7 +172,7 @@
             overflow: hidden;
         }
         .btn-return:hover {
-            background: #f1c40f;
+            background: #b98f3d;
             color: #000;
             box-shadow: 0 0 20px rgba(241,196,15,0.7);
         }
@@ -362,7 +361,7 @@
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-                    ctx.shadowColor = '#f1c40f';
+                    ctx.shadowColor = '#b98f3d';
                     ctx.shadowBlur = 3;
                     ctx.fill();
                     ctx.shadowBlur = 0;

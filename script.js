@@ -116,12 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 2 + 0.8; this.speedX = (Math.random() - 0.5) * 0.25;
                 this.speedY = (Math.random() - 0.5) * 0.15 - 0.15; this.opacity = Math.random() * 0.4 + 0.1;
+                // 神魔同辉：粒子随机取金（神）或玉（魔）二色之一，呼应主题
+                this.isJade = Math.random() < 0.35;
             }
             update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) { this.reset(); this.y = canvas.height; } }
             draw() {
                 ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-                ctx.shadowColor = '#f1c40f'; ctx.shadowBlur = 3; ctx.fill(); ctx.shadowBlur = 0;
+                if (this.isJade) {
+                    ctx.fillStyle = `rgba(90, 150, 130, ${this.opacity})`;
+                    ctx.shadowColor = '#5a9682';
+                } else {
+                    ctx.fillStyle = `rgba(185, 143, 61, ${this.opacity})`;
+                    ctx.shadowColor = '#d9ae5f';
+                }
+                ctx.shadowBlur = 3; ctx.fill(); ctx.shadowBlur = 0;
             }
         }
         for (let i = 0; i < targetParticleCount(); i++) particles.push(new Particle());
