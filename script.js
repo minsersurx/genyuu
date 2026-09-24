@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroCover = document.getElementById('hero');
     const scrollArrow = document.getElementById('scrollArrow');
     const exploreBtn = document.getElementById('explore-btn');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('.nav-links a, .footer-links a');
     const logoIcon = document.getElementById('logo-icon');
     const codexItems = document.querySelectorAll('.codex-item');
     const oathMsg = document.getElementById('oath-message');
@@ -39,6 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
         en: 'Genyuu Empire | 玄幽帝国 — the official chronicle of Emperor You Ming: forging Shadow Flame, issuing the Tian Tong Laws, and unifying the realm. Gods and Demons in Harmony, Eternal Genyuu.'
     };
     let currentLang = 'zh';
+
+    // -------- 通用点击滑动涟漪特效（按钮、卡片等交互元素） --------
+    const rippleSelector = '.primary-btn, .section-more, .back-home, .character-card, .faction-card, .codex-item';
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest(rippleSelector);
+        if (!target) return;
+        const rect = target.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const ripple = document.createElement('span');
+        ripple.className = 'click-ripple';
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        target.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+    });
 
     // -------- 预加载与Logo飞入动画（空值保护，避免子页面无该元素时报错） --------
     function startLogoTransition() {
@@ -239,9 +255,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (scrollArrow) scrollArrow.addEventListener('click', () => hideCover());
         if (exploreBtn) exploreBtn.addEventListener('click', () => hideCover());
-        // 导航栏内的链接都是真实超链接，此处仅负责收起移动端菜单，跳转交给浏览器
+        // 导航栏内的链接都是真实超链接；首页的"返回首页/封面"锚点，点击直接收起遮罩返回封面，不刷新页面
         navLinks.forEach(link => {
-            link.addEventListener('click', () => { if (navMenu) navMenu.classList.remove('active'); });
+            link.addEventListener('click', (e) => {
+                if (navMenu) navMenu.classList.remove('active');
+                if (link.getAttribute('href') === '#hero') { e.preventDefault(); showCover(); window.scrollTo(0, 0); }
+            });
         });
         window.addEventListener('wheel', (e) => { if (isCoverVisible || isAnimating) e.preventDefault(); if (isCoverVisible && e.deltaY > 0) hideCover(); else if (!isCoverVisible && e.deltaY < 0 && window.scrollY <= 0) showCover(); }, { passive: false });
         let startY;
