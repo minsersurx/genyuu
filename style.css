@@ -563,8 +563,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .back-to-top::after { display: none; }
 }
 
-/* Four chronicle scenes, balanced across desktop and mobile. */
-@media (min-width: 821px) { .event-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* Four chronicle scenes need more room than the standard three-card grid. */
+@media (min-width: 821px) and (max-width: 1099px) { .archive-chronicle .event-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .archive-chronicle .event-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .history-detail { display: inline-flex; align-items: center; gap: 7px; margin-top: 9px; color: var(--red); font-size: 11px; letter-spacing: .07em; }
 .history-detail:hover { color: #701c20; }
 /* Focused archive links and print layouts must never remain hidden by entrance animation. */
@@ -576,3 +577,21 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .archive-laws .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.95), rgba(17,19,20,.84)), url("assets/xuandu-capital.webp") center 52% / cover; }
 .archive-institutions .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.85)), url("assets/territory-sketch.webp") center 48% / cover; }
 .archive-characters .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), url("assets/youming-portrait.webp") center 32% / cover; }
+
+/* Chronicle entries read as one continuous archival thread, not a bare list. */
+.archive-chronicle .history-list { background: radial-gradient(ellipse at 100% 0, rgba(182,154,99,.08), transparent 42%), #fffdf8; }
+.archive-chronicle .history-item { column-gap: 34px; }
+.archive-chronicle .history-date { position: relative; padding-left: 22px; }
+.archive-chronicle .history-date::before { position: absolute; top: .67em; left: 1px; width: 7px; height: 7px; border: 1px solid var(--red); border-radius: 50%; background: #fffdf8; box-shadow: 0 0 0 4px rgba(159,41,44,.07); content: ""; }
+.archive-chronicle .history-detail { min-height: 32px; padding: 4px 12px; border: 1px solid rgba(159,41,44,.19); border-radius: 999px; background: #faf5ed; transition: border-color .2s ease, background .2s ease; }
+.archive-chronicle .history-detail:hover { border-color: rgba(159,41,44,.42); background: #f6ebe2; }
+.archive-chronicle .event-card { box-shadow: 0 9px 26px rgba(32,28,22,.04); }
+.archive-chronicle .event-card img { transition: transform .45s ease; }
+.archive-chronicle .event-card:hover img { transform: scale(1.025); }
+@media (min-width: 1100px) {
+  .related-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .archive-chronicle .history-date { padding-left: 19px; }
+  .archive-chronicle .history-date::before { top: .6em; }
+}

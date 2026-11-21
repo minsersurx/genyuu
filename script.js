@@ -55,6 +55,11 @@
         setMenuOpen(false);
       }
     });
+    document.addEventListener('focusin', (event) => {
+      if (nav.classList.contains('is-open') && header && !header.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && nav.classList.contains('is-open')) {
         setMenuOpen(false);
