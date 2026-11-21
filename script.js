@@ -189,19 +189,34 @@
     };
     searchToggle.addEventListener('click', () => setSearchOpen(searchPanel.hidden));
     searchInput.addEventListener('input', renderResults);
+    const getResultLinks = () => Array.from(searchResults.querySelectorAll('a'));
     searchInput.addEventListener('keydown', (event) => {
+      const links = getResultLinks();
+      if (!links.length) return;
       if (event.key === 'ArrowDown') {
-        const firstResult = searchResults.querySelector('a');
-        if (firstResult) {
-          event.preventDefault();
-          firstResult.focus();
-        }
+        event.preventDefault();
+        links[0].focus();
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        links[links.length - 1].focus();
       }
     });
     searchResults.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowUp' && event.target.closest('a') === searchResults.querySelector('a')) {
+      const activeLink = event.target.closest('a');
+      if (!activeLink) return;
+      const links = getResultLinks();
+      const index = links.indexOf(activeLink);
+      let targetIndex = -1;
+      if (event.key === 'ArrowDown' && index < links.length - 1) targetIndex = index + 1;
+      if (event.key === 'ArrowUp') targetIndex = index > 0 ? index - 1 : -2;
+      if (event.key === 'Home') targetIndex = 0;
+      if (event.key === 'End') targetIndex = links.length - 1;
+      if (targetIndex === -2) {
         event.preventDefault();
         searchInput.focus();
+      } else if (targetIndex >= 0) {
+        event.preventDefault();
+        links[targetIndex].focus();
       }
     });
     document.addEventListener('pointerdown', (event) => {
