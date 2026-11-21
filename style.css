@@ -27,6 +27,11 @@ img { display: block; max-width: 100%; }
 .page-shell { width: min(var(--shell), calc(100% - 64px)); margin-inline: auto; }
 ::selection { background: var(--red); color: white; }
 
+.skip-link { position: fixed; z-index: 100; top: 12px; left: 12px; display: inline-flex; align-items: center; justify-content: center; padding: 9px 18px; border: 1px solid var(--gold-light); border-radius: 999px; color: #fffaf0; background: var(--ink); box-shadow: 0 5px 18px rgba(0,0,0,.2); font-size: 13px; line-height: 1.4; letter-spacing: .04em; transform: translateY(calc(-100% - 16px)); }
+.skip-link:focus { transform: translateY(0); outline: 3px solid var(--gold-light); outline-offset: 3px; }
+#main-content { scroll-margin-top: 88px; }
+#main-content:focus { outline: none; }
+
 /* Header */
 .site-header { position: absolute; z-index: 30; top: 0; left: 0; display: flex; align-items: center; width: 100%; min-height: 86px; padding: 0 max(32px, calc((100vw - var(--shell)) / 2)); color: #f8f4e9; border-bottom: 1px solid rgba(255,255,255,.16); transition: background .3s ease, min-height .3s ease, box-shadow .3s ease; }
 .site-header.is-scrolled { position: fixed; min-height: 72px; background: rgba(20,22,23,.96); box-shadow: 0 8px 30px rgba(0,0,0,.18); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
