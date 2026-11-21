@@ -22,12 +22,14 @@
       nav.classList.remove('is-open');
     }));
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === 'Escape' && nav.classList.contains('is-open')) {
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', '打开导航');
         nav.classList.remove('is-open');
+        toggle.focus();
       }
     });
+    if (header) header.classList.add('nav-ready');
   }
 
   const reveals = document.querySelectorAll('.reveal');
@@ -41,7 +43,12 @@
           activeObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
-    reveals.forEach((item) => observer.observe(item));
+    }, { threshold: 0 });
+    reveals.forEach((item) => {
+      if (item.getBoundingClientRect().top >= window.innerHeight) {
+        item.classList.add('will-reveal');
+        observer.observe(item);
+      }
+    });
   }
 })();
