@@ -43,6 +43,7 @@
         if (searchPanel && !searchPanel.hidden) {
           searchPanel.hidden = true;
           header.querySelector('.archive-search-toggle')?.setAttribute('aria-expanded', 'false');
+          header.querySelector('.archive-search-toggle')?.setAttribute('aria-label', '打开档案速查');
         }
       }
       toggle.setAttribute('aria-expanded', String(open));
@@ -157,7 +158,7 @@
           .sort((a, b) => b.score - a.score || a.index - b.index)
           .map((match) => match.record)
         : records.filter((record) => record.featured)
-      ).slice(0, 6);
+      );
       searchResults.replaceChildren();
       searchStatus.textContent = query
         ? (matches.length ? `找到 ${matches.length} 份相关档案` : '没有找到相关档案')
@@ -186,6 +187,7 @@
     const setSearchOpen = (open) => {
       searchPanel.hidden = !open;
       searchToggle.setAttribute('aria-expanded', String(open));
+      searchToggle.setAttribute('aria-label', open ? '关闭档案速查' : '打开档案速查');
       if (open) {
         if (nav?.classList.contains('is-open')) {
           nav.classList.remove('is-open');
@@ -193,7 +195,7 @@
           toggle?.setAttribute('aria-label', '打开导航');
         }
         renderResults();
-        requestAnimationFrame(() => searchInput.focus());
+        searchInput.focus();
       }
     };
     searchToggle.addEventListener('click', () => setSearchOpen(searchPanel.hidden));
@@ -229,7 +231,10 @@
       }
     });
     document.addEventListener('pointerdown', (event) => {
-      if (!searchPanel.hidden && !header.contains(event.target)) setSearchOpen(false);
+      if (!searchPanel.hidden && !searchPanel.contains(event.target) && !searchToggle.contains(event.target)) setSearchOpen(false);
+    });
+    document.addEventListener('focusin', (event) => {
+      if (!searchPanel.hidden && !searchPanel.contains(event.target) && !searchToggle.contains(event.target)) setSearchOpen(false);
     });
     document.addEventListener('keydown', (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {

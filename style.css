@@ -651,19 +651,22 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .archive-search-toggle:hover, .archive-search-toggle[aria-expanded="true"] { border-color: rgba(213,189,131,.72); color: #fff6df; background: rgba(213,189,131,.1); }
 .archive-search-toggle svg { width: 16px; height: 16px; flex: 0 0 auto; }
 .archive-search-toggle:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
-.archive-search-panel { position: absolute; top: calc(100% + 8px); right: max(18px, calc((100vw - var(--shell)) / 2)); z-index: 45; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: max-content; max-width: min(328px, calc(100vw - 32px)); padding: 13px; border: 1px solid rgba(213,189,131,.26); border-radius: 17px; color: #f8f2e5; background: rgba(24,26,27,.98); box-shadow: 0 18px 44px rgba(0,0,0,.28); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.archive-search-panel { position: absolute; top: calc(100% + 8px); right: max(18px, calc((100vw - var(--shell)) / 2)); z-index: 45; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: max-content; max-width: min(328px, calc(100vw - 32px)); max-height: calc(100vh - 104px); max-height: calc(100dvh - 104px); padding: 13px; overflow-y: auto; overscroll-behavior: contain; border: 1px solid rgba(213,189,131,.26); border-radius: 17px; color: #f8f2e5; background: rgba(24,26,27,.98); box-shadow: 0 18px 44px rgba(0,0,0,.28); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
 .archive-search-panel[hidden] { display: none; }
 .archive-search-caption { color: #e2cc99; font-family: var(--serif); font-size: 12px; letter-spacing: .08em; }
 .archive-search-input { width: 240px; max-width: 100%; min-width: 0; height: 40px; padding: 0 12px; border: 1px solid rgba(255,255,255,.13); border-radius: 11px; outline: 0; color: #f9f4e9; background: rgba(255,255,255,.075); font: inherit; font-size: 12px; }
 .archive-search-input::placeholder { color: rgba(255,250,240,.48); }
 .archive-search-input:focus { border-color: rgba(213,189,131,.68); box-shadow: 0 0 0 3px rgba(213,189,131,.12); }
-.archive-search-status { margin: 1px 0 0; color: rgba(255,250,240,.48); font-size: 9px; letter-spacing: .08em; }
-.archive-search-results { display: flex; width: max-content; max-width: 100%; max-height: 218px; flex-direction: column; align-items: flex-start; gap: 3px; margin: 0; padding: 0; overflow-y: auto; overscroll-behavior: contain; list-style: none; }
+.archive-search-status { margin: 1px 0 0; color: rgba(255,250,240,.7); font-size: 10px; letter-spacing: .08em; }
+.archive-search-results { display: flex; width: max-content; max-width: 100%; max-height: 218px; max-height: min(218px, max(48px, calc(100dvh - 235px))); flex-direction: column; align-items: flex-start; gap: 3px; margin: 0; padding: 0; overflow-y: auto; overscroll-behavior: contain; list-style: none; }
+.archive-search-panel, .archive-search-results { scrollbar-width: thin; scrollbar-color: #8c7958 transparent; }
+.archive-search-panel::-webkit-scrollbar, .archive-search-results::-webkit-scrollbar { width: 6px; }
+.archive-search-panel::-webkit-scrollbar-thumb, .archive-search-results::-webkit-scrollbar-thumb { border-radius: 999px; background: #8c7958; }
 .archive-search-results li { width: max-content; max-width: 100%; }
-.archive-search-results a { display: inline-flex; width: max-content; max-width: 100%; align-items: baseline; gap: 10px; padding: 7px 9px; overflow: hidden; border: 1px solid transparent; border-radius: 10px; color: #f6f0e4; line-height: 1.45; text-decoration: none; white-space: nowrap; transition: border-color .18s ease, color .18s ease, background .18s ease; }
+.archive-search-results a { display: inline-flex; width: max-content; max-width: 100%; align-items: baseline; flex-wrap: wrap; gap: 0 10px; padding: 7px 9px; border: 1px solid transparent; border-radius: 10px; color: #f6f0e4; line-height: 1.45; text-decoration: none; transition: border-color .18s ease, color .18s ease, background .18s ease; }
 .archive-search-results a:hover, .archive-search-results a:focus-visible { border-color: rgba(213,189,131,.2); outline: 0; color: #f0dca9; background: rgba(255,255,255,.055); }
-.archive-search-result-title { overflow: hidden; font-size: 12px; text-overflow: ellipsis; }
-.archive-search-results small { flex: 0 0 auto; color: #b7a77f; font-size: 9px; }
+.archive-search-result-title { min-width: 0; overflow-wrap: anywhere; font-size: 12px; }
+.archive-search-results small { color: #cbbd9b; font-size: 10px; }
 .archive-search-empty { padding: 7px 9px; color: rgba(255,250,240,.62); font-size: 11px; }
 @media (min-width: 821px) and (max-width: 1263px) { .archive-search-panel { right: 32px; } }
 @media (max-width: 820px) {
