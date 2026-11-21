@@ -646,6 +646,31 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .story-route li > a, .story-route-current { min-height: 40px; padding: 7px 10px; font-size: 11px; }
 }
 
+/* Compact global archive lookup with text-sized suggestion rows. */
+.archive-search-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 5px; min-height: 38px; margin-left: 16px; padding: 0 11px; border: 1px solid rgba(213,189,131,.36); border-radius: 999px; color: rgba(255,250,240,.86); background: rgba(255,255,255,.045); font-size: 11px; letter-spacing: .06em; white-space: nowrap; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.archive-search-toggle:hover, .archive-search-toggle[aria-expanded="true"] { border-color: rgba(213,189,131,.72); color: #fff6df; background: rgba(213,189,131,.1); }
+.archive-search-toggle svg { width: 16px; height: 16px; flex: 0 0 auto; }
+.archive-search-toggle:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
+.archive-search-panel { position: absolute; top: calc(100% + 8px); right: max(18px, calc((100vw - var(--shell)) / 2)); z-index: 45; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: max-content; max-width: min(328px, calc(100vw - 32px)); padding: 13px; border: 1px solid rgba(213,189,131,.26); border-radius: 17px; color: #f8f2e5; background: rgba(24,26,27,.98); box-shadow: 0 18px 44px rgba(0,0,0,.28); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.archive-search-panel[hidden] { display: none; }
+.archive-search-caption { color: #e2cc99; font-family: var(--serif); font-size: 12px; letter-spacing: .08em; }
+.archive-search-input { width: 240px; max-width: 100%; min-width: 0; height: 40px; padding: 0 12px; border: 1px solid rgba(255,255,255,.13); border-radius: 11px; outline: 0; color: #f9f4e9; background: rgba(255,255,255,.075); font: inherit; font-size: 12px; }
+.archive-search-input::placeholder { color: rgba(255,250,240,.48); }
+.archive-search-input:focus { border-color: rgba(213,189,131,.68); box-shadow: 0 0 0 3px rgba(213,189,131,.12); }
+.archive-search-status { margin: 1px 0 0; color: rgba(255,250,240,.48); font-size: 9px; letter-spacing: .08em; }
+.archive-search-results { display: flex; width: max-content; max-width: 100%; max-height: 218px; flex-direction: column; align-items: flex-start; gap: 3px; margin: 0; padding: 0; overflow-y: auto; overscroll-behavior: contain; list-style: none; }
+.archive-search-results li { width: max-content; max-width: 100%; }
+.archive-search-results a { display: inline-flex; width: max-content; max-width: 100%; align-items: baseline; gap: 10px; padding: 7px 9px; overflow: hidden; border: 1px solid transparent; border-radius: 10px; color: #f6f0e4; line-height: 1.45; text-decoration: none; white-space: nowrap; transition: border-color .18s ease, color .18s ease, background .18s ease; }
+.archive-search-results a:hover, .archive-search-results a:focus-visible { border-color: rgba(213,189,131,.2); outline: 0; color: #f0dca9; background: rgba(255,255,255,.055); }
+.archive-search-result-title { overflow: hidden; font-size: 12px; text-overflow: ellipsis; }
+.archive-search-results small { flex: 0 0 auto; color: #b7a77f; font-size: 9px; }
+.archive-search-empty { padding: 7px 9px; color: rgba(255,250,240,.62); font-size: 11px; }
+@media (min-width: 821px) and (max-width: 1263px) { .archive-search-panel { right: 32px; } }
+@media (max-width: 820px) {
+  .archive-search-toggle { min-height: 40px; margin-left: 8px; padding-inline: 9px; }
+  .archive-search-panel { right: 18px; max-width: min(328px, calc(100vw - 36px)); }
+}
+
 /* Keep useful captions legible and make more room on compact screens. */
 @media (min-width: 821px) and (max-width: 950px) {
   .site-header .header-seal { display: none; }
