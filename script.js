@@ -32,9 +32,19 @@
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
     updateScrollAids();
   };
+  let scrollFrame = 0;
+  let revealPassedItems = () => {};
+  const scheduleScrollUpdate = () => {
+    if (scrollFrame) return;
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateHeader();
+      revealPassedItems();
+    });
+  };
   updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  window.addEventListener('resize', updateScrollAids, { passive: true });
+  window.addEventListener('scroll', scheduleScrollUpdate, { passive: true });
+  window.addEventListener('resize', scheduleScrollUpdate, { passive: true });
 
   if (toggle && nav) {
     const setMenuOpen = (open) => {
@@ -58,9 +68,12 @@
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
       setMenuOpen(false);
     }));
-    document.addEventListener('click', (event) => {
+    document.addEventListener('pointerdown', (event) => {
       if (nav.classList.contains('is-open') && header && !header.contains(event.target)) {
+        const clickTarget = event.target instanceof Element ? event.target : null;
+        const clickedControl = clickTarget?.closest('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
         setMenuOpen(false);
+        if (!clickedControl) window.requestAnimationFrame(() => toggle.focus({ preventScroll: true }));
       }
     });
     document.addEventListener('focusin', (event) => {
@@ -272,7 +285,7 @@
         observer.observe(item);
       }
     });
-    const revealPassedItems = () => {
+    revealPassedItems = () => {
       reveals.forEach((item) => {
         if (item.classList.contains('will-reveal') && item.getBoundingClientRect().bottom < 0) {
           item.classList.add('is-visible');
@@ -281,6 +294,5 @@
         }
       });
     };
-    window.addEventListener('scroll', revealPassedItems, { passive: true });
   }
 })();
