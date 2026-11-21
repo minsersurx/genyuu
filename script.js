@@ -3,11 +3,38 @@
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.main-nav');
 
+  const progress = document.createElement('div');
+  progress.className = 'reading-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  const progressFill = document.createElement('span');
+  progress.append(progressFill);
+  document.body.append(progress);
+
+  const backToTop = document.createElement('button');
+  backToTop.className = 'back-to-top';
+  backToTop.type = 'button';
+  backToTop.setAttribute('aria-label', '回到页面卷首');
+  backToTop.textContent = '↑';
+  backToTop.addEventListener('click', () => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+  });
+  document.body.append(backToTop);
+
+  const updateScrollAids = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const amount = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+    progressFill.style.transform = `scaleX(${amount})`;
+    backToTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.65);
+  };
+
   const updateHeader = () => {
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
+    updateScrollAids();
   };
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('resize', updateScrollAids, { passive: true });
 
   if (toggle && nav) {
     const setMenuOpen = (open) => {

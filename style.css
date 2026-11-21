@@ -547,3 +547,17 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .archive-jump > div { gap: 6px; }
   .archive-jump a { padding: 5px 10px; }
 }
+
+
+/* Quiet reading aids for the long archive volumes. */
+.reading-progress { position: fixed; z-index: 101; top: 0; right: 0; left: 0; height: 2px; pointer-events: none; }
+.reading-progress > span { display: block; width: 100%; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light), #f0dfad); box-shadow: 0 0 10px rgba(213,189,131,.38); transform: scaleX(0); transform-origin: left center; }
+.back-to-top { position: fixed; z-index: 28; right: max(20px, calc((100vw - var(--shell)) / 2)); bottom: 24px; display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 9px; padding: 0 15px; border: 1px solid rgba(213,189,131,.38); border-radius: 999px; color: #f7ebcb; background: rgba(25,27,28,.9); box-shadow: 0 8px 24px rgba(0,0,0,.2); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); font-size: 12px; line-height: 1; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .2s ease, visibility .2s ease, transform .2s ease, background .2s ease; cursor: pointer; }
+.back-to-top::after { content: "回到卷首"; letter-spacing: .08em; }
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: #30302d; }
+.back-to-top:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
+@media (max-width: 560px) {
+  .back-to-top { right: 15px; bottom: 16px; width: 42px; height: 42px; min-height: 42px; padding: 0; font-size: 19px; }
+  .back-to-top::after { display: none; }
+}
