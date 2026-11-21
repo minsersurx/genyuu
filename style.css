@@ -541,6 +541,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .archive-jump a { display: inline-flex; align-items: center; padding: 5px 12px; border: 1px solid rgba(159,41,44,.14); border-radius: 999px; color: #743733; background: #fffdf8; font-size: 11px; line-height: 1.55; transition: border-color .2s, background .2s; }
 .archive-jump a:hover { border-color: rgba(159,41,44,.4); background: #f8eee4; }
 .subpage-content section[id] { scroll-margin-top: 80px; }
+.law-reading-guide, .law-reading-section { max-width: 1020px; margin-right: auto; margin-left: auto; }
 @media (max-width: 560px) {
   .archive-jump { align-items: flex-start; flex-direction: column; gap: 8px; margin-bottom: 20px; padding: 12px; }
   .archive-jump > div { gap: 6px; }
