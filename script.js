@@ -90,6 +90,8 @@
       { title: '玄冥', collection: '开国人物档案', href: '/characters.html#xuanming', keywords: '摄政 太祖 军政' },
       { title: '冬久', collection: '前朝人物档案', href: '/characters.html#dongjiu', keywords: '宰相 恩师 幽冥' },
       { title: '神冥', collection: '开国人物档案', href: '/characters.html#shenming', keywords: '断龙岭 神影 葬影原' },
+      { title: '凌夜', collection: '开国人物档案', href: '/characters.html#lingye', keywords: '玄幽卫 监察 律令 办案' },
+      { title: '墨尘', collection: '开国人物档案', href: '/characters.html#mochen', keywords: '灵政院 学府 取士 教育 官吏' },
       { title: '玄都受命，玄幽立国', collection: '开国实录', href: '/events/founding.html', keywords: '太祖 幽冥 建国 改元 天统元年 神朝 立国' },
       { title: '断龙岭之战', collection: '建国战事', href: '/events/duanlongling.html', keywords: '山隘 神冥 大捷 战事 断龙岭' },
       { title: '葬影原决战', collection: '天统五年', href: '/events/zangyingyuan.html', keywords: '神影 一统 统一 余势 葬影原' },
