@@ -595,3 +595,30 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .archive-chronicle .history-date { padding-left: 19px; }
   .archive-chronicle .history-date::before { top: .6em; }
 }
+
+/* Rounded dossier surfaces: polished, soft-edged cards without losing the formal archive tone. */
+:root { --radius-card: 20px; }
+.button { border-radius: 999px; }
+.nav-ready .menu-toggle { border-radius: 12px; }
+.record-card,
+.prose-card,
+.event-card,
+.faction-card,
+.character-card { border-radius: var(--radius-card); }
+.record-card { box-shadow: 0 9px 26px rgba(32,28,22,.055); }
+.record-card:focus-visible { border-color: rgba(159,41,44,.45); box-shadow: 0 14px 34px rgba(32,28,22,.14); transform: translateY(-3px); }
+.prose-card { box-shadow: 0 12px 32px rgba(32,28,22,.055); }
+.event-card { box-shadow: 0 9px 26px rgba(32,28,22,.05); }
+.event-card:focus-within { outline: 2px solid var(--gold); outline-offset: 4px; }
+.faction-card { box-shadow: 0 8px 24px rgba(32,28,22,.045); }
+.character-card { box-shadow: 0 8px 24px rgba(32,28,22,.055); }
+.law-num { border-radius: 14px; }
+.notice-box { border-radius: 0 14px 14px 0; }
+.feature { overflow: hidden; border-radius: 24px; box-shadow: 0 22px 58px rgba(23,22,19,.13); }
+@media (min-width: 821px) {
+  .feature { width: min(var(--shell), calc(100% - 64px)); margin-inline: auto; }
+}
+@media (max-width: 560px) {
+  .feature { border-radius: 18px; }
+}
+.archive-chronicle .history-list { padding: clamp(20px, 3vw, 34px); border: 1px solid rgba(37,34,27,.1); border-radius: var(--radius-card); box-shadow: 0 12px 30px rgba(32,28,22,.05); }
