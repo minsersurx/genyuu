@@ -38,6 +38,13 @@
 
   if (toggle && nav) {
     const setMenuOpen = (open) => {
+      if (open) {
+        const searchPanel = header?.querySelector('.archive-search-panel');
+        if (searchPanel && !searchPanel.hidden) {
+          searchPanel.hidden = true;
+          header.querySelector('.archive-search-toggle')?.setAttribute('aria-expanded', 'false');
+        }
+      }
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
       nav.classList.toggle('is-open', open);
@@ -249,15 +256,26 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          entry.target.classList.remove('will-reveal');
           activeObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0 });
+    }, { threshold: 0, rootMargin: '120px 0px' });
     reveals.forEach((item) => {
       if (item.getBoundingClientRect().top >= window.innerHeight) {
         item.classList.add('will-reveal');
         observer.observe(item);
       }
     });
+    const revealPassedItems = () => {
+      reveals.forEach((item) => {
+        if (item.classList.contains('will-reveal') && item.getBoundingClientRect().bottom < 0) {
+          item.classList.add('is-visible');
+          item.classList.remove('will-reveal');
+          observer.unobserve(item);
+        }
+      });
+    };
+    window.addEventListener('scroll', revealPassedItems, { passive: true });
   }
 })();
