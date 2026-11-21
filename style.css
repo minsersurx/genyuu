@@ -622,3 +622,40 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .feature { border-radius: 18px; }
 }
 .archive-chronicle .history-list { padding: clamp(20px, 3vw, 34px); border: 1px solid rgba(37,34,27,.1); border-radius: var(--radius-card); box-shadow: 0 12px 30px rgba(32,28,22,.05); }
+
+/* A restrained reading path links the three founding dossiers in order. */
+.story-route { display: flex; align-items: center; gap: clamp(20px, 3vw, 42px); margin: 0 0 clamp(35px, 5vw, 60px); padding: 17px 21px; border: 1px solid rgba(151,125,79,.24); border-radius: 20px; background: radial-gradient(ellipse at 0 0, rgba(182,154,99,.12), transparent 52%), #fffdf8; box-shadow: 0 10px 28px rgba(32,28,22,.045); }
+.story-route-intro { flex: 0 0 auto; padding-right: 22px; border-right: 1px solid var(--line); }
+.story-route-intro span, .story-route-intro strong { display: block; }
+.story-route-intro span { color: #8a7760; font-size: 10px; letter-spacing: .12em; }
+.story-route-intro strong { margin-top: 3px; color: #3a332a; font-family: var(--serif); font-size: 15px; font-weight: 500; letter-spacing: .08em; }
+.story-route ol { display: flex; flex: 1 1 auto; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.story-route li { min-width: 0; }
+.story-route li > a, .story-route-current { display: inline-flex; min-height: 42px; align-items: center; gap: 8px; padding: 7px 13px; border: 1px solid transparent; border-radius: 999px; color: #5b5348; font-size: 12px; line-height: 1.5; transition: background .2s, border-color .2s, color .2s; }
+.story-route li > a { border-color: rgba(151,125,79,.2); background: rgba(255,255,255,.55); }
+.story-route li > a:hover { border-color: rgba(159,41,44,.4); color: var(--red); background: #faf2e9; }
+.story-route li small { color: #927d5e; font-family: var(--serif); font-size: 11px; }
+.story-route-current { border-color: rgba(159,41,44,.25); color: #842f2d; background: #f8ede4; }
+.story-route-current small { color: var(--red); }
+.hero-caption-note { display: inline-block; margin-left: 7px; color: #e0ca9a; }
+@media (max-width: 560px) {
+  .story-route { align-items: flex-start; flex-direction: column; gap: 12px; padding: 16px; border-radius: 17px; }
+  .story-route-intro { display: flex; align-items: baseline; gap: 10px; padding: 0; border: 0; }
+  .story-route-intro strong { margin: 0; font-size: 14px; }
+  .story-route ol { gap: 7px; }
+  .story-route li > a, .story-route-current { min-height: 40px; padding: 7px 10px; font-size: 11px; }
+}
+
+/* Keep useful captions legible and make more room on compact screens. */
+@media (min-width: 821px) and (max-width: 950px) {
+  .site-header .header-seal { display: none; }
+}
+@media (max-width: 560px) {
+  .hero { min-height: max(610px, 92svh); }
+  .hero-caption { gap: 4px 14px; align-items: flex-start; flex-wrap: wrap; font-size: 10px; line-height: 1.5; }
+  .hero-caption span:last-child { text-align: left; }
+  .fact small, .fact span { font-size: 11px; }
+}
+@media (max-width: 360px) {
+  .hero-imprint { display: none; }
+}
