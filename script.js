@@ -78,6 +78,18 @@
       { title: '天统宪章', collection: '国本典章', href: '/laws.html', keywords: '帝制 王权 皇帝 魔王 主宰 中央 分职 会议 法律 修订 宪章 政典', featured: true },
       { title: '中央与地方', collection: '帝国机构', href: '/institutions.html', keywords: '中枢 朝廷 省区 市县 诸侯 封国 归制 官署 机构 地图 疆域', featured: true },
       { title: '帝国人物志', collection: '人物档案', href: '/characters.html', keywords: '幽汐 幽冥 玄冥 冬久 凌夜 墨尘 神冥 皇帝 魔王 太祖', featured: true },
+      { title: '开国实录', collection: '帝国全史 · 卷一', href: '/chronicle.html#founding-record', keywords: '幽冥 冬久 神朝 建国 断龙岭 玄都' },
+      { title: '天统沿革', collection: '帝国全史 · 卷二', href: '/chronicle.html#chronicle-timeline', keywords: '编年 纪年 诸侯 封国 幽汐' },
+      { title: '建国宪章条文', collection: '天统宪章 · 开国底案', href: '/laws.html#constitution-draft', keywords: '第一条 第二条 皇帝 魔王 主宰 投票 地方 封国' },
+      { title: '宪章修订沿革', collection: '天统宪章 · 历次修订', href: '/laws.html#constitution-amendments', keywords: '修宪 职分 诸侯 封国 议事席 幽汐' },
+      { title: '中央诸司', collection: '帝国机构 · 中枢', href: '/institutions.html#central-offices', keywords: '内政府 将军府 吏部府 立法院 外交部 官署' },
+      { title: '地方政制', collection: '帝国机构 · 地方', href: '/institutions.html#local-system', keywords: '省区 市县 诸侯 封国 议事席' },
+      { title: '疆域舆图', collection: '帝国机构 · 舆图档案', href: '/institutions.html#territory-archive', keywords: '东亚 疆界 区划 地图 北原' },
+      { title: '幽汐', collection: '当今执政人物档案', href: '/characters.html#youxi', keywords: '皇帝 魔王 即位 御极七年 议事席' },
+      { title: '太祖幽冥', collection: '开国人物档案', href: '/characters.html#youming', keywords: '皇帝 开国 神朝 玄都 天统元年' },
+      { title: '玄冥', collection: '开国人物档案', href: '/characters.html#xuanming', keywords: '摄政 太祖 军政' },
+      { title: '冬久', collection: '前朝人物档案', href: '/characters.html#dongjiu', keywords: '宰相 恩师 幽冥' },
+      { title: '神冥', collection: '开国人物档案', href: '/characters.html#shenming', keywords: '断龙岭 神影 葬影原' },
       { title: '玄都受命，玄幽立国', collection: '开国实录', href: '/events/founding.html', keywords: '太祖 幽冥 建国 改元 天统元年 神朝 立国' },
       { title: '断龙岭之战', collection: '建国战事', href: '/events/duanlongling.html', keywords: '山隘 神冥 大捷 战事 断龙岭' },
       { title: '葬影原决战', collection: '天统五年', href: '/events/zangyingyuan.html', keywords: '神影 一统 统一 余势 葬影原' },
@@ -124,7 +136,17 @@
     const renderResults = () => {
       const query = searchInput.value.trim().toLocaleLowerCase();
       const matches = (query
-        ? records.filter((record) => `${record.title} ${record.collection} ${record.keywords}`.toLocaleLowerCase().includes(query))
+        ? records
+          .map((record, index) => {
+            const title = record.title.toLocaleLowerCase();
+            const collection = record.collection.toLocaleLowerCase();
+            const keywords = record.keywords.toLocaleLowerCase();
+            const score = title.includes(query) ? 3 : collection.includes(query) ? 2 : keywords.includes(query) ? 1 : 0;
+            return { record, index, score };
+          })
+          .filter((match) => match.score > 0)
+          .sort((a, b) => b.score - a.score || a.index - b.index)
+          .map((match) => match.record)
         : records.filter((record) => record.featured)
       ).slice(0, 6);
       searchResults.replaceChildren();
@@ -174,6 +196,12 @@
           event.preventDefault();
           firstResult.focus();
         }
+      }
+    });
+    searchResults.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowUp' && event.target.closest('a') === searchResults.querySelector('a')) {
+        event.preventDefault();
+        searchInput.focus();
       }
     });
     document.addEventListener('pointerdown', (event) => {
