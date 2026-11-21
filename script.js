@@ -45,6 +45,7 @@
     toggle.addEventListener('click', () => {
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';
       setMenuOpen(!isOpen);
+      if (!isOpen) nav.querySelector('a')?.focus();
     });
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
       setMenuOpen(false);
@@ -78,27 +79,11 @@
         }
       });
     }, { threshold: 0 });
-    let revealFrame = 0;
-    const revealPassedItems = () => {
-      if (revealFrame) return;
-      revealFrame = window.requestAnimationFrame(() => {
-        revealFrame = 0;
-        reveals.forEach((item) => {
-          if (item.classList.contains('will-reveal') && item.getBoundingClientRect().top <= window.innerHeight) {
-            item.classList.add('is-visible');
-            observer.unobserve(item);
-          }
-        });
-      });
-    };
     reveals.forEach((item) => {
       if (item.getBoundingClientRect().top >= window.innerHeight) {
         item.classList.add('will-reveal');
         observer.observe(item);
       }
     });
-    window.addEventListener('scroll', revealPassedItems, { passive: true });
-    window.addEventListener('resize', revealPassedItems, { passive: true });
-    revealPassedItems();
   }
 })();
