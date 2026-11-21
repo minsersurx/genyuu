@@ -203,7 +203,7 @@ img { display: block; max-width: 100%; }
 .event-card-copy h3 { margin: 7px 0; font-family: var(--serif); font-size: 19px; font-weight: 500; }
 .event-card-copy p { margin: 0; color: #746e63; font-size: 12px; line-height: 1.9; }
 .faction-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
-.faction-card { position: relative; padding: 27px 29px 30px; background: #fffdf8; border: 1px solid var(--line); }
+.faction-card { position: relative; padding: 27px 29px 30px; overflow: hidden; background: #fffdf8; border: 1px solid var(--line); }
 .faction-card::before { position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--red); content: ""; }
 .faction-card h3 { margin: 0 0 8px; color: #302e29; font-family: var(--serif); font-size: 20px; font-weight: 500; letter-spacing: .06em; }
 .faction-card p { margin: 0; color: #706b60; font-size: 13px; line-height: 2; }
@@ -398,6 +398,10 @@ img { display: block; max-width: 100%; }
   .event-hero h1 { font-size: 37px; }
   .event-lead { font-size: 16px; }
   .event-prose { font-size: 14px; }
+}
+@media (max-width: 360px) {
+  .section h2, .section-title-row h2 { font-size: 26px; letter-spacing: .06em; }
+  .character-card { grid-template-columns: 94px 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
