@@ -229,6 +229,16 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .faction-card p { margin: 0; color: #706b60; font-size: 13px; line-height: 2; }
 .department-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 .department-list span { padding: 4px 9px; border: 1px solid rgba(159,41,44,.16); border-radius: 999px; color: #7c3433; background: #f8f3e9; font-size: 10px; letter-spacing: .04em; }
+.administrative-intro { max-width: 850px; margin: -13px 0 25px; color: #706b60; font-size: 13px; line-height: 2; }
+.administrative-levels { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.administrative-level-card { position: relative; min-height: 232px; padding: 23px 24px 21px; overflow: visible; background: radial-gradient(ellipse at 100% 0,rgba(182,154,99,.12),transparent 48%),#fffdf8; border: 1px solid rgba(37,34,27,.13); border-radius: 19px; box-shadow: 0 10px 28px rgba(32,28,22,.045); }
+.administrative-level-card:not(:last-child)::after { position: absolute; top: 36px; right: -19px; z-index: 2; width: 19px; height: 1px; background: linear-gradient(90deg,var(--gold),rgba(182,154,99,.3)); content: ""; }
+.administrative-level-top { display: flex; align-items: center; gap: 10px; }
+.administrative-level-index { display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid rgba(159,41,44,.3); border-radius: 50%; color: var(--red); font-family: var(--serif); font-size: 11px; }
+.administrative-level-kicker { color: #877b67; font-size: 10px; letter-spacing: .11em; }
+.administrative-level-card h3 { margin: 17px 0 7px; color: #2e2a24; font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: .08em; }
+.administrative-level-card p { margin: 0; color: #706b60; font-size: 12px; line-height: 1.95; }
+.administrative-level-foot { display: inline-flex; margin-top: 15px; padding: 4px 9px; border: 1px solid rgba(182,154,99,.3); border-radius: 999px; color: #74603c; background: rgba(182,154,99,.08); font-size: 9px; letter-spacing: .07em; }
 .character-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
 .character-card { overflow: hidden; background: #fffdf8; border: 1px solid var(--line); }
 .character-card img { width: 100%; aspect-ratio: 4/4.6; object-fit: cover; object-position: center 28%; background: #302a25; }
@@ -443,7 +453,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .history-date { font-size: 12px; }
   .history-item h3 { font-size: 16px; }
   .history-item p { font-size: 13px; }
-  .event-grid, .character-grid, .faction-grid { grid-template-columns: 1fr; }
+  .event-grid, .character-grid, .faction-grid, .administrative-levels { grid-template-columns: 1fr; }
+  .administrative-levels { gap: 13px; }
+  .administrative-level-card { min-height: 0; padding: 19px 20px; }
+  .administrative-level-card:not(:last-child)::after { top: auto; right: auto; bottom: -14px; left: 35px; width: 1px; height: 14px; }
+  .administrative-level-card h3 { margin-top: 12px; font-size: 20px; }
+  .administrative-level-foot { margin-top: 12px; }
   .event-card img { aspect-ratio: 16/9; }
   .faction-card { padding: 22px 21px 24px; }
   .character-card { display: grid; grid-template-columns: 112px 1fr; align-items: stretch; }
