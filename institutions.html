@@ -1,107 +1,54 @@
-<!DOCTYPE html>
-<html lang="zh" translate="no">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">帝国机构 | Genyuu Empire</title>
-
-    <meta name="google" content="notranslate">
-    <meta name="googlebot" content="notranslate">
-    <meta name="robots" content="notranslate">
-
-    <meta name="description" content="玄幽帝国机构总览：玄幽卫、灵政院、魔影窟秘境、边境军镇——支撑天统盛世的四大支柱。">
-    <meta property="og:title" content="帝国机构 | Genyuu Empire">
-    <meta property="og:description" content="玄幽帝国机构总览：玄幽卫、灵政院、魔影窟秘境、边境军镇——支撑天统盛世的四大支柱。">
-    <meta property="og:type" content="website">
-
-    <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-    </noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#17191a">
+  <title>中央与地方 · 玄幽帝国</title><meta name="description" content="玄幽帝国中央朝廷、地方行政与疆域区划，依据建国宪章手稿与疆域底图整理。">
+  <meta property="og:title" content="中央与地方 · 玄幽帝国"><meta property="og:description" content="中枢分职，地方循章；疆域与官制沿革一览。"><meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)"><link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)"><link rel="stylesheet" href="style.css">
 </head>
-<body class="unlocked">
-    <canvas id="particleCanvas"></canvas>
-    <header id="navbar" class="scrolled">
-        <a href="index.html" class="logo" id="logo-icon">
-            <div class="logo-icon-placeholder"><img src="logo.svg" alt="玄幽帝国"></div>
-            <span class="lang-text" translate="no" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-en="Genyuu Empire">Genyuu Empire</span>
-        </a>
-        <div class="nav-controls">
-            <div class="lang-selector" id="lang-selector">
-                <button class="lang-current" id="lang-toggle-btn">🇨🇳</button>
-                <ul class="lang-dropdown" id="lang-dropdown">
-                    <li data-lang="zh">🇨🇳 简体中文</li>
-                    <li data-lang="zh-tw">🇭🇰 繁體中文</li>
-                    <li data-lang="ja">🇯🇵 日本語</li>
-                    <li data-lang="en">🇺🇸 English</li>
-                </ul>
-            </div>
-            <div class="menu-icon-wrapper" id="mobile-menu-icon">
-                <div class="menu-line"></div>
-                <div class="menu-line"></div>
-                <div class="menu-line"></div>
-            </div>
+<body>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="index.html" aria-label="玄幽帝国首页"><img src="logo.svg" alt="" width="42" height="42"><span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span></a>
+    <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="main-nav" aria-label="主导航"><a href="index.html">帝国首页</a><a href="chronicle.html">开国与沿革</a><a href="laws.html">宪章政典</a><a class="active" href="institutions.html">中央与地方</a><a href="characters.html">帝国人物</a></nav>
+    <div class="header-seal"><i></i><span>天统纪元</span></div>
+  </header>
+  <main>
+    <section class="subpage-hero"><p class="eyebrow">官制总览 · 中央与地方</p><h1>帝国机构</h1><p>中枢分掌政务，地方依章施行；封国旧制既废，疆土归于统一行政。</p></section>
+    <div class="page-shell subpage-content">
+      <section class="section reveal">
+        <div class="section-title-row"><div><p class="eyebrow eyebrow-dark">最高统治 · 分职监察</p><h2>权有所承，<em>责有所归。</em></h2></div></div>
+        <div class="prose-card">
+          <p class="event-lead">建国宪章草案将帝位、魔王之位与主宰监督职分并列，中央各司据此分掌政务。</p>
+          <p>皇帝与魔王除首任例外不得兼任；正主宰负责监督最高领导人，不掌日常领导权。现任魔王幽汐御极七年，继承既有法统，州县议事席目前仍在少数地方试行。</p>
         </div>
-        <nav id="nav-menu">
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fa-solid fa-chess-rook"></i><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-en="Home">Home</span></a></li>
-                <li><a href="chronicle.html"><i class="fa-solid fa-scroll"></i><span class="lang-text" translate="no" data-zh="帝国全史" data-zh-tw="帝國全史" data-ja="帝国全史" data-en="Chronicle">Chronicle</span></a></li>
-                <li><a href="laws.html"><i class="fa-solid fa-scale-balanced"></i><span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-en="Laws">Laws</span></a></li>
-                <li><a href="institutions.html"><i class="fa-solid fa-landmark"></i><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Institutions">Institutions</span></a></li>
-                <li><a href="characters.html"><i class="fa-solid fa-user-group"></i><span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-en="Personages">Personages</span></a></li>
-            </ul>
-        </nav>
-    </header>
+      </section>
 
-    <main id="main-content">
-        <div class="subpage-hero">
-            <h1><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Imperial Institutions">Imperial Institutions</span></h1>
-            <p><span class="lang-text" translate="no" data-zh="支撑天统盛世运转的核心机构，各司其职，共同维系神魔平等的律法根基。" data-zh-tw="支撐天統盛世運轉的核心機構，各司其職，共同維繫神魔平等的律法根基。" data-ja="天統の盛世を支える中核機構。それぞれの職責を果たし、神魔平等の法の礎を共に守る。" data-en="The core institutions that keep the Tian Tong Golden Age running, each with its own charge, together upholding the rule of equality between Gods and Demons.">The core institutions that keep the Tian Tong Golden Age running, each with its own charge, together upholding the rule of equality between Gods and Demons.</span></p>
+      <section class="section reveal">
+        <div class="section-title-row"><div><p class="eyebrow eyebrow-dark">中央朝廷 · 机构职掌</p><h2>各司其职，<em>循章而行。</em></h2></div></div>
+        <div class="faction-grid">
+          <article class="faction-card"><h3>内政府</h3><p>由总丞相统理内政。中丞相整合政务意见并辅佐执政；左右护法丞相协助保障法令施行；太尉掌皇室军队、军规及地方军队调动；御史大夫监察朝廷官员并呈报异常。</p></article>
+          <article class="faction-card"><h3>将军府</h3><p>掌全国军务，大将军由魔王任命。手稿按攘外、应对海外属国求援与守内等职责区分将领；兵部隶属将军府，军令依中央章程执行。</p></article>
+          <article class="faction-card"><h3>吏部府</h3><p>以“为国民服务”为职分，草案列吏部、户部、礼部、工部、刑部与兵部。刑部由皇帝直接管理；兵部归将军府统辖，其余各部按职分办理政务。</p></article>
+          <article class="faction-card"><h3>立法院</h3><p>帝国法定立法机构，负责制定、修订法律。法案循内部审议与表决程序办理；手稿中无法确认的后续步骤不在此臆补。</p></article>
+          <article class="faction-card"><h3>外交部</h3><p>帝国法定外交机构，代表国家办理对外交往。宪章主张和平友好，不以强力迫使他国，不干涉他国内政，也不无正当理由断交或宣战。</p></article>
+          <article class="faction-card"><h3>主宰与御史监察</h3><p>正主宰监督最高领导人，副主宰协助履职并在缺位时承接职责；御史大夫监察朝廷官员。两类监察各有对象与职分，不代替日常行政。</p></article>
         </div>
+      </section>
 
-        <section class="section-block reveal">
-            <div class="faction-grid">
-                <div class="faction-card">
-                    <h3><i class="fa-solid fa-shield-halved"></i> <span class="lang-text" translate="no" data-zh="玄幽卫" data-zh-tw="玄幽衛" data-ja="玄幽衛" data-en="Genyuu Guard">Genyuu Guard</span></h3>
-                    <p><span class="lang-text" translate="no" data-zh="太祖亲掌的帝国利刃，首任统领凌夜，专司监察天统律法的执行，缉查违律大案，直接对皇帝负责，不受地方节制。" data-zh-tw="太祖親掌的帝國利刃，首任統領凌夜，專司監察天統律法的執行，緝查違律大案，直接對皇帝負責，不受地方節制。" data-ja="太祖が直轄する帝国の刃。初代統領は凌夜で、天統律法の執行監察と違法事件の捜査を専任し、皇帝に直属して地方の統制を受けない。" data-en="The emperor's direct blade, first led by Ling Ye. It enforces the Tian Tong Laws and investigates major violations, answering only to the throne and outside local jurisdiction.">The emperor's direct blade, first led by Ling Ye. It enforces the Tian Tong Laws and investigates major violations, answering only to the throne and outside local jurisdiction.</span></p>
-                </div>
-                <div class="faction-card">
-                    <h3><i class="fa-solid fa-graduation-cap"></i> <span class="lang-text" translate="no" data-zh="灵政院" data-zh-tw="靈政院" data-ja="霊政院" data-en="Spirit Political Academy">Spirit Political Academy</span></h3>
-                    <p><span class="lang-text" translate="no" data-zh="首任院长墨尘，主持科举取士，打破血统世袭壁垒，唯才是举，为帝国各级学府与官僚体系输送人才。" data-zh-tw="首任院長墨塵，主持科舉取士，打破血統世襲壁壘，唯才是舉，為帝國各級學府與官僚體系輸送人才。" data-ja="初代院長は墨塵。科挙による人材登用を主導し、血統世襲の壁を打ち破って才能のみを基準とし、帝国の学府と官僚制度に人材を送り込む。" data-en="Founded and led by Mo Chen, it runs the merit-based imperial examinations, breaking hereditary barriers and supplying talent to schools and the bureaucracy across the empire.">Founded and led by Mo Chen, it runs the merit-based imperial examinations, breaking hereditary barriers and supplying talent to schools and the bureaucracy across the empire.</span></p>
-                </div>
-                <div class="faction-card">
-                    <h3><i class="fa-brands fa-d-and-d"></i> <span class="lang-text" translate="no" data-zh="魔影窟秘境" data-zh-tw="魔影窟秘境" data-ja="魔影窟秘境" data-en="Demon Shadow Cave Sanctum">Demon Shadow Cave Sanctum</span></h3>
-                    <p><span class="lang-text" translate="no" data-zh="西域绝地，太祖涅槃出关之地，如今由玄幽卫特别看守，仅皇室与摄政王可入内朝拜，是帝国精神图腾的所在。" data-zh-tw="西域絕地，太祖涅槃出關之地，如今由玄幽衛特別看守，僅皇室與攝政王可入內朝拜，是帝國精神圖騰的所在。" data-ja="西域の絶地、太祖が涅槃を経て出陣した地。現在は玄幽衛が特別に警護し、皇室と摂政王のみが立ち入って参拝できる、帝国の精神的象徴の地である。" data-en="The forbidden Western sanctum where the Emperor emerged reborn, now specially guarded by the Genyuu Guard; only the imperial family and the Regent may enter to pay respects.">The forbidden Western sanctum where the Emperor emerged reborn, now specially guarded by the Genyuu Guard; only the imperial family and the Regent may enter to pay respects.</span></p>
-                </div>
-                <div class="faction-card">
-                    <h3><i class="fa-solid fa-map-location-dot"></i> <span class="lang-text" translate="no" data-zh="边境军镇" data-zh-tw="邊境軍鎮" data-ja="辺境軍鎮" data-en="Border Garrisons">Border Garrisons</span></h3>
-                    <p><span class="lang-text" translate="no" data-zh="分驻四海疆域边陲，由玄冥摄政王统辖，负责防御外患、镇守新纳入版图的原魔灰、神影旧地，维持地方安定。" data-zh-tw="分駐四海疆域邊陲，由玄冥攝政王統轄，負責防禦外患、鎮守新納入版圖的原魔灰、神影舊地，維持地方安定。" data-ja="四海の辺境に分駐し、摂政王玄冥が統括する。外敵の防衛と、新たに版図に組み込まれた旧魔灰・神影の地の治安維持を担う。" data-en="Stationed along the empire's frontiers under Regent Xuan Ming's command, defending against outside threats and keeping order in the newly absorbed former Mohui and Shenying territories.">Stationed along the empire's frontiers under Regent Xuan Ming's command, defending against outside threats and keeping order in the newly absorbed former Mohui and Shenying territories.</span></p>
-                </div>
-            </div>
-        </section>
-
-        <div style="text-align:center; padding: 10px 20px 40px;">
-            <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left-long"></i> <span class="lang-text" translate="no" data-zh="返回帝国中枢" data-zh-tw="返回帝國中樞" data-ja="帝国中枢に戻る" data-en="Return to the Capital">Return to the Capital</span></a>
+      <section class="section reveal">
+        <div class="section-title-row"><div><p class="eyebrow eyebrow-dark">疆域舆图 · 地方行政</p><h2>十六省区，<em>万里一统。</em></h2></div></div>
+        <div class="prose-card">
+          <p class="event-lead">疆域以东亚为基底，幅员大体与元朝相当；手绘舆图分别标示国界、区域界，以及直接与半直接管辖范围。</p>
+          <p>地方制度以十六个省级行政区为框架，省区以下设市县，部分地区另列特别市。原制曾在北原省划出七个相对独立的诸侯国，后已随历次修订废止；现行行政层级以省区与下级地方单位为主。宪章草案规定地方长官通常由当地人民选举，特殊情况下由皇帝或魔王依层级任命；后续施行细则以修订政典为准。</p>
+          <figure class="map-archive"><a href="assets/territory-sketch.webp" target="_blank" rel="noopener" aria-label="打开疆域手绘原图查看细节"><img src="assets/territory-sketch.webp" alt="玄幽帝国疆域手绘示意图，显示东亚为基底的疆界、省区、诸侯国及直接与半直接管辖范围" width="1280" height="960" loading="lazy"></a><figcaption><strong>疆域与区划 · 手绘原稿</strong><p>方向已校正，点击图面可打开高清原稿。部分区名与细部边界字迹不清，故作为疆域示意而非现行精确区划图；诸侯国标记属于已废止的旧制。</p></figcaption></figure>
         </div>
-
-        <footer>
-            <div class="footer-links">
-                <a href="index.html"><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-en="Home">Home</span></a>
-                <a href="chronicle.html"><span class="lang-text" translate="no" data-zh="帝国全史" data-zh-tw="帝國全史" data-ja="帝国全史" data-en="Chronicle">Chronicle</span></a>
-                <a href="laws.html"><span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-en="Laws">Laws</span></a>
-                <a href="institutions.html"><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Institutions">Institutions</span></a>
-                <a href="characters.html"><span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-en="Personages">Personages</span></a>
-            </div>
-            <p>&copy; 2026 <i class="fa-solid fa-code"></i> <span class="lang-text" translate="no" data-zh="玄幽帝国 (天统纪年) 版权所有" data-zh-tw="玄幽帝國 (天統紀年) 版權所有" data-ja="玄幽帝国 (天統紀年) 著作権所有" data-en="Genyuu Empire (Tian Tong Era). All Rights Reserved.">Genyuu Empire (Tian Tong Era). All Rights Reserved.</span></p>
-        </footer>
-    </main>
-    <script src="script.js"></script>
+      </section>
+      <div class="notice-box">制度说明：本页分列开国宪章草案与后续沿革。手稿中的部分区名、城市名与票决程序难以辨认，均未猜写；疆域底图沿用手稿并已校正方向。</div>
+      <div style="text-align:center"><a class="back-home" href="index.html">← 返回帝国首页</a></div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="page-shell footer-main"><a class="brand brand-footer" href="index.html"><img src="logo-white.svg" alt="" width="38" height="38"><span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span></a><p>存国史之实，明典章之序。<br><span>玄幽帝国国史档案馆 · 天统纪元</span></p><nav aria-label="页脚导航"><a href="chronicle.html">开国与沿革</a><a href="laws.html">宪章政典</a><a href="institutions.html">中央与地方</a><a href="characters.html">帝国人物</a></nav></div><div class="footer-bottom"><div class="page-shell"><span>© 玄幽帝国 · 天统纪元</span><span>史录供阅 · 典章可考</span></div></div></footer>
+  <script src="script.js" defer></script>
 </body>
 </html>

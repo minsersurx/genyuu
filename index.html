@@ -1,178 +1,153 @@
-<!DOCTYPE html>
-<html lang="zh" translate="no">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">玄幽帝国 | Genyuu Empire</title>
-    <!-- 图标随浏览器/系统的明暗背景自动切换黑白版本 -->
-    <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)">
-
-    <!-- 禁止浏览器自动翻译 -->
-    <meta name="google" content="notranslate">
-    <meta name="googlebot" content="notranslate">
-    <meta name="robots" content="notranslate">
-
-    <!-- 供外部搜索引擎预览的描述，会随语言切换自动更新 -->
-    <meta name="description" content="玄幽帝国官方秘录：太祖幽冥炼影焰、颁天统律法、一统天下的开国史诗，神魔同辉，玄幽永存。">
-    <!-- hreflang 多语言声明 -->
-    <link rel="alternate" hreflang="en" href="https://www.genyuu.com/" />
-    <link rel="alternate" hreflang="zh-CN" href="https://www.genyuu.com/?lang=zh" />
-    <link rel="alternate" hreflang="zh-TW" href="https://www.genyuu.com/?lang=zh-tw" />
-    <link rel="alternate" hreflang="ja" href="https://www.genyuu.com/?lang=ja" />
-    <link rel="alternate" hreflang="x-default" href="https://www.genyuu.com/" />
-    <!-- 字体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-    </noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <meta property="og:title" content="Genyuu Empire | 玄幽帝国">
-    <meta property="og:description" content="玄幽帝国官方秘录：太祖幽冥炼影焰、颁天统律法、一统天下的开国史诗，神魔同辉，玄幽永存。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.genyuu.com">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17191a">
+  <title>玄幽帝国 · 国史与政典</title>
+  <meta name="description" content="玄幽帝国国史与政典典藏。纪念开国百余载，存录天统宪章、帝国沿革与历代人物。">
+  <meta property="og:title" content="玄幽帝国 · 国史与政典">
+  <meta property="og:description" content="建国百余载，法度相承。玄幽帝国官方国史与政典典藏。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://genyuu.com/">
+  <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)">
+  <link rel="preload" as="image" href="assets/xuandu-capital.webp" fetchpriority="high">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- 首次访问语言选择模态（默认隐藏，语言已改为自动识别） -->
-    <div id="lang-modal" class="lang-modal" style="display:none;">
-        <div class="lang-modal-content glass-card">
-            <h2 class="lang-text" translate="no" data-zh="选择语言" data-zh-tw="選擇語言" data-ja="言語を選択" data-en="Select Language">Select Language</h2>
-            <ul class="lang-options">
-                <li data-lang="en">🇺🇸 English</li>
-                <li data-lang="zh">🇨🇳 简体中文</li>
-                <li data-lang="zh-tw">🇭🇰 繁體中文</li>
-                <li data-lang="ja">🇯🇵 日本語</li>
-            </ul>
+<body class="home-page">
+  <header class="site-header" id="site-header">
+    <a class="brand" href="index.html" aria-label="玄幽帝国首页">
+      <img src="logo.svg" alt="" width="42" height="42">
+      <span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="main-nav" aria-label="主导航">
+      <a class="active" href="index.html">帝国首页</a>
+      <a href="chronicle.html">开国与沿革</a>
+      <a href="laws.html">宪章政典</a>
+      <a href="institutions.html">中央与地方</a>
+      <a href="characters.html">帝国人物</a>
+    </nav>
+    <div class="header-seal"><i></i><span>天统纪元</span></div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-copy page-shell">
+        <p class="eyebrow"><span class="eyebrow-rule"></span>玄幽帝国 · 国史档案馆</p>
+        <h1>法立于初<br><em>治成于久</em></h1>
+        <p class="hero-lede">建国百余载，天统相承。<br>在一部宪章、一段国史与万方日常之间，读懂玄幽。</p>
+        <div class="hero-actions">
+          <a class="button button-gold" href="chronicle.html">走进帝国史 <span aria-hidden="true">↗</span></a>
+          <a class="text-link text-link-light" href="laws.html">阅览建国宪章 <span aria-hidden="true">→</span></a>
         </div>
-    </div>
-    <!-- 预加载遮罩 -->
-    <div id="preloader">
-        <div class="preloader-bg"></div>
-        <img id="preloader-logo" src="logo.svg" alt="玄幽帝国" class="preloader-logo">
-        <p class="preloader-text lang-text" translate="no" data-zh="灵力汇聚中..." data-zh-tw="靈力匯聚中..." data-ja="霊力集束中..." data-en="Gathering spiritual power...">Gathering spiritual power...</p>
-    </div>
-    <canvas id="particleCanvas"></canvas>
-    <header id="navbar">
-        <a href="index.html" class="logo" id="logo-icon">
-            <!-- 修复：添加logo占位符，这是预加载动画正常工作的关键 -->
-            <div class="logo-icon-placeholder"></div>
-            <span class="lang-text" translate="no" data-zh="玄幽帝国" data-zh-tw="玄幽帝國" data-ja="玄幽帝国" data-en="Genyuu Empire">Genyuu Empire</span>
-        </a>
-        <div class="nav-controls">
-            <div class="lang-selector" id="lang-selector">
-                <button class="lang-current" id="lang-toggle-btn">🇺🇸</button>
-                <ul class="lang-dropdown" id="lang-dropdown">
-                    <li data-lang="zh">🇨🇳 简体中文</li>
-                    <li data-lang="zh-tw">🇭🇰 繁體中文</li>
-                    <li data-lang="ja">🇯🇵 日本語</li>
-                    <li data-lang="en">🇺🇸 English</li>
-                </ul>
-            </div>
-            <div class="menu-icon-wrapper" id="mobile-menu-icon">
-                <div class="menu-line"></div>
-                <div class="menu-line"></div>
-                <div class="menu-line"></div>
-            </div>
-        </div>
-        <nav id="nav-menu">
-            <ul class="nav-links">
-                <li><a href="#hero" id="nav-home"><i class="fa-solid fa-chess-rook"></i><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-en="Home">Home</span></a></li>
-                <li><a href="chronicle.html"><i class="fa-solid fa-scroll"></i><span class="lang-text" translate="no" data-zh="帝国全史" data-zh-tw="帝國全史" data-ja="帝国全史" data-en="Chronicle">Chronicle</span></a></li>
-                <li><a href="laws.html"><i class="fa-solid fa-scale-balanced"></i><span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-en="Laws">Laws</span></a></li>
-                <li><a href="institutions.html"><i class="fa-solid fa-landmark"></i><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Institutions">Institutions</span></a></li>
-                <li><a href="characters.html"><i class="fa-solid fa-user-group"></i><span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-en="Personages">Personages</span></a></li>
-            </ul>
-        </nav>
-    </header>
-    <!-- 封面区域 -->
-    <section id="hero" class="hero-cover">
-        <div class="cover-texture"></div>
-        <div class="hero-content">
-            <p class="hero-eyebrow">天统纪元 · 神魔同辉</p>
-            <h1 class="hero-title">
-                <span class="lang-text" translate="no" data-zh="神魔同辉，玄幽永存" data-zh-tw="神魔同輝，玄幽永存" data-ja="神魔共に輝き、玄幽永遠なれ" data-en="Gods and Demons in Harmony, Eternal Genyuu">Gods and Demons in Harmony, Eternal Genyuu</span>
-            </h1>
-            <p class="hero-subtitle">
-                <span class="lang-text" translate="no" data-zh="推翻神朝暴政，践行平等之誓。欢迎来到太祖幽冥开创的伟大帝国。" data-zh-tw="推翻神朝暴政，履行平等誓約。歡迎蒞臨太祖幽冥開創的偉大帝國。" data-ja="神朝の暴政を覆し、平等の誓いを果たす。太祖幽冥が築きし偉大なる帝国へようこそ。" data-en="Overthrowing the Shen Dynasty's tyranny, fulfilling the vow of equality. Welcome to the great empire founded by You Ming.">Overthrowing the Shen Dynasty's tyranny, fulfilling the vow of equality. Welcome to the great empire founded by You Ming.</span>
-            </p>
-            <button id="explore-btn" class="primary-btn">
-                <span class="lang-text" translate="no" data-zh="探索玄都" data-zh-tw="探索玄都" data-ja="玄都を探索" data-en="Explore Xuandu">Explore Xuandu</span>
-                <i class="fa-solid fa-arrow-right-long"></i>
-            </button>
-        </div>
-        <div class="scroll-arrow" id="scrollArrow"></div>
+      </div>
+      <div class="hero-imprint" aria-hidden="true"><span>玄</span><small>天统</small></div>
+      <div class="hero-caption page-shell">
+        <span>玄都 · 中枢宫城</span>
+        <span>建国百余年&nbsp;&nbsp; / &nbsp;&nbsp;幽汐御极七年</span>
+      </div>
+      <a class="scroll-cue" href="#overview"><span></span>下阅</a>
     </section>
-    <main id="main-content" class="under-content">
 
-        <section id="chronicle" class="section-block reveal">
-            <h2 class="section-title"><i class="fa-solid fa-scroll"></i> <span class="lang-text" translate="no" data-zh="帝国全史" data-zh-tw="帝國全史" data-ja="帝国全史" data-en="Imperial Chronicle">Imperial Chronicle</span></h2>
-            <div class="content-box glass-card">
-                <span class="lang-text" translate="no" data-zh="神朝末世，帝王昏聩。幽冥为神魔混血，蒙宰相冬久收养授业，后遭神天背弃、恩师惨死，遁入魔影窟涅槃重生，联旧部缔灰烬之盟，终率义军推翻神朝、一统天下，登基立国，开创神魔平等之世。这段从涅槃出关到天下一统的五年传奇，以及未载入正史的宫廷秘闻，都记录在帝国全史之中。" data-zh-tw="神朝末世，帝王昏聵。幽冥為神魔混血，蒙宰相冬久收養授業，後遭神天背棄、恩師慘死，遁入魔影窟湼槃重生，聯舊部締灰燼之盟，終率義軍推翻神朝、一統天下，登基立國，開創神魔平等之世。這段從湼槃出關到天下一統的五年傳奇，以及未載入正史的宮廷秘聞，都記錄在帝國全史之中。" data-ja="神朝末期、帝王は暗愚であった。幽冥は神魔混血で、宰相冬久に育てられたが、後に神天に裏切られ恩師を失い、魔影窟で涅槃を経て再生し、旧部と灰燼の盟を結び、ついに義軍を率いて神朝を倒し天下を統一、即位して神魔平等の世を開いた。この涅槃出陣から天下統一までの五年の伝説と、正史に載らない宮廷の秘聞は、帝国全史に記されている。" data-en="In the fading days of the Shen Dynasty, You Ming — half-god, half-demon — was raised by Prime Minister Dong Jiu, only to be betrayed and lose his mentor. Reborn in the Demon Shadow Cave, he allied with old comrades, overthrew the tyranny, unified the realm, and founded an empire of equality. That five-year legend, along with palace secrets never entered into the official record, is preserved in the Imperial Chronicle.">In the fading days of the Shen Dynasty, You Ming — half-god, half-demon — was raised by Prime Minister Dong Jiu, only to be betrayed and lose his mentor. Reborn in the Demon Shadow Cave, he allied with old comrades, overthrew the tyranny, unified the realm, and founded an empire of equality. That five-year legend, along with palace secrets never entered into the official record, is preserved in the Imperial Chronicle.</span>
-                <div><a href="chronicle.html" class="section-more"><span class="lang-text" translate="no" data-zh="阅读帝国全史" data-zh-tw="閱讀帝國全史" data-ja="帝国全史を読む" data-en="Read the Imperial Chronicle">Read the Imperial Chronicle</span> <i class="fa-solid fa-arrow-right"></i></a></div>
-            </div>
-        </section>
+    <section class="fact-strip" id="overview" aria-label="帝国概况">
+      <div class="page-shell fact-grid">
+        <div class="fact"><small>立国纪年</small><strong>百余载</strong><span>天统相承，国祚绵长</span></div>
+        <div class="fact"><small>当今执政</small><strong>魔王·幽汐</strong><span>御极七年</span></div>
+        <div class="fact"><small>国家根本</small><strong>天统宪章</strong><span>历经数十载屡次修订</span></div>
+        <div class="fact"><small>治理格局</small><strong>中枢—行省—郡县</strong><span>诸侯封国已归一统</span></div>
+      </div>
+    </section>
 
-        <section id="laws" class="section-block reveal">
-            <h2 class="section-title"><i class="fa-solid fa-scale-balanced"></i> <span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-en="Tian Tong Laws">Tian Tong Laws</span></h2>
-            <div class="content-box glass-card text-left" id="codex-list">
-                <p class="codex-item" data-article="1"><i class="fa-solid fa-caret-right"></i> <span class="lang-text" translate="no" data-zh="第一条：废阶级。天下子民皆为灵者，律法面前一律平等。" data-zh-tw="第一條：廢階級。天下子民皆為靈者，律法面前一律平等。" data-ja="第一条：階級を廃す。天下の民は全て霊者とし、法の前に平等である。" data-en="Article I: Abolish class. All people are Spirits, equal before the law.">Article I: Abolish class. All people are Spirits, equal before the law.</span></p>
-                <p class="codex-item" data-article="2"><i class="fa-solid fa-caret-right"></i> <span class="lang-text" translate="no" data-zh="第二条：薄税赋。行十一税定额制，轻徭薄赋与民休养。" data-zh-tw="第二條：薄稅賦。行十一稅定額制，輕徭薄賦與民休養。" data-ja="第二条：税を軽くする。十一税の定額制を敷き、民を休ませる。" data-en="Article II: Low taxes. A fixed 10% tax lets the people recover.">Article II: Low taxes. A fixed 10% tax lets the people recover.</span></p>
-                <p class="codex-item" data-article="3"><i class="fa-solid fa-caret-right"></i> <span class="lang-text" translate="no" data-zh="第三条：举贤能。选官取士唯才是举，不问出身种族。" data-zh-tw="第三條：舉賢能。選官取士唯才是舉，不問出身種族。" data-ja="第三条：賢能を挙げる。官吏の登用は才能のみを問う。" data-en="Article III: Meritocracy. Officials are chosen by talent alone.">Article III: Meritocracy. Officials are chosen by talent alone.</span></p>
-                <div id="oath-message" class="oath-msg"></div>
-                <div><a href="laws.html" class="section-more"><span class="lang-text" translate="no" data-zh="深入解读天统新政" data-zh-tw="深入解讀天統新制" data-ja="天統の新政を詳しく読む" data-en="Read the full Tian Tong Laws">Read the full Tian Tong Laws</span> <i class="fa-solid fa-arrow-right"></i></a></div>
-            </div>
-        </section>
+    <section class="section section-intro page-shell reveal">
+      <div class="section-heading">
+        <p class="eyebrow eyebrow-dark">帝国志略 · 卷首</p>
+        <h2>天下初定，<br><em>法度为先。</em></h2>
+      </div>
+      <div class="intro-copy">
+        <p class="lead-copy">玄幽肇建于神朝倾覆之后。太祖幽冥以宪章定国本，以一统息兵戈，立下神魔同列、取士以才的制度根基。</p>
+        <p>百余年来，中央与地方渐成一体；诸侯封国先后归并为行省、郡县。历代修订循序而行，在守成中补制度之缺，在安定中听取四方实情。</p>
+        <a class="text-link" href="chronicle.html">阅读开国与沿革 <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
 
-        <section id="institutions" class="section-block reveal">
-            <h2 class="section-title"><i class="fa-solid fa-landmark"></i> <span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Imperial Institutions">Imperial Institutions</span></h2>
-            <div class="content-box glass-card">
-                <span class="lang-text" translate="no" data-zh="玄幽卫、灵政院、魔影窟秘境与边境军镇，是支撑天统盛世运转的四大机构，各司其职，缺一不可。" data-zh-tw="玄幽衛、靈政院、魔影窟秘境與邊境軍鎮，是支撐天統盛世運轉的四大機構，各司其職，缺一不可。" data-ja="玄幽衛、霊政院、魔影窟秘境、辺境軍鎮は天統の盛世を支える四大機構であり、それぞれが職責を果たす。" data-en="The Genyuu Guard, the Spirit Political Academy, the Demon Shadow Cave sanctum, and the border garrisons — four institutions that keep the Tian Tong Golden Age running.">The Genyuu Guard, the Spirit Political Academy, the Demon Shadow Cave sanctum, and the border garrisons — four institutions that keep the Tian Tong Golden Age running.</span>
-                <div><a href="institutions.html" class="section-more"><span class="lang-text" translate="no" data-zh="查看帝国机构详情" data-zh-tw="查看帝國機構詳情" data-ja="帝国機構の詳細を見る" data-en="See all Imperial Institutions">See all Imperial Institutions</span> <i class="fa-solid fa-arrow-right"></i></a></div>
-            </div>
-        </section>
+    <section class="feature feature-ruler reveal">
+      <div class="feature-image" role="img" aria-label="魔王幽汐的官方肖像"></div>
+      <div class="feature-panel">
+        <p class="eyebrow">御极七年 · 时政纪要</p>
+        <h2>守成有度，<br><em>修制有渐。</em></h2>
+        <p class="feature-name">当今执政 · <strong>魔王 幽汐</strong></p>
+        <p>幽汐即位以来，承前朝法统，先从核阅地方奏报、整饬常平仓储与厘清州县议事章程着手。部分地方试行的议事席，暂以河工、学校与仓储等民生日用为限；所议汇送中枢复核，制度仍在逐步厘定。</p>
+        <a class="text-link text-link-light" href="characters.html#youxi">查阅执政人物档案 <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="feature-index">01 / 执政纪要</div>
+    </section>
 
-        <section id="characters" class="section-block reveal">
-            <h2 class="section-title"><i class="fa-solid fa-user-group"></i> <span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-en="Personages">Personages</span></h2>
-            <div class="characters-grid">
-                <a href="characters.html#char-youming" class="character-card">
-                    <div class="char-avatar"><i class="fa-solid fa-crown"></i></div>
-                    <h4><span class="lang-text" translate="no" data-zh="太祖幽冥" data-zh-tw="太祖幽冥" data-ja="太祖幽冥" data-en="Emperor You Ming">Emperor You Ming</span></h4>
-                </a>
-                <a href="characters.html#char-xuanming" class="character-card">
-                    <div class="char-avatar"><i class="fa-solid fa-moon"></i></div>
-                    <h4><span class="lang-text" translate="no" data-zh="玄冥" data-zh-tw="玄冥" data-ja="玄冥" data-en="Xuan Ming">Xuan Ming</span></h4>
-                </a>
-                <a href="characters.html#char-dongjiu" class="character-card">
-                    <div class="char-avatar"><i class="fa-solid fa-book"></i></div>
-                    <h4><span class="lang-text" translate="no" data-zh="冬久" data-zh-tw="冬久" data-ja="冬久" data-en="Dong Jiu">Dong Jiu</span></h4>
-                </a>
-                <a href="characters.html#char-lingye" class="character-card">
-                    <div class="char-avatar"><i class="fa-solid fa-shield"></i></div>
-                    <h4><span class="lang-text" translate="no" data-zh="凌夜" data-zh-tw="凌夜" data-ja="凌夜" data-en="Ling Ye">Ling Ye</span></h4>
-                </a>
-                <a href="characters.html#char-mochen" class="character-card">
-                    <div class="char-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h4><span class="lang-text" translate="no" data-zh="墨尘" data-zh-tw="墨塵" data-ja="墨塵" data-en="Mo Chen">Mo Chen</span></h4>
-                </a>
-            </div>
-            <div><a href="characters.html" class="section-more"><span class="lang-text" translate="no" data-zh="查看完整人物志" data-zh-tw="查看完整人物誌" data-ja="人物録全文を見る" data-en="See full character profiles">See full character profiles</span> <i class="fa-solid fa-arrow-right"></i></a></div>
-        </section>
+    <section class="section section-records page-shell">
+      <div class="section-title-row reveal">
+        <div><p class="eyebrow eyebrow-dark">档案精选 · 由此启阅</p><h2>从开国实录，<em>读到今日。</em></h2></div>
+        <a class="text-link" href="chronicle.html">全部国史档案 <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="record-grid">
+        <a class="record-card record-card-image reveal" href="events/founding.html">
+          <div class="record-image image-founding" role="img" aria-label="玄幽立国大典场景"></div>
+          <div class="record-meta"><span>开国实录</span><span>天统元年</span></div>
+          <h3>玄都受命<br>玄幽立国</h3>
+          <p>神朝既覆，太祖定都玄都，颁天统宪章，以法统合万方。</p>
+          <span class="record-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="record-card record-card-image reveal" href="events/duanlongling.html">
+          <div class="record-image image-battle" role="img" aria-label="断龙岭之战历史场景"></div>
+          <div class="record-meta"><span>建国战事</span><span>天统初年</span></div>
+          <h3>断龙岭上<br>一战定势</h3>
+          <p>策反神冥，破神朝主力；山河易帜的关键一役，留存于兵档。</p>
+          <span class="record-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="record-card record-card-paper reveal" href="laws.html">
+          <div class="paper-emblem" aria-hidden="true">典</div>
+          <div class="record-meta"><span>国本典章</span><span>历次修订</span></div>
+          <h3>天统宪章<br>与历次修订</h3>
+          <p>从帝制王权的开国宪章，到幽汐御极七年正在试行的州县议事章程。</p>
+          <span class="record-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
 
-        <footer>
-            <div class="footer-links">
-                <a href="#hero" id="footer-home"><span class="lang-text" translate="no" data-zh="帝国首页" data-zh-tw="帝國首頁" data-ja="帝国トップ" data-en="Home">Home</span></a>
-                <a href="chronicle.html"><span class="lang-text" translate="no" data-zh="帝国全史" data-zh-tw="帝國全史" data-ja="帝国全史" data-en="Chronicle">Chronicle</span></a>
-                <a href="laws.html"><span class="lang-text" translate="no" data-zh="天统新政" data-zh-tw="天統新制" data-ja="天統の新政" data-en="Laws">Laws</span></a>
-                <a href="institutions.html"><span class="lang-text" translate="no" data-zh="帝国机构" data-zh-tw="帝國機構" data-ja="帝国機構" data-en="Institutions">Institutions</span></a>
-                <a href="characters.html"><span class="lang-text" translate="no" data-zh="帝国人物志" data-zh-tw="帝國人物誌" data-ja="帝国人物録" data-en="Personages">Personages</span></a>
-            </div>
-            <p>&copy; 2026 <i class="fa-solid fa-code"></i> <span class="lang-text" translate="no" data-zh="玄幽帝国 (天统纪年) 版权所有" data-zh-tw="玄幽帝國 (天統紀年) 版權所有" data-ja="玄幽帝国 (天統紀年) 著作権所有" data-en="Genyuu Empire (Tian Tong Era). All Rights Reserved.">Genyuu Empire (Tian Tong Era). All Rights Reserved.</span></p>
-        </footer>
-    </main>
-    <script src="script.js"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"92e95719c0134a7caf3528052134cdfc","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    <section class="section timeline-section">
+      <div class="page-shell">
+        <div class="section-title-row reveal">
+          <div><p class="eyebrow">天统纪年 · 沿革提要</p><h2>百年治序，<em>薪火相传。</em></h2></div>
+          <a class="text-link text-link-light" href="chronicle.html">展开帝国编年 <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="timeline-grid reveal">
+          <article><span class="timeline-mark">壹</span><small>天统元年</small><h3>改元建国</h3><p>太祖幽冥定都玄都，颁行建国宪章。</p></article>
+          <article><span class="timeline-mark">贰</span><small>天统初年</small><h3>一统山河</h3><p>平定诸地，整合旧制，天下归于中枢。</p></article>
+          <article><span class="timeline-mark">叁</span><small>立国数十载后</small><h3>郡县归制</h3><p>废止诸侯封国，地方转由行省、郡县统辖。</p></article>
+          <article><span class="timeline-mark">肆</span><small>幽汐御极七年</small><h3>州县议事试行</h3><p>少数地方先设议席，所议民生事项仍待中枢核定。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-final page-shell reveal">
+      <div class="final-seal" aria-hidden="true">玄<br>幽</div>
+      <p class="eyebrow eyebrow-dark">玄幽帝国 · 国史档案馆</p>
+      <h2>典章有所本，<br><em>国史有所归。</em></h2>
+      <p>从开国誓约到历代修订，从将帅功业到州县日常，<br>循档可考，按卷可阅。</p>
+      <div class="hero-actions"><a class="button button-ink" href="laws.html">阅天统宪章 <span aria-hidden="true">↗</span></a><a class="text-link" href="institutions.html">了解中央与地方 <span aria-hidden="true">→</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-main">
+      <a class="brand brand-footer" href="index.html"><img src="logo-white.svg" alt="" width="38" height="38"><span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span></a>
+      <p>存国史之实，明典章之序。<br><span>玄幽帝国国史档案馆 · 天统纪元</span></p>
+      <nav aria-label="页脚导航"><a href="chronicle.html">开国与沿革</a><a href="laws.html">宪章政典</a><a href="institutions.html">中央与地方</a><a href="characters.html">帝国人物</a></nav>
+    </div>
+    <div class="footer-bottom"><div class="page-shell"><span>© 玄幽帝国 · 天统纪元</span><span>史录供阅 · 典章可考</span></div></div>
+  </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
