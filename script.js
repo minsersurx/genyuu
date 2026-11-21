@@ -10,22 +10,26 @@
   window.addEventListener('scroll', updateHeader, { passive: true });
 
   if (toggle && nav) {
+    const setMenuOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+      nav.classList.toggle('is-open', open);
+    };
     toggle.addEventListener('click', () => {
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      toggle.setAttribute('aria-label', isOpen ? '打开导航' : '关闭导航');
-      nav.classList.toggle('is-open', !isOpen);
+      setMenuOpen(!isOpen);
     });
     nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', '打开导航');
-      nav.classList.remove('is-open');
+      setMenuOpen(false);
     }));
+    document.addEventListener('click', (event) => {
+      if (nav.classList.contains('is-open') && header && !header.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && nav.classList.contains('is-open')) {
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', '打开导航');
-        nav.classList.remove('is-open');
+        setMenuOpen(false);
         toggle.focus();
       }
     });
