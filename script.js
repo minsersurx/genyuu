@@ -34,6 +34,9 @@
       }
     });
     if (header) header.classList.add('nav-ready');
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 820) setMenuOpen(false);
+    }, { passive: true });
   }
 
   const reveals = document.querySelectorAll('.reveal');

@@ -31,6 +31,9 @@ img { display: block; max-width: 100%; }
 .skip-link:focus { transform: translateY(0); outline: 3px solid var(--gold-light); outline-offset: 3px; }
 #main-content { scroll-margin-top: 88px; }
 #main-content:focus { outline: none; }
+#main-content:focus-visible > :first-child { outline: 3px solid var(--gold-light); outline-offset: -6px; border-radius: 22px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; border-radius: 8px; }
+.site-header a:focus-visible, .site-header button:focus-visible, .timeline-section a:focus-visible, .site-footer a:focus-visible { outline-color: var(--gold-light); }
 
 /* Header */
 .site-header { position: absolute; z-index: 30; top: 0; left: 0; display: flex; align-items: center; width: 100%; min-height: 86px; padding: 0 max(32px, calc((100vw - var(--shell)) / 2)); color: #f8f4e9; border-bottom: 1px solid rgba(255,255,255,.16); transition: background .3s ease, min-height .3s ease, box-shadow .3s ease; }
