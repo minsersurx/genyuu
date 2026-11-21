@@ -562,3 +562,17 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .back-to-top { right: 15px; bottom: 16px; width: 42px; height: 42px; min-height: 42px; padding: 0; font-size: 19px; }
   .back-to-top::after { display: none; }
 }
+
+/* Four chronicle scenes, balanced across desktop and mobile. */
+@media (min-width: 821px) { .event-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.history-detail { display: inline-flex; align-items: center; gap: 7px; margin-top: 9px; color: var(--red); font-size: 11px; letter-spacing: .07em; }
+.history-detail:hover { color: #701c20; }
+/* Focused archive links and print layouts must never remain hidden by entrance animation. */
+.reveal.will-reveal:focus-within { opacity: 1; transform: none; }
+@media print { .reveal.will-reveal { opacity: 1 !important; transform: none !important; transition: none !important; } .reading-progress, .back-to-top, .menu-toggle { display: none !important; } }
+
+/* Volume-specific mastheads retain the same legible, official archive system. */
+.archive-chronicle .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.94), rgba(17,19,20,.8)), url("assets/founding-assembly.webp") center 49% / cover; }
+.archive-laws .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.95), rgba(17,19,20,.84)), url("assets/xuandu-capital.webp") center 52% / cover; }
+.archive-institutions .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.85)), url("assets/territory-sketch.webp") center 48% / cover; }
+.archive-characters .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), url("assets/youming-portrait.webp") center 32% / cover; }
