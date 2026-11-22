@@ -580,13 +580,13 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 /* Volume-specific mastheads retain the same legible, official archive system. */
 .archive-chronicle .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.94), rgba(17,19,20,.8)), url("assets/founding-assembly-optimized.webp") center 49% / cover; }
 .archive-laws .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.95), rgba(17,19,20,.84)), url("assets/xuandu-capital-optimized.webp") center 52% / cover; }
-.archive-institutions .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.85)), url("assets/territory-sketch.webp") center 48% / cover; }
-.archive-characters .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), url("assets/youming-portrait.webp") center 32% / cover; }
+.archive-institutions .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.85)), url("assets/imperial-map.webp") center 48% / cover; }
+.archive-characters .subpage-hero { background: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), url("assets/youming-anime.webp") center 32% / cover; }
 @media (max-width: 560px) {
-  .archive-characters .subpage-hero { background-image: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), image-set(url("assets/youming-portrait-512.webp") 1x, url("assets/youming-portrait-960.webp") 2x, url("assets/youming-portrait.webp") 3x); }
+  .archive-characters .subpage-hero { background-image: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), image-set(url("assets/youming-anime-512.webp") 1x, url("assets/youming-anime-960.webp") 2x, url("assets/youming-anime.webp") 3x); }
 }
 @media (min-width: 561px) and (max-width: 820px) {
-  .archive-characters .subpage-hero { background-image: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), image-set(url("assets/youming-portrait-960.webp") 1x, url("assets/youming-portrait.webp") 2x); }
+  .archive-characters .subpage-hero { background-image: linear-gradient(90deg, rgba(17,19,20,.96), rgba(17,19,20,.84)), image-set(url("assets/youming-anime-960.webp") 1x, url("assets/youming-anime.webp") 2x); }
 }
 
 /* Chronicle entries read as one continuous archival thread, not a bare list. */
@@ -699,4 +699,162 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 }
 @media (max-width: 360px) {
   .hero-imprint { display: none; }
+}
+
+
+/* Locally hosted, character-subsetted Noto fonts keep Chinese typography consistent without a third-party request. */
+@font-face {
+  font-family: "Noto Serif SC";
+  src: url("assets/fonts/noto-serif-sc-subset.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Sans SC";
+  src: url("assets/fonts/noto-sans-sc-subset.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+/* Font Awesome Free Solid, subset of the required glyphs; CC BY 4.0, Fonticons, Inc. */
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  src: url("assets/fonts/fa-solid-900-subset.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+}
+:root {
+  --serif: "Noto Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", serif;
+  --sans: "Noto Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.fa-solid {
+  display: inline-block;
+  font-family: "Font Awesome 6 Free";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.fa-magnifying-glass::before { content: "\f002"; }
+.fa-xmark::before { content: "\f00d"; }
+.fa-arrow-left::before { content: "\f060"; }
+.fa-arrow-right::before { content: "\f061"; }
+.fa-arrow-up::before { content: "\f062"; }
+.fa-bars::before { content: "\f0c9"; }
+.fa-arrow-up-right-from-square::before { content: "\f35d"; }
+
+/* iOS Safari: let the page paint edge-to-edge while keeping controls below the device safe area. */
+html { background-color: #17191a; }
+.site-header { padding-top: env(safe-area-inset-top, 0px); }
+.site-header.is-scrolled { top: 0; min-height: calc(72px + env(safe-area-inset-top, 0px)); }
+@media (max-width: 820px) {
+  .site-header { min-height: calc(72px + env(safe-area-inset-top, 0px)); }
+  .site-header.is-scrolled { min-height: calc(66px + env(safe-area-inset-top, 0px)); }
+}
+
+/* Font Awesome controls replace decorative arrow glyphs and the former three-stripe menu. */
+.nav-ready .menu-toggle .fa-solid { display: inline-block; color: #e2cc99; font-size: 17px; }
+.nav-ready .menu-toggle[aria-expanded="true"] .fa-bars::before { content: "\f00d"; }
+.archive-search-toggle .fa-solid { font-size: 14px; }
+.record-arrow .fa-solid { font-size: 16px; }
+.back-to-top .fa-solid { font-size: 18px; }
+
+/* Mobile navigation fades and lifts in/out, while remaining inert to pointer and keyboard when closed. */
+@media (max-width: 820px) {
+  .nav-ready .main-nav {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px) scale(.985);
+    transform-origin: top right;
+    transition: opacity .24s ease, transform .24s ease, visibility 0s linear .24s;
+  }
+  .nav-ready .main-nav.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    transition: opacity .24s ease, transform .24s ease, visibility 0s linear 0s;
+  }
+}
+
+/* 16px prevents iPhone Safari's focus zoom without disabling pinch-to-zoom. */
+.archive-search-input { min-height: 44px; font-size: 16px; line-height: 1.35; }
+@media (max-width: 820px) {
+  .archive-search-input { font-size: 16px; }
+}
+
+/* Prosperous middle-century chronicle, with actual artwork and readable editorial chapters. */
+.history-middle {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: 24px 34px;
+  margin-top: 36px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid rgba(37,34,27,.1);
+  border-radius: var(--radius-card);
+  background: radial-gradient(ellipse at 100% 0, rgba(182,154,99,.1), transparent 42%), #fffdf8;
+  box-shadow: 0 12px 30px rgba(32,28,22,.05);
+}
+.history-middle-heading { grid-column: 1 / -1; max-width: 790px; }
+.history-middle-heading .eyebrow { margin-bottom: 10px; }
+.history-middle-heading h3 { margin: 0; color: #302b24; font-family: var(--serif); font-size: clamp(25px, 3vw, 36px); font-weight: 500; letter-spacing: .08em; }
+.history-middle-heading h3 em { color: var(--red); font-style: normal; }
+.history-middle-heading > p:last-child { max-width: 760px; margin: 10px 0 0; color: #6c665b; font-size: 13px; line-height: 2; }
+.history-middle-visual { align-self: start; margin: 0; padding: 10px; border: 1px solid rgba(37,34,27,.13); border-radius: 16px; background: #eee7d8; }
+.history-middle-visual img { width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; object-fit: cover; }
+.history-middle-visual figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; padding: 11px 4px 3px; color: #746b5d; font-size: 10px; }
+.history-middle-visual figcaption strong { color: var(--red); font-family: var(--serif); font-size: 12px; font-weight: 500; }
+.history-era-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+.history-era-grid article { padding: 13px 0 15px; border-top: 1px solid var(--line); }
+.history-era-grid article > span { color: var(--red); font-size: 9px; letter-spacing: .1em; }
+.history-era-grid h4 { margin: 4px 0 5px; color: #38342d; font-family: var(--serif); font-size: 16px; font-weight: 500; }
+.history-era-grid p { margin: 0; color: #706b60; font-size: 11px; line-height: 1.95; }
+@media (max-width: 820px) {
+  .history-middle { grid-template-columns: 1fr; }
+  .history-middle-heading, .history-middle-visual, .history-era-grid { grid-column: 1; }
+  .history-era-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .history-middle { gap: 18px; margin-top: 22px; padding: 18px 15px; }
+  .history-era-grid { grid-template-columns: 1fr; }
+  .history-era-grid article { padding-block: 12px; }
+}
+
+/* A responsive, connected SVG expresses institutional relationships rather than decorative text blocks. */
+.institution-plate-digital { grid-template-columns: minmax(0, .76fr) minmax(0, 1.24fr); }
+.chart-key { display: flex; flex-wrap: wrap; gap: 8px 15px; margin: 23px 0; }
+.chart-key > span { display: inline-flex; align-items: center; gap: 7px; color: #6d6558; font-size: 10px; }
+.chart-key i { width: 8px; height: 8px; border-radius: 50%; background: #c4a76b; }
+.chart-key .chart-key-offices { background: #514f47; }
+.chart-key .chart-key-oversight { background: #a65b5b; }
+.organization-scroll { width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: #9a845d transparent; }
+.organization-chart { display: block; width: 100%; min-width: 520px; height: auto; }
+.organization-archive figcaption { line-height: 1.8; }
+@media (max-width: 1050px) {
+  .institution-plate-digital { grid-template-columns: 1fr; }
+  .institution-plate-digital .organization-archive { width: min(100%, 700px); }
+}
+@media (max-width: 560px) {
+  .organization-chart { min-width: 520px; }
+  .chart-key { margin-block: 18px; }
+}
+
+/* The current seventh-year amendment is limited in reach, but concrete in procedure and review. */
+.amendment-detail { margin-top: 22px; padding: clamp(18px, 3vw, 29px); border: 1px solid rgba(182,154,99,.3); border-radius: 17px; background: linear-gradient(135deg, rgba(182,154,99,.1), rgba(255,253,248,.9) 50%), #f7f2e8; }
+.amendment-detail > .eyebrow { margin-bottom: 7px; }
+.amendment-detail > h3 { margin: 0 0 8px; color: #302b24; font-family: var(--serif); font-size: 21px; font-weight: 500; }
+.amendment-detail > p:not(.eyebrow) { max-width: 780px; margin: 0; color: #686257; font-size: 13px; line-height: 2; }
+.amendment-provision-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; margin-top: 18px; }
+.amendment-provision-grid article { padding: 15px; border: 1px solid rgba(37,34,27,.1); border-radius: 13px; background: rgba(255,253,248,.82); }
+.amendment-provision-grid article > span { color: var(--red); font-family: var(--serif); font-size: 12px; }
+.amendment-provision-grid article p { margin: 7px 0 0; color: #686257; font-size: 11px; line-height: 1.9; }
+@media (max-width: 820px) { .amendment-provision-grid { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-ready .main-nav, .nav-ready .main-nav.is-open { transition: none; transform: none; }
 }

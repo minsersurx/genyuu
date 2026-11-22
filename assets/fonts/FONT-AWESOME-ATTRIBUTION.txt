@@ -1,0 +1,10 @@
+Font Awesome Free Solid — attribution notice
+
+Selected glyphs from Font Awesome Free Solid are included in fa-solid-900-subset.woff2.
+
+Copyright: Fonticons, Inc.
+Source: https://fontawesome.com
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License terms: https://creativecommons.org/licenses/by/4.0/
+
+Changes: the original font was subsetted to the seven icon glyphs used by this site and is served locally. The subset is not a complete Font Awesome distribution.

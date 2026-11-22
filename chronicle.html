@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#17191a">
-  <title>帝国全史 · 玄幽帝国</title><meta name="description" content="从神朝末路、太祖幽冥起兵，到玄幽立国、诸侯归制与幽汐御极七年，循天统纪年读玄幽帝国全史。">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#17191a">
+  <title>帝国全史 · 玄幽帝国</title>
+  <link rel="icon" type="image/png" href="assets/imperial-seal-red.png">
+  <link rel="preload" href="assets/fonts/noto-serif-sc-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/noto-sans-sc-subset.woff2" as="font" type="font/woff2" crossorigin><meta name="description" content="从神朝末路、太祖幽冥起兵，到玄幽立国、诸侯归制与幽汐御极七年，循天统纪年读玄幽帝国全史。">
   <meta property="og:title" content="帝国全史 · 玄幽帝国"><meta property="og:description" content="从神朝末路、天统元年立国到天统五年一统，循天统纪年读玄幽帝国全史。"><meta property="og:type" content="website">
   <link rel="preload" as="image" href="assets/founding-assembly-optimized.webp" fetchpriority="high">
-  <link rel="icon" type="image/svg+xml" href="logo-black.svg" media="(prefers-color-scheme: light)"><link rel="icon" type="image/svg+xml" href="logo-white.svg" media="(prefers-color-scheme: dark)"><link rel="stylesheet" href="style.css?v=20261122v">
+  <link rel="stylesheet" href="style.css?v=20261122w">
   <link rel="canonical" href="https://www.genyuu.com/chronicle">
   <meta property="og:url" content="https://www.genyuu.com/chronicle">
   <meta property="og:image" content="https://www.genyuu.com/assets/founding-assembly.webp">
-  <meta property="og:image:alt" content="玄幽立国大典场景复原图">
+  <meta property="og:image:alt" content="玄都受命、玄幽立国典礼场景">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="帝国全史 · 玄幽帝国">
   <meta name="twitter:description" content="从神朝末路、天统元年立国到天统五年一统，循天统纪年读玄幽帝国全史。">
@@ -18,8 +21,8 @@
 <body class="archive-chronicle">
   <a class="skip-link" href="#main-content">跳到正文</a>
   <header class="site-header" id="site-header">
-    <a class="brand" href="index.html" aria-label="玄幽帝国首页"><img src="logo.svg" alt="" width="42" height="42"><span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span></a>
-    <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+    <a class="brand" href="index.html" aria-label="玄幽帝国首页"><img src="assets/imperial-seal-red.png" alt="" width="42" height="42"><span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span></a>
+    <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="main-nav"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
     <nav class="main-nav" id="main-nav" aria-label="主导航"><a href="index.html">帝国首页</a><a class="active" aria-current="page" href="chronicle.html">开国与沿革</a><a href="laws.html">宪章政典</a><a href="institutions.html">中央与地方</a><a href="characters.html">帝国人物</a></nav>
     <div class="header-seal"><i></i><span>天统纪元</span></div>
   </header>
@@ -43,30 +46,40 @@
           <article class="history-item"><div class="history-date">神朝末世</div><div><h3>冬久授业，幽冥入仕</h3><p>幽冥由冬久抚养，入神朝禁军，官至禁军总长；在朝局剧变中，逐渐看清旧制弊端。</p></div></article>
           <article class="history-item"><div class="history-date">神朝末年</div><div><h3>屠魔令下，恩师殒命</h3><p>神天背弃旧约颁行屠魔令，冬久以死进谏。幽冥出走西域，入魔影窟闭关。</p></div></article>
           <article class="history-item"><div class="history-date">出关之后</div><div><h3>灰烬之盟，义军再起</h3><p>幽冥与玄冥等旧部重结盟约，沿边地联络响应者，誓以新法终结神朝纷乱。</p></div></article>
-          <article class="history-item"><div class="history-date">神朝末年</div><div><h3>断龙岭大捷</h3><p>义军策反神冥，大破神朝主力；此役扭转战局，为攻取神都、结束旧朝战争奠定局势。</p><a class="history-detail" href="events/duanlongling.html">阅览战事档案 <span aria-hidden="true">↗</span></a></div></article>
-          <article class="history-item"><div class="history-date">天统元年</div><div><h3>玄都受命，玄幽立国</h3><p>太祖幽冥即位，定都玄都，颁布建国宪章。玄冥受命摄政，中央诸司及行伍制度随即整编；北方黑白无常亦建立魔灰帝国。</p><a class="history-detail" href="events/founding.html">阅览立国档案 <span aria-hidden="true">↗</span></a></div></article>
+          <article class="history-item"><div class="history-date">神朝末年</div><div><h3>断龙岭大捷</h3><p>义军策反神冥，大破神朝主力；此役扭转战局，为攻取神都、结束旧朝战争奠定局势。</p><a class="history-detail" href="events/duanlongling.html">阅览战事档案 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+          <article class="history-item"><div class="history-date">天统元年</div><div><h3>玄都受命，玄幽立国</h3><p>太祖幽冥即位，定都玄都，颁布建国宪章。玄冥受命摄政，中央诸司及行伍制度随即整编；北方黑白无常亦建立魔灰帝国。</p><a class="history-detail" href="events/founding.html">阅览立国档案 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
           <article class="history-item"><div class="history-date">天统三年</div><div><h3>魔灰内变，神影继起</h3><p>神冥原率残部归附黑白无常，后于天统三年发动兵变，弑杀二人，另立神影帝国。北方战局再起，玄幽朝廷转入平定战事与安抚新地并行之期。</p></div></article>
-          <article class="history-item"><div class="history-date">天统五年</div><div><h3>葬影原决战，天下一统</h3><p>太祖亲征，击溃神影军。旧部平定后，朝廷以宽赦平民、追责首恶之策安置归附诸地。</p><a class="history-detail" href="events/zangyingyuan.html">阅览战事档案 <span aria-hidden="true">↗</span></a></div></article>
-          <article class="history-item"><div class="history-date">历次修订之间</div><div><h3>诸侯归制，地方统合</h3><p>建国初制在北原省设置七个相对独立的诸侯国；其后随历次宪章修订撤废，地方统入省区及下级行政体系。现存手稿未标明每次撤并的具体年份。</p></div></article>
-          <article class="history-item"><div class="history-date">百余年治序</div><div><h3>典章相沿，文教并兴</h3><p>百余年间，学府、漕运与常平仓储得以延续。天统宪章随政务所需数度补订，帝制国本与一统格局未改。</p></div></article>
-          <article class="history-item"><div class="history-date">幽汐御极七年</div><div><h3>少数州县议事席试办</h3><p>幽汐命复核州县奏报，并在少数州县试设议事席，先议河工、学校与仓储等民生事项；所议仍循既有奏报渠道上呈，由中枢审议裁定。</p><a class="history-detail" href="events/yuxi-hearing.html">阅览政务纪要 <span aria-hidden="true">↗</span></a></div></article>
+          <article class="history-item"><div class="history-date">天统五年</div><div><h3>葬影原决战，天下一统</h3><p>太祖亲征，击溃神影军。旧部平定后，朝廷以宽赦平民、追责首恶之策安置归附诸地。</p><a class="history-detail" href="events/zangyingyuan.html">阅览战事档案 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
+          <article class="history-item"><div class="history-date">地方归制时期</div><div><h3>诸侯归制，地方统合</h3><p>北原省原设七个相对独立的诸侯国，后随历次宪章增订逐步撤废，地方统入省区及下级行政体系。</p></div></article>
+          <article class="history-item"><div class="history-date">百余年治序</div><div><h3>典章相沿，文教并兴</h3><p>百余年间，帝国把一统后的治理落实到河渠维护、粮运仓储、县学与官员选任。省区层级逐步稳定，宪章围绕职权与地方事务不断增补，帝制国本与统一格局始终相承。</p></div></article>
+          <article class="history-item"><div class="history-date">幽汐御极七年</div><div><h3>少数州县议事席试办</h3><p>幽汐命复核州县奏报，并在少数州县试设议事席，先议河工、学校与仓储等民生事项；所议仍循既有奏报渠道上呈，由中枢审议裁定。</p><a class="history-detail" href="events/yuxi-hearing.html">阅览政务纪要 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></article>
           </div>
+          <section class="history-middle" aria-labelledby="history-middle-title">
+            <div class="history-middle-heading"><p class="eyebrow eyebrow-dark">天统中世 · 百年治序</p><h3 id="history-middle-title">承平相续，<em>制度渐密。</em></h3><p>统一并非终点。此后百余年，帝国在省区整合、民生工程、文教传承与宪章增订之间，逐步形成稳定而繁盛的日常秩序。</p></div>
+            <figure class="history-middle-visual"><img src="assets/middle-century.webp" width="1680" height="1120" alt="河渠穿过繁盛州城，桥梁、漕运、粮仓与远处田野构成安定的中期生活" loading="lazy" decoding="async"><figcaption><strong>河渠通漕 · 州县安居</strong><span>百年治序中的城镇与民生</span></figcaption></figure>
+            <div class="history-era-grid">
+              <article><span>其一</span><h4>归地安民</h4><p>一统之后，朝廷先整编守备与驿路，复核户籍、田亩和仓储账册。归附州县沿用可行的地方习俗，赋额与诉讼逐项并入统一章程，市集、耕作与往来交通因而恢复常态。</p></article>
+              <article><span>其二</span><h4>封国归省</h4><p>北原七国并非一朝尽撤。历次宪章增订逐步收回封国的军籍、赋税与官署权限，将其分项并入省区和市县；地方官署依统一层级向上呈报，封国旧制不再作为独立的地方统治单位。</p></article>
+              <article><span>其三</span><h4>河渠、漕运与常平</h4><p>工部与沿线州县按季修护堤渠、桥梁和驿道，漕运将各地粮产与物资接入跨省流通；常平仓依收成留储、按需出纳。水利工程、粮储与交通因此成为彼此衔接的常设政务，而非临时应急。</p></article>
+              <article><span>其四</span><h4>县学与典章并进</h4><p>县学向乡里延伸，地方人才得以循学业、政绩进入官署；官员把工程、仓储、诉讼与民情记录成册，上达中枢汇总。后续修宪据此厘清各司权限、地方奏报和跨区事务的办理次序，保持制度连续，也容纳各地实情。</p></article>
+            </div>
+          </section>
       </section>
 
       <section class="section reveal" id="chronicle-scenes">
-        <div class="section-title-row"><div><p class="eyebrow eyebrow-dark">档案专题 · 场景复原</p><h2>以史入卷，<em>以图述史。</em></h2></div></div>
+        <div class="section-title-row"><div><p class="eyebrow eyebrow-dark">开国纪事 · 战事与典礼</p><h2>以史入卷，<em>以图述史。</em></h2></div></div>
         <div class="event-grid">
-          <a class="event-card" href="events/duanlongling.html"><img src="assets/duanlongling-battle-optimized.webp" width="1920" height="1080" alt="断龙岭战事场景复原" loading="lazy" decoding="async"><div class="event-card-copy"><small>神朝末年 · 开国战事</small><h3>断龙岭之战</h3><p>山隘决胜，神朝主力溃败，天下形势由此改写。</p></div></a>
-          <a class="event-card" href="events/founding.html"><img src="assets/founding-assembly-optimized.webp" width="1920" height="1080" alt="玄幽立国大典场景复原" loading="lazy" decoding="async"><div class="event-card-copy"><small>天统元年 · 建国典礼</small><h3>玄都受命，玄幽立国</h3><p>从都城初定到建国宪章颁行，重读新朝立国之始。</p></div></a>
-          <a class="event-card" href="events/zangyingyuan.html"><img src="assets/zangyingyuan-battle.webp" width="1920" height="1080" alt="葬影原战事场景复原" loading="lazy" decoding="async"><div class="event-card-copy"><small>天统五年 · 统一战事</small><h3>葬影原决战</h3><p>太祖亲征，平定神影余势，天下至此归一。</p></div></a>
-          <a class="event-card" href="events/yuxi-hearing.html"><img src="assets/yuxi-hearing-optimized.webp" width="1920" height="1080" alt="少数州县议事席试办场景复原" loading="lazy" decoding="async"><div class="event-card-copy"><small>幽汐御极七年 · 政务纪要</small><h3>少数州县议事席试办</h3><p>仅在少数州县听取民生意见，仍由中枢审议裁定。</p></div></a>
+          <a class="event-card" href="events/duanlongling.html"><img src="assets/duanlongling-battle-optimized.webp" width="1920" height="1080" alt="断龙岭战事场景" loading="lazy" decoding="async"><div class="event-card-copy"><small>神朝末年 · 开国战事</small><h3>断龙岭之战</h3><p>山隘决胜，神朝主力溃败，天下形势由此改写。</p></div></a>
+          <a class="event-card" href="events/founding.html"><img src="assets/founding-assembly-optimized.webp" width="1920" height="1080" alt="玄幽立国大典场景" loading="lazy" decoding="async"><div class="event-card-copy"><small>天统元年 · 建国典礼</small><h3>玄都受命，玄幽立国</h3><p>从都城初定到建国宪章颁行，重读新朝立国之始。</p></div></a>
+          <a class="event-card" href="events/zangyingyuan.html"><img src="assets/zangyingyuan-battle.webp" width="1920" height="1080" alt="葬影原战事场景" loading="lazy" decoding="async"><div class="event-card-copy"><small>天统五年 · 统一战事</small><h3>葬影原决战</h3><p>太祖亲征，平定神影余势，天下至此归一。</p></div></a>
+          <a class="event-card" href="events/yuxi-hearing.html"><img src="assets/yuxi-hearing-optimized.webp" width="1920" height="1080" alt="州县议事席上的地方议事场景" loading="lazy" decoding="async"><div class="event-card-copy"><small>幽汐御极七年 · 政务纪要</small><h3>少数州县议事席试办</h3><p>仅在少数州县听取民生意见，仍由中枢审议裁定。</p></div></a>
         </div>
       </section>
-      <div class="notice-box">本编以现存帝国史录与典章沿革为纲。开国事件详情页所用画面为历史场景复原图。</div>
-      <div style="text-align:center"><a class="back-home" href="index.html">← 返回帝国首页</a></div>
+
+      <div style="text-align:center"><a class="back-home" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 返回帝国首页</a></div>
     </div>
   </main>
-  <footer class="site-footer"><div class="page-shell footer-main"><a class="brand brand-footer" href="index.html"><img src="logo-white.svg" alt="" width="38" height="38"><span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span></a><p>存国史之实，明典章之序。<br><span>玄幽帝国国史档案馆 · 天统纪元</span></p><nav aria-label="页脚导航"><a href="chronicle.html">开国与沿革</a><a href="laws.html">宪章政典</a><a href="institutions.html">中央与地方</a><a href="characters.html">帝国人物</a></nav></div><div class="footer-bottom"><div class="page-shell"><span>© 玄幽帝国 · 天统纪元</span><span>史录供阅 · 典章可考</span></div></div></footer>
-  <script src="script.js?v=20261122o" defer></script>
+  <footer class="site-footer"><div class="page-shell footer-main"><a class="brand brand-footer" href="index.html"><img src="assets/imperial-seal-red.png" alt="" width="38" height="38"><span class="brand-copy"><strong>玄幽帝国</strong><small>国史档案 · 天统政典</small></span></a><p>存国史之实，明典章之序。<br><span>玄幽帝国国史档案馆 · 天统纪元</span></p><nav aria-label="页脚导航"><a href="chronicle.html">开国与沿革</a><a href="laws.html">宪章政典</a><a href="institutions.html">中央与地方</a><a href="characters.html">帝国人物</a></nav></div><div class="footer-bottom"><div class="page-shell"><span>© 玄幽帝国 · 天统纪元</span><span>史录供阅 · 典章可考</span></div></div></footer>
+  <script src="script.js?v=20261122p" defer></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
   backToTop.className = 'back-to-top';
   backToTop.type = 'button';
   backToTop.setAttribute('aria-label', '回到页面卷首');
-  backToTop.textContent = '↑';
+  backToTop.innerHTML = '<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>';
   backToTop.addEventListener('click', () => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
@@ -124,10 +124,9 @@
     searchToggle.setAttribute('aria-label', '打开档案速查');
     searchToggle.setAttribute('aria-expanded', 'false');
     searchToggle.setAttribute('aria-controls', 'archive-search-panel');
-    const searchIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    searchIcon.setAttribute('viewBox', '0 0 24 24');
+    const searchIcon = document.createElement('i');
+    searchIcon.className = 'fa-solid fa-magnifying-glass';
     searchIcon.setAttribute('aria-hidden', 'true');
-    searchIcon.innerHTML = '<circle cx="10.8" cy="10.8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m15.5 15.5 4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>';
     const searchLabel = document.createElement('span');
     searchLabel.textContent = '速查';
     searchToggle.append(searchIcon, searchLabel);
