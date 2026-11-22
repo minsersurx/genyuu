@@ -156,6 +156,18 @@
     searchPanel.append(searchCaption, searchInput, searchStatus, searchResults);
     header.append(searchToggle, searchPanel);
 
+    const appendQueryHighlight = (element, value, query) => {
+      const start = query ? value.toLocaleLowerCase().indexOf(query) : -1;
+      if (start < 0) {
+        element.textContent = value;
+        return;
+      }
+      element.append(document.createTextNode(value.slice(0, start)));
+      const match = document.createElement('mark');
+      match.textContent = value.slice(start, start + query.length);
+      element.append(match, document.createTextNode(value.slice(start + query.length)));
+    };
+
     const renderResults = () => {
       const query = searchInput.value.trim().toLocaleLowerCase();
       const matches = (query
@@ -189,9 +201,9 @@
         link.href = record.href;
         const title = document.createElement('span');
         title.className = 'archive-search-result-title';
-        title.textContent = record.title;
+        appendQueryHighlight(title, record.title, query);
         const collection = document.createElement('small');
-        collection.textContent = record.collection;
+        appendQueryHighlight(collection, record.collection, query);
         link.append(title, collection);
         item.append(link);
         searchResults.append(item);

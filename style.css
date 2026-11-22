@@ -666,8 +666,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .archive-search-results li { width: max-content; max-width: 100%; }
 .archive-search-results a { display: inline-flex; width: max-content; max-width: 100%; align-items: baseline; flex-wrap: wrap; gap: 0 10px; padding: 7px 9px; border: 1px solid transparent; border-radius: 10px; color: #f6f0e4; line-height: 1.45; text-decoration: none; transition: border-color .18s ease, color .18s ease, background .18s ease; }
 .archive-search-results a:hover, .archive-search-results a:focus-visible { border-color: rgba(213,189,131,.2); outline: 0; color: #f0dca9; background: rgba(255,255,255,.055); }
-.archive-search-results a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.archive-search-results a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: -2px; }
 .archive-search-result-title { min-width: 0; overflow-wrap: anywhere; font-size: 12px; }
+.archive-search-results mark { padding: 0 .12em; border-radius: 4px; color: #f2dca4; background: rgba(213,189,131,.16); }
 .archive-search-results small { color: #cbbd9b; font-size: 10px; }
 .archive-search-empty { padding: 7px 9px; color: rgba(255,250,240,.62); font-size: 11px; }
 @media (min-width: 821px) and (max-width: 1263px) { .archive-search-panel { right: 32px; } }
