@@ -106,9 +106,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .intro-copy .text-link { margin-top: 11px; }
 
 /* Ruler feature */
-.feature { position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 595px; color: #fffaf0; background: var(--ink); }
-.feature-image { position: relative; min-height: 595px; overflow: hidden; background: #302824; }
-.feature-image > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 31%; }
+.feature { position: relative; display: grid; grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr); min-height: 595px; color: #fffaf0; background: var(--ink); }
+.feature-image { position: relative; align-self: center; height: 520px; min-height: 0; overflow: hidden; background: #302824; }
+.feature-image > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .feature-panel { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 80px clamp(44px, 8vw, 120px); background: linear-gradient(120deg, #1b1e1f, #252321); }
 .feature-panel::before { position: absolute; top: 40px; bottom: 40px; left: 0; width: 1px; background: linear-gradient(transparent, rgba(210,181,125,.65), transparent); content: ""; }
 .feature-panel h2 { font-size: clamp(33px, 4vw, 51px); }
@@ -219,7 +219,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .event-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
 .event-card { overflow: hidden; background: #fffdf8; border: 1px solid rgba(37,34,27,.12); transition: transform .25s, box-shadow .25s; }
 .event-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(32,28,22,.12); }
-.event-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.event-card img { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
 .event-card-copy { padding: 18px 20px 22px; }
 .event-card-copy small { color: var(--red); font-size: 10px; letter-spacing: .12em; }
 .event-card-copy h3 { margin: 7px 0; font-family: var(--serif); font-size: 19px; font-weight: 500; }
@@ -243,7 +243,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 .administrative-level-foot { display: inline-flex; margin-top: 15px; padding: 4px 9px; border: 1px solid rgba(182,154,99,.3); border-radius: 999px; color: #74603c; background: rgba(182,154,99,.08); font-size: 9px; letter-spacing: .07em; }
 .character-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
 .character-card { overflow: hidden; background: #fffdf8; border: 1px solid var(--line); }
-.character-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 28%; background: #302a25; }
+.character-card img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 28%; background: #302a25; }
 .character-copy { padding: 18px 20px 23px; }
 .character-copy small { color: var(--red); font-size: 10px; letter-spacing: .1em; }
 .character-copy h3 { margin: 4px 0 9px; font-family: var(--serif); font-size: 20px; font-weight: 500; }
@@ -335,7 +335,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .section-intro { grid-template-columns: 1fr; gap: 22px; }
   .intro-copy { max-width: 680px; }
   .feature { width: calc(100% - 40px); grid-template-columns: 1fr; }
-  .feature-image { min-height: 430px; }
+  .feature-image { height: 430px; min-height: 0; }
   .feature-image > img { object-position: center 25%; }
   .feature-panel { min-height: 410px; padding: 58px 9vw 75px; }
   .feature-status { grid-template-columns: 1fr; max-width: none; margin-top: 18px; }
@@ -385,7 +385,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   .section h2, .section-title-row h2 { font-size: 30px; }
   .intro-copy .lead-copy { font-size: 17px; }
   .feature { width: calc(100% - 36px); border-radius: 18px; }
-  .feature-image { min-height: 365px; }
+  .feature-image { height: 300px; min-height: 0; }
   .feature-panel { min-height: 390px; padding: 48px 23px 68px; }
   .feature-panel h2 { font-size: 34px; }
   .feature-panel > p:not(.eyebrow):not(.feature-name) { font-size: 12px; }
@@ -728,7 +728,7 @@ html, body { background-color: #f8f6fc; }
 .history-middle-heading h3 em { color: var(--red); font-style: normal; }
 .history-middle-heading > p:last-child { max-width: 760px; margin: 10px 0 0; color: #6c665b; font-size: 13px; line-height: 2; }
 .history-middle-visual { align-self: start; margin: 0; padding: 10px; border: 1px solid rgba(37,34,27,.13); border-radius: 16px; background: #eee7d8; }
-.history-middle-visual img { width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; object-fit: cover; }
+.history-middle-visual img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 10px; object-fit: cover; }
 .history-middle-visual figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; padding: 11px 4px 3px; color: #746b5d; font-size: 10px; }
 .history-middle-visual figcaption strong { color: var(--red); font-family: var(--serif); font-size: 12px; font-weight: 500; }
 .history-era-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
@@ -897,7 +897,7 @@ body:not(.home-page) main {
   background-position: center, center, center 32%;
   background-size: cover;
 }
-.event-hero { height: clamp(420px, 48svh, 540px); min-height: 0; }
+.event-hero { height: min(56.25vw, 88svh); min-height: 0; }
 .event-hero::after {
   position: absolute;
   right: 0;
@@ -912,8 +912,10 @@ body:not(.home-page) main {
 .event-hero > div { z-index: 3; padding-bottom: 112px; }
 .event-hero h1, .event-hero p, .event-hero .eyebrow { text-shadow: 0 2px 18px rgba(0,0,0,.48); }
 @media (max-width: 560px) {
-  .event-hero { height: clamp(310px, 38svh, 340px); }
-  .event-hero > div { padding-top: 84px; padding-bottom: 76px; }
+  .event-hero { display: block; height: auto; min-height: 0; padding-top: 0; background: #24211e; }
+  .event-hero-art { position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; }
+  .event-hero::before { bottom: auto; height: 56.25vw; background: linear-gradient(180deg, rgba(15,16,16,.02), rgba(15,16,16,.22)); }
+  .event-hero > div { padding-top: 22px; padding-bottom: 84px; }
   .event-hero::after { height: 68px; }
 }
 
